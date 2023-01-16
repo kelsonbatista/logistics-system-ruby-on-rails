@@ -1,0 +1,17 @@
+pt-BR:
+  activerecord:
+    models:
+      mode:
+        one: Modalidade
+        other: Modalidades
+    attributes:
+      mode:
+        modes: Modalidades
+        new_mode: Nova Modalidade
+        name: Nome
+        min_distance: Distância mínima
+        max_distance: Distância máxima
+        min_weight: Peso mínimo
+        max_weight: Peso máximo
+        fixed_fee: Taxa fixa
+        active: Ativo
