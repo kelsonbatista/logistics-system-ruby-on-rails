@@ -9,8 +9,23 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
   <body>
-    <%= yield %>
+    <header>
+      <section class="logo">
+        <div class="logo__text">
+          <h1><%= link_to t('logistics'), root_path %></h1>
+        </div>
+        <div class="nav">
+          <nav>
+            <ul>
+              <li><%= link_to t('modes'), modes_path %></li>
+            </ul>
+          </nav>
+        </div>
+      </section>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>
