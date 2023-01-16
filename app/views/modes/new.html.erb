@@ -1,0 +1,8 @@
+<section class="modes">
+  <div class="modes__title">
+    <h1><%= t('new_mode') %> </h1>
+  </div>
+  <div class="modes__list">
+    <%= render partial: "form", locals: { mode: @mode } %>
+  </div>
+</section>
