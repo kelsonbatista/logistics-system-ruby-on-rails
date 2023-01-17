@@ -1,3 +1,4 @@
+<div class="messages">
 <% if vehicle.errors.any? %>
   <p>Verifique os erros abaixo:</p>
   <ul>
@@ -6,46 +7,49 @@
     <% end %>
   </ul>
 <% end %>
+</div>
 
-<%= form_with(model: vehicle) do |f| %>
-  <table class="vehicle__form table table-success table-striped">
-    <tr>
-      <th class=""><%= f.label :mode_id, t('mode'), class: "form-label" %></th>
-      <td><%= f.collection_select :mode_id, @modes, :id, :name, {}, { class: "form-select" } %></td>
-    </tr>
-    <tr>
-      <th><%= f.label :plate, t('plate'), class: "form-label" %></th>
-      <td><%= f.text_field :plate, class: "form-control" %></td>
-    </tr>
-    <tr>
-      <th><%= f.label :brand, t('brand'), class: "form-label" %></th>
-      <td><%= f.text_field :brand, class: "form-control" %></td>
-    </tr>
-    <tr>
-      <th><%= f.label :model, t('model'), class: "form-label" %></th>
-      <td><%= f.text_field :model, class: "form-control" %></td>
-    </tr>
-    <tr>
-      <th><%= f.label :category, t('category'), class: "form-label" %></th>
-      <td><%= f.text_field :category, class: "form-control" %></td>
-    </tr>
-    <tr>
-      <th><%= f.label :year, t('year'), class: "form-label" %></th>
-      <td><%= f.number_field :year, class: "form-control" %></td>
-    </tr>
-    <tr>
-      <th><%= f.label :capacity, t('capacity'), class: "form-label" %></th>
-      <td><%= f.number_field :capacity, class: "form-control" %></td>
-    </tr>
-    <tr>
-      <th><%= f.label :status, t('status'), class: "form-label" %></th>
-      <td>
-        <%= f.check_box :status, class: "form-check-input" %> 
-        
-      </td>
-    </tr>
-  </table>
-  <div class="">
-    <%= f.submit t('save'), class: "btn btn-success" %>
-  </div>
-<% end %>
+<div class="form">
+  <%= form_with(model: vehicle) do |f| %>
+    <table class="vehicle__form table table-success table-striped">
+      <tr>
+        <th class=""><%= f.label :mode_id, t('mode'), class: "form-label" %></th>
+        <td><%= f.collection_select :mode_id, @modes, :id, :name, {}, { class: "form-select" } %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :plate, t('plate'), class: "form-label" %></th>
+        <td><%= f.text_field :plate, class: "form-control" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :brand, t('brand'), class: "form-label" %></th>
+        <td><%= f.text_field :brand, class: "form-control" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :model, t('model'), class: "form-label" %></th>
+        <td><%= f.text_field :model, class: "form-control" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :category, t('category'), class: "form-label" %></th>
+        <td><%= f.text_field :category, class: "form-control" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :year, t('year'), class: "form-label" %></th>
+        <td><%= f.number_field :year, class: "form-control" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :capacity, t('capacity'), class: "form-label" %></th>
+        <td><%= f.number_field :capacity, class: "form-control" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :status, t('status'), class: "form-label" %></th>
+        <td>
+          <%= f.check_box :status, class: "form-check-input" %> 
+          
+        </td>
+      </tr>
+    </table>
+    <div class="">
+      <%= f.submit t('save'), class: "btn btn-success" %>
+    </div>
+  <% end %>
+</div>
