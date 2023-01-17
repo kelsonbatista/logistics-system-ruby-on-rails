@@ -1,0 +1,36 @@
+<section class="vehicles">
+  <div class="modes__title">
+    <h1><%= t('vehicles') %></h1>
+    <p><%= link_to t('new_vehicle'), new_mode_path, class: "btn btn-primary" %></p>
+  </div>
+  <div class="modes__list">
+    <% if @vehicles.empty? %>
+      <h3><%= t('no_vehicles_registered') %></h3>
+    <% else %>
+      <table class="suppliers__list container table table-success table-striped">
+        <thead>
+          <tr>
+            <th scope="col"><%= t('model') %></th>
+            <th scope="col"><%= t('plate') %></th>
+            <th scope="col"><%= t('cateogory') %></th>
+            <th scope="col"><%= t('status') %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @vehicles.each do |vehicle| %>
+            <tr>
+              <td scope="row"><%= link_to vehicle.model, vehicle_path(vehicle.id) %></td>
+              <td><%= vehicle.plate %></td>
+              <td><%= vehicle.category %></td>
+              <td>
+                <span class="<%= vehicle.status ? 'ativo' : 'inativo' %>">
+                  <%= vehicle.status ? t('in_operation') : t('in_maintenance') %>
+                </span>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</section>
