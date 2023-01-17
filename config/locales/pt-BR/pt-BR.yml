@@ -2,6 +2,8 @@ pt-BR:
   $: R$
   active: Ativo
   back: Voltar
+  brand: Marca
+  capacity: Capacidade
   category: Categoria
   distance: Distância
   error_on_creating_mode: Erro ao criar a modalidade
@@ -29,3 +31,4 @@ pt-BR:
   vehicles: Veículos
   verify_the_following_errors: Verifique os seguintes erros
   weight: Peso
+  year: Ano

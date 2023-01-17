@@ -9,3 +9,7 @@ table {
 .inativo {
   color: red;
 }
+
+.vehicle__table {
+  max-width: 500px;
+}

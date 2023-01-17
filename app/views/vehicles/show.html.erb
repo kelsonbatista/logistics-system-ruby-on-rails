@@ -1,0 +1,42 @@
+<section class="vehicles">
+  <div class="vehicle">
+    <h1><%= t('vehicle') %></h1>
+    <table class="vehicle__table table table-success table-striped">
+      <tr>
+        <th><%= t('plate') %></th>
+        <td><%= @vehicle.plate %></td>
+      </tr>
+      <tr>
+        <th><%= t('brand') %></th>
+        <td><%= @vehicle.brand %></td>
+      </tr>
+      <tr>
+        <th><%= t('model') %></th>
+        <td><%= @vehicle.model %></td>
+      </tr>
+      <tr>
+        <th><%= t('category') %></th>
+        <td><%= @vehicle.category %></td>
+      </tr>
+      <tr>
+        <th><%= t('year') %></th>
+        <td><%= @vehicle.year %></td>
+      </tr>
+      <tr>
+        <th><%= t('capacity') %></th>
+        <td><%= @vehicle.capacity %> Kg</td>
+      </tr>
+      <tr>
+        <th><%= t('status') %></th>
+        <td>
+          <span class="<%= @vehicle.status ? 'ativo' : 'inativo' %>">
+            <%= @vehicle.status ? t('in_operation') : t('in_maintenance') %>
+          </span>
+        </td>
+      </tr>
+    </table>
+  </div>
+</section>
+<section class="back">
+  <%= link_to t("back"), vehicles_path, class: "btn btn-primary" %>
+</section>
