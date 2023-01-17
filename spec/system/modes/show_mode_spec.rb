@@ -24,7 +24,7 @@ describe "Show modes" do
     expect(page).to have_content 'Distância: de 1 até 20'
     expect(page).to have_content 'Peso: de 1 até 20'
     expect(page).to have_content 'Taxa fixa: R$ 5'
-    expect(page).to have_content 'Ativo: true'
+    expect(page).to have_content 'Status: Ativo'
   end
 
   it "returns to modes page" do

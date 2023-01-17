@@ -10,7 +10,12 @@
       <%= t('from') %> <%= @mode.min_weight %> <%= t('to') %> <%= @mode.max_weight %>
     </p>
     <p><strong><%= t('fixed_fee') %>: </strong><%= t('$') %> <%= @mode.fixed_fee %></p>
-    <p><strong><%= t('active') %>: </strong><%= @mode.active %></p>
+    <p>
+      <strong><%= t('status') %>: </strong>
+      <span class="<%= @mode.active ? 'ativo' : 'inativo' %>">
+        <%= @mode.active ? t('active') : t('inactive') %>
+      </span>
+    </p>
   </div>
 </section>
 <section class="back">

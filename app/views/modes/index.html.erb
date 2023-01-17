@@ -11,7 +11,8 @@
         <thead>
           <tr>
             <th><%= t('name') %></th>
-            <th><%= t('distance') %></th>
+            <th><%= t('distance') %> (Km)</th>
+            <th><%= t('status') %></th>
           </tr>
         </thead>
         <tbody>
@@ -19,6 +20,11 @@
             <tr>
               <td><%= link_to mode.name, mode_path(mode.id) %></td>
               <td><%= t('from').capitalize %> <%= mode.min_distance %> <%= t('to') %> <%= mode.max_distance %></td>
+              <td>
+                <span class="<%= mode.active ? 'ativo' : 'inativo' %>">
+                  <%= mode.active ? t('active') : t('inactive') %>
+                </span>
+              </td>
             </tr>
           <% end %>
         </tbody>

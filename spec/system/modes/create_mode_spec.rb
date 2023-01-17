@@ -14,7 +14,7 @@ describe "Create mode" do
     expect(page).to have_field 'Peso mínimo'
     expect(page).to have_field 'Peso máximo'
     expect(page).to have_field 'Taxa fixa'
-    expect(page).to have_field 'Ativo'
+    expect(page).to have_field 'Status'
   end
 
   it "successfully" do
@@ -28,7 +28,7 @@ describe "Create mode" do
     fill_in "Peso mínimo",	with: '1'
     fill_in "Peso máximo",	with: '20'
     fill_in "Taxa fixa",	with: '5'
-    check "Ativo"
+    check "Status"
     click_on 'Salvar'
     #Assert
     expect(page).to have_content 'Modalidade criada com sucesso'  
@@ -46,7 +46,7 @@ describe "Create mode" do
     fill_in "Peso mínimo",	with: ''
     fill_in "Peso máximo",	with: ''
     fill_in "Taxa fixa",	with: ''
-    check "Ativo"
+    check "Status"
     click_on 'Salvar'
     #Assert
     expect(page).to have_content 'Erro ao criar a modalidade'
