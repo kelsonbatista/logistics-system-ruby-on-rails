@@ -11,43 +11,40 @@
 </div>
 <div class="form">
   <%= form_with(model: mode) do |f| %>
+    <table class="vehicle__form table table-success table-striped">
+      <tr>
+        <th><%= f.label :name, class: "form-label" %></th>
+        <td><%= f.text_field :name, class: "form-control" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :min_distance, class: "form-label" %></th>
+        <td><%= f.number_field :min_distance, class: "form-control" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :max_distance, class: "form-label" %></th>
+        <td><%= f.number_field :max_distance, class: "form-control" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :min_weight, class: "form-label" %>></th>
+        <td><%= f.number_field :min_weight, class: "form-control" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :max_weight, class: "form-label" %></th>
+        <td><%= f.number_field :max_weight, class: "form-control" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :fixed_fee, class: "form-label" %></th>
+        <td><%= f.number_field :fixed_fee, class: "form-control" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :active, t('status'), class: "form-label" %></th>
+        <td>
+          <%= f.check_box :active, class: "form-check-input" %> 
+        </td>
+      </tr>
+    </table>
     <div class="">
-      <%= f.label :name, class: "form-label" %>
-      <%= f.text_field :name, class: "form-control" %>
-    </div>
-
-    <div class="">
-      <%= f.label :min_distance, class: "form-label" %>
-      <%= f.number_field :min_distance, class: "form-control" %>
-    </div>
-
-    <div class="">
-      <%= f.label :max_distance, class: "form-label" %>
-      <%= f.number_field :max_distance, class: "form-control" %>
-    </div>
-
-    <div class="">
-      <%= f.label :min_weight, class: "form-label" %>
-      <%= f.number_field :min_weight, class: "form-control" %>
-    </div>
-
-    <div class="">
-      <%= f.label :max_weight, class: "form-label" %>
-      <%= f.number_field :max_weight, class: "form-control" %>
-    </div>
-
-    <div class="">
-      <%= f.label :fixed_fee, class: "form-label" %>
-      <%= f.number_field :fixed_fee, class: "form-control" %>
-    </div>
-
-    <div class="">
-      <%= f.label :active, t('status') , class: "form-label" %>
-      <%= f.check_box :active, class: "form-control" %>
-    </div>
-
-    <div class="">
-      <%= f.submit t("save"), class: "btn btn-success" %>
+      <%= f.submit t('save'), class: "btn btn-success" %>
     </div>
   <% end %>
 </div>
