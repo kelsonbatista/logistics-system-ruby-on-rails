@@ -2,21 +2,30 @@ pt-BR:
   $: R$
   active: Ativo
   back: Voltar
+  category: Categoria
   distance: Distância
   error_on_creating_mode: Erro ao criar a modalidade
   fixed_fee: Taxa fixa
   from: de
+  in_maintenance: Em manutenção
+  in_operation: Em operação
   inactive: Inativo
   logistics: Transportadoras
   max_distance: Distância Máxima
   min_distance: Distância Mínima
   mode: Modalidade
+  model: Modelo
   modes: Modalidades
   mode_created_sucessfully: Modalidade criada com sucesso
   name: Nome
   new_mode: Nova Modalidade
+  new_vehicle: Novo Veículo
   no_modes_registered: Nenhuma modalidade cadastrada
+  no_vehicles_registered: Nenhum veículo cadastrado
+  plate: Placa
   save: Salvar
   to: até
+  vehicle: Veículo
+  vehicles: Veículos
   verify_the_following_errors: Verifique os seguintes erros
   weight: Peso
