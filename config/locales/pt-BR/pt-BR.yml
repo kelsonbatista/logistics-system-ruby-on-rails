@@ -8,6 +8,8 @@ pt-BR:
   from: de
   inactive: Inativo
   logistics: Transportadoras
+  max_distance: Distância Máxima
+  min_distance: Distância Mínima
   mode: Modalidade
   modes: Modalidades
   mode_created_sucessfully: Modalidade criada com sucesso

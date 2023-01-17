@@ -1,25 +1,27 @@
 <section class="modes">
   <div class="modes__title">
     <h1><%= t('modes') %></h1>
-    <p><%= link_to t('new_mode'), new_mode_path %></p>
+    <p><%= link_to t('new_mode'), new_mode_path, class: "btn btn-primary" %></p>
   </div>
   <div class="modes__list">
     <% if @modes.empty? %>
       <h3><%= t('no_modes_registered') %></h3>
     <% else %>
-      <table class="suppliers__list">
+      <table class="suppliers__list container table table-success table-striped">
         <thead>
           <tr>
-            <th><%= t('name') %></th>
-            <th><%= t('distance') %> (Km)</th>
-            <th><%= t('status') %></th>
+            <th scope="col"><%= t('name') %></th>
+            <th scope="col"><%= t('min_distance') %> (Km)</th>
+            <th scope="col"><%= t('max_distance') %> (Km)</th>
+            <th scope="col"><%= t('status') %></th>
           </tr>
         </thead>
         <tbody>
           <% @modes.each do |mode| %>
             <tr>
-              <td><%= link_to mode.name, mode_path(mode.id) %></td>
-              <td><%= t('from').capitalize %> <%= mode.min_distance %> <%= t('to') %> <%= mode.max_distance %></td>
+              <td scope="row"><%= link_to mode.name, mode_path(mode.id) %></td>
+              <td><%= mode.min_distance %></td>
+              <td><%= mode.max_distance %></td>
               <td>
                 <span class="<%= mode.active ? 'ativo' : 'inativo' %>">
                   <%= mode.active ? t('active') : t('inactive') %>
