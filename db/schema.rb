@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_16_172611) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_17_133612) do
   create_table "modes", force: :cascade do |t|
     t.string "name"
     t.integer "min_distance"
@@ -23,4 +23,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_16_172611) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "vehicles", force: :cascade do |t|
+    t.string "plate"
+    t.string "brand"
+    t.string "model"
+    t.string "category"
+    t.integer "year"
+    t.integer "capacity"
+    t.boolean "status", default: true
+    t.integer "mode_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mode_id"], name: "index_vehicles_on_mode_id"
+  end
+
+  add_foreign_key "vehicles", "modes"
 end
