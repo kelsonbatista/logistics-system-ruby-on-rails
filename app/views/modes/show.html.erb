@@ -1,0 +1,21 @@
+<section class="modes">
+  <div class="modes__title">
+    <h1><%= t('mode') %></h1>
+  </div>
+  <div class="mode">
+    <h1><%= t('mode') %>: <%= @mode.name %></h1>
+    <p>
+      <strong><%= t('distance') %>: </strong>
+      <%= t('from') %> <%= @mode.min_distance %> <%= t('to') %> <%= @mode.max_distance %>
+    </p>
+    <p>
+      <strong><%= t('weight') %>: </strong>
+      <%= t('from') %> <%= @mode.min_weight %> <%= t('to') %> <%= @mode.max_weight %>
+    </p>
+    <p><strong><%= t('fixed_fee') %>: </strong><%= t('$') %> <%= @mode.fixed_fee %></p>
+    <p><strong><%= t('active') %>: </strong><%= @mode.active %></p>
+  </div>
+</section>
+<section class="back">
+  <%= link_to t("back"), modes_path %>
+</section>
