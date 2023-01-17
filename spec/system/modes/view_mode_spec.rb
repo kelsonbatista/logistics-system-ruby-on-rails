@@ -27,16 +27,20 @@ describe "View modes" do
     expect(current_path).to eq modes_path
     within('table thead') do
       expect(page).to have_content 'Nome'
-      expect(page).to have_content 'Distância (Km)'
+      expect(page).to have_content 'Distância Mínima (Km)'
+      expect(page).to have_content 'Distância Máxima (Km)'
       expect(page).to have_content 'Status'
     end
     within('table tbody') do
       expect(page).to have_content 'Modalidade 1'
       expect(page).to have_content 'Modalidade 2'
       expect(page).to have_content 'Modalidade 3'
-      expect(page).to have_content 'De 1 até 20'
-      expect(page).to have_content 'De 2 até 40'
-      expect(page).to have_content 'De 3 até 60'
+      expect(page).to have_content '1'
+      expect(page).to have_content '2'
+      expect(page).to have_content '3'
+      expect(page).to have_content '20'
+      expect(page).to have_content '40'
+      expect(page).to have_content '60'
     end
   end
 
