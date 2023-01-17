@@ -5,6 +5,9 @@ class ModesController < ApplicationController
     @modes = Mode.all
   end
 
+  def show
+  end
+
   def new
     @mode = Mode.new
   end
@@ -13,7 +16,7 @@ class ModesController < ApplicationController
     @mode = Mode.new(mode_params)
     if @mode.save
       flash[:notice] = t("mode_created_sucessfully")
-      return redirect_to @modes
+      return redirect_to modes_path
     end
     flash.now[:alert] = t("error_on_creating_mode")
     render :new, status: :unprocessable_entity
