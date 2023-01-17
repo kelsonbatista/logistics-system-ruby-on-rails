@@ -1,4 +1,4 @@
-fdescribe "View modes" do
+describe "View modes" do
   it "view page" do
     #Act
     visit root_path
