@@ -4,10 +4,25 @@
     <p><%= link_to t('new_mode'), new_mode_path %></p>
   </div>
   <div class="modes__list">
-    <% @modes.each do |mode| %>
-      <div>
-        <h3><%= link_to mode.name, mode_path(mode.id) %></h3>
-      </div>
+    <% if @modes.empty? %>
+      <h3><%= t('no_modes_registered') %></h3>
+    <% else %>
+      <table class="suppliers__list">
+        <thead>
+          <tr>
+            <th><%= t('name') %></th>
+            <th><%= t('distance') %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @modes.each do |mode| %>
+            <tr>
+              <td><%= link_to mode.name, mode_path(mode.id) %></td>
+              <td><%= t('from').capitalize %> <%= mode.min_distance %> <%= t('to') %> <%= mode.max_distance %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     <% end %>
   </div>
 </section>
