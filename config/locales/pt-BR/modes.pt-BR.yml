@@ -6,12 +6,14 @@ pt-BR:
         other: Modalidades
     attributes:
       mode:
-        modes: Modalidades
-        new_mode: Nova Modalidade
-        name: Nome
-        min_distance: Distância mínima
-        max_distance: Distância máxima
-        min_weight: Peso mínimo
-        max_weight: Peso máximo
-        fixed_fee: Taxa fixa
         active: Ativo
+        fixed_fee: Taxa fixa
+        modes: Modalidades
+        max_distance: Distância máxima
+        max_weight: Peso máximo
+        min_distance: Distância mínima
+        min_weight: Peso mínimo
+        name: Nome
+        new_mode: Nova Modalidade
+        
+        

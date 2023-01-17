@@ -1,7 +1,14 @@
 pt-BR:
+  $: R$
+  back: Voltar
+  distance: Distância
   error_on_creating_mode: Erro ao criar a modalidade
+  from: de
   logistics: Transportadoras
   modes: Modalidades
-  mode_created_sucessfully: Modo criado com sucesso
+  mode_created_sucessfully: Modalidade criada com sucesso
   new_mode: Nova Modalidade
   save: Salvar
+  to: até
+  verify_the_following_errors: Verifique os seguintes erros
+  weight: Peso
