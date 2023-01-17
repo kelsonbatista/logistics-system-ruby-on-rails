@@ -1,0 +1,14 @@
+pt-BR:
+  activerecord:
+    models:
+      vehicle:
+        one: Veículo
+        other: Veículos
+    attributes:
+      vehicle:
+        brand: Marca
+        capacity: Capacidade
+        category: Categoria
+        model: Modelo
+        plate: Placa
+        year: Ano

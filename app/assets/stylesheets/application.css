@@ -10,6 +10,6 @@ table {
   color: red;
 }
 
-.vehicle__table {
+.vehicle__table, .vehicle__form {
   max-width: 500px;
 }

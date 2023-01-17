@@ -8,7 +8,27 @@ class VehiclesController < ApplicationController
   def show
   end
 
+  def new
+    @vehicle = Vehicle.new
+    @modes = Mode.all.order(:name)
+  end
+
+  def create
+    @vehicle = Vehicle.new(vehicle_params)
+    if @vehicle.save
+      flash[:notice] = "Veículo criado com sucesso"
+      return redirect_to vehicles_path
+    end
+    @modes = Mode.all.order(:name)
+    flash.now[:alert] = "Erro ao criar o veículo"
+    render :new, status: :unprocessable_entity
+  end
+
   private
+
+  def vehicle_params
+    params.require(:vehicle).permit(:mode_id, :plate, :brand, :model, :category, :year, :capacity, :status)
+  end
 
   def find_vehicle
     @vehicle = Vehicle.find(params[:id])

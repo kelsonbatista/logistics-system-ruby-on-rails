@@ -1,0 +1,9 @@
+<section class="vehicles">
+  <div class="vehicle">
+    <h1><%= t('new_vehicle') %></h1>
+    <%= render partial: "form", locals: { vehicle: @vehicle } %>
+  </div>
+</section>
+<section class="back">
+  <%= link_to t("back"), vehicles_path, class: "btn btn-primary" %>
+</section>

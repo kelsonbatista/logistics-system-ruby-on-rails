@@ -1,7 +1,7 @@
 <section class="vehicles">
   <div class="modes__title">
     <h1><%= t('vehicles') %></h1>
-    <p><%= link_to t('new_vehicle'), new_mode_path, class: "btn btn-primary" %></p>
+    <p><%= link_to t('new_vehicle'), new_vehicle_path, class: "btn btn-primary" %></p>
   </div>
   <div class="modes__list">
     <% if @vehicles.empty? %>
