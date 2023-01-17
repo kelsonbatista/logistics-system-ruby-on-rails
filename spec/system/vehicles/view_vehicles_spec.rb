@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-fdescribe "View vehicles" do
+describe "View vehicles" do
   it "visit page" do
     #Act
     visit root_path

@@ -10,8 +10,8 @@
       <table class="suppliers__list container table table-success table-striped">
         <thead>
           <tr>
-            <th scope="col"><%= t('model') %></th>
             <th scope="col"><%= t('plate') %></th>
+            <th scope="col"><%= t('model') %></th>
             <th scope="col"><%= t('cateogory') %></th>
             <th scope="col"><%= t('status') %></th>
           </tr>
@@ -19,8 +19,8 @@
         <tbody>
           <% @vehicles.each do |vehicle| %>
             <tr>
-              <td scope="row"><%= link_to vehicle.model, vehicle_path(vehicle.id) %></td>
-              <td><%= vehicle.plate %></td>
+              <td scope="row"><%= link_to vehicle.plate, vehicle_path(vehicle.id) %></td>
+              <td><%= vehicle.model %></td>
               <td><%= vehicle.category %></td>
               <td>
                 <span class="<%= vehicle.status ? 'ativo' : 'inativo' %>">
