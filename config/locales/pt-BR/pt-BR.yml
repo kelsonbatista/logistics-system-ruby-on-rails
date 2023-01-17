@@ -1,13 +1,18 @@
 pt-BR:
   $: R$
+  active: Ativo
   back: Voltar
   distance: Distância
   error_on_creating_mode: Erro ao criar a modalidade
+  fixed_fee: Taxa fixa
   from: de
   logistics: Transportadoras
+  mode: Modalidade
   modes: Modalidades
   mode_created_sucessfully: Modalidade criada com sucesso
+  name: Nome
   new_mode: Nova Modalidade
+  no_modes_registered: Nenhum modalidade cadastrada
   save: Salvar
   to: até
   verify_the_following_errors: Verifique os seguintes erros
