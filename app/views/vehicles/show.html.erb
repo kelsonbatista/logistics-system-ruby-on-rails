@@ -39,6 +39,7 @@
   <div>
     <span>
       <%= button_to(t("edit"), edit_vehicle_path(@vehicle.id), method: :get, class: "btn btn-warning") %>
+      <%= button_to(t("delete"), vehicle_path(@vehicle.id), method: :delete, class: "btn btn-danger") %>
     </span>
   </div>
 </section>

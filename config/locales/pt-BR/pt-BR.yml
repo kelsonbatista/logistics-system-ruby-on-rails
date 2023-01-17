@@ -6,6 +6,7 @@ pt-BR:
   capacity: Capacidade
   category: Categoria
   create_vehicle: Cadastrar Veículo
+  delete: Apagar
   distance: Distância
   edit: Editar
   error_on_creating_mode: Erro ao criar a modalidade

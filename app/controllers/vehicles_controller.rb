@@ -8,6 +8,15 @@ class VehiclesController < ApplicationController
   def show
   end
 
+  def destroy
+    if @vehicle.destroy
+      flash[:notice] = "Veículo apagado com sucesso"
+      return redirect_to vehicles_path
+    end
+    flash.now[:alert] = "Erro ao apagar o veículo"
+    render :show, status: :unprocessable_entity
+  end
+
   def new
     @vehicle = Vehicle.new
     @modes = Mode.all.order(:name)
