@@ -36,7 +36,13 @@
       </tr>
     </table>
   </div>
+  <div>
+    <span>
+      <%= button_to(t("edit"), edit_vehicle_path(@vehicle.id), method: :get, class: "btn btn-warning") %>
+    </span>
+  </div>
 </section>
+
 <section class="back">
   <%= link_to t("back"), vehicles_path, class: "btn btn-primary" %>
 </section>

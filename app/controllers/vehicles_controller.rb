@@ -24,6 +24,20 @@ class VehiclesController < ApplicationController
     render :new, status: :unprocessable_entity
   end
 
+  def edit
+    @modes = Mode.all.order(:name)
+  end
+
+  def update
+    if @vehicle.update(vehicle_params)
+      flash[:notice] = "Veículo atualizado com sucesso"
+      return redirect_to @vehicle
+    end
+    @modes = Mode.all.order(:name)
+    flash.now[:alert] = "Erro ao atualizar o veículo"
+    render :edit, status: :unprocessable_entity
+  end
+
   private
 
   def vehicle_params
