@@ -17,7 +17,9 @@ pt-BR:
   inactive: Inativo
   logistics: Transportadoras
   max_distance: Distância Máxima
+  max_weight: Peso Máximo
   min_distance: Distância Mínima
+  min_weight: Peso Mínimo
   mode: Modalidade
   model: Modelo
   modes: Modalidades

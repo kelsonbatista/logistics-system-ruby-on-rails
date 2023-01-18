@@ -20,11 +20,13 @@ describe "Show modes" do
     click_on 'Modalidades'
     click_on 'Modalidade 1'
     #Assert
-    expect(page).to have_content 'Modalidade: Modalidade 1'
-    expect(page).to have_content 'Distância: de 1 até 20'
-    expect(page).to have_content 'Peso: de 1 até 20'
-    expect(page).to have_content 'Taxa fixa: R$ 5'
-    expect(page).to have_content 'Status: Ativo'
+    expect(page).to have_content 'Nome Modalidade 1'
+    expect(page).to have_content 'Distância Mínima 1'
+    expect(page).to have_content 'Distância Máxima 20'
+    expect(page).to have_content 'Peso Mínimo 1'
+    expect(page).to have_content 'Peso Máximo 20'
+    expect(page).to have_content 'Taxa fixa R$ 5'
+    expect(page).to have_content 'Status Ativo'
   end
 
   it "returns to modes page" do
