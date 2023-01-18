@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  min_weight: 1
+  max_weight: 1
+  price_per_km: 1.5
+  mode: one
+
+two:
+  min_weight: 1
+  max_weight: 1
+  price_per_km: 1.5
+  mode: two

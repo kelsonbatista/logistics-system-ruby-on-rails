@@ -1,0 +1,34 @@
+<section>
+  <div class="prices">
+    <h1><%= t('prices') %></h1>
+    <p><%= link_to t('new_price'), new_price_path, class: "btn btn-primary" %></p>
+  </div>
+  <div class="prices__list">
+    <% if @prices.empty? %>
+      <h3><%= t('no_prices_registered') %></h3>
+    <% else %>
+      <table class="suppliers__list container table table-success table-striped">
+        <thead>
+          <tr>
+            <th scope="col" colspan="2"><%= t('weight') %></th>
+            <th scope="col"><%= t('price_per_km') %></th>
+            <th scope="col"><%= t('mode') %></th>
+            <th scope="col" colspan="2"><%= t('actions') %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @prices.each do |price| %>
+            <tr>
+              <td><%= price.min_weight %> Kg</td>
+              <td><%= price.max_weight %> Kg</td>
+              <td>R$ <%= price.price_per_km %></td>
+              <td><%= price.mode.name %></td>
+              <td><%= t('edit') %></td>
+              <td><%= t('delete') %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</section>

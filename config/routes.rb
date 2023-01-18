@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   root to: "home#index"
   resources :modes, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   resources :vehicles, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  resources :prices, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 end
