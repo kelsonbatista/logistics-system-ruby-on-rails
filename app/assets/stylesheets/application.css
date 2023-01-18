@@ -6,6 +6,10 @@ table {
   text-align: center;
 }
 
+table th {
+  vertical-align: middle;
+}
+
 .fa {
   font-size: 1.1em;
 }
@@ -39,9 +43,13 @@ a.logo {
 
 .modes__table, .modes__form, 
 .vehicles__table, .vehicles__form,
-.prices__table, .prices__form {
+.prices__table, .prices__form  {
   max-width: 500px;
 }
+
+/* .prices__table, .prices__form {
+  max-width: 80%;
+} */
 
 .modes__btn, .modes__btn-bottom,
 .vehicles__btn, .vehicles__btn-bottom,

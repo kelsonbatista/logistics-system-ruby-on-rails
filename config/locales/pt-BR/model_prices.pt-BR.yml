@@ -1,0 +1,11 @@
+pt-BR:
+  activerecord:
+    models:
+      price:
+        one: Preço
+        other: Preços
+    attributes:
+      price:
+        max_weight: Peso Máximo
+        min_weight: Peso Mínimo
+        price_per_km: Preço por Km

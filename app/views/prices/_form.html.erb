@@ -1,0 +1,36 @@
+<% if price.errors.any? %>
+  <div class="messages alert alert-warning" role="alert">
+    <p><%= t('verify_the_following_errors') %>:</p>
+    <ul>
+      <% price.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="form">
+  <%= form_with(model: price) do |f| %>
+    <table class="prices__form table table-success table-striped">
+      <tr>
+        <th><%= f.label :min_weight, t('min_weight') << ' (Kg)', class: "form-label" %></th>
+        <td><%= f.number_field :min_weight, class: "form-control" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :max_weight, t('max_weight') << ' (Kg)', class: "form-label" %></th>
+        <td><%= f.number_field :max_weight, class: "form-control" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :price_per_km, t('price') << ' (R$)', class: "form-label" %></th>
+        <td><%= f.number_field :price_per_km, step: '.01', class: "form-control" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :mode_id, t('mode'), class: "form-label" %></th>
+        <td><%= f.collection_select :mode_id, @modes, :id, :name, {}, { class: "form-select" } %></td>
+      </tr>
+    </table>
+    <div class="prices__btn">
+      <%= f.submit t('save'), class: "btn btn-success" %>
+    </div>  
+  <% end %>
+</div>
