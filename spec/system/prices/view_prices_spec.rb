@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-fdescribe "View prices" do
+describe "View prices" do
   it "visit page" do
     #Act
     visit root_path
