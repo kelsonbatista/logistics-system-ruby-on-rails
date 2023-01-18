@@ -24,11 +24,17 @@ a.logo {
 }
 
 .ativo {
-  color: green;
+  background-color: green;
+  color: white;
+  padding: 5px 10px !important;
+  border-radius: 5px;
 }
 
 .inativo {
-  color: red;
+  background-color: red;
+  color: white;
+  padding: 5px 10px !important;
+  border-radius: 5px;
 }
 
 .modes__table, .modes__form, .vehicles__table, .vehicles__form {
