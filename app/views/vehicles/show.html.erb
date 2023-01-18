@@ -1,7 +1,9 @@
-<section class="vehicles">
-  <div class="vehicle">
+<section>
+  <div class="vehicles">
     <h1><%= t('vehicle') %></h1>
-    <table class="vehicle__table table table-success table-striped">
+    <%= button_to(t("back"), vehicles_path, method: :get, class: "btn btn-primary vehicles__btn") %>
+    
+    <table class="vehicles__table table table-success table-striped">
       <tr>
         <th><%= t('plate') %></th>
         <td><%= @vehicle.plate %></td>
@@ -36,14 +38,8 @@
       </tr>
     </table>
   </div>
-  <div>
-    <span>
-      <%= button_to(t("edit"), edit_vehicle_path(@vehicle.id), method: :get, class: "btn btn-warning") %>
-      <%= button_to(t("delete"), vehicle_path(@vehicle.id), method: :delete, class: "btn btn-danger") %>
-    </span>
+  <div class="vehicles__btn-bottom">
+    <%= button_to(t("edit"), edit_vehicle_path(@vehicle.id), method: :get, class: "btn btn-warning") %>
+    <%= button_to(t("delete"), vehicle_path(@vehicle.id), method: :delete, class: "btn btn-danger") %>
   </div>
-</section>
-
-<section class="back">
-  <%= link_to t("back"), vehicles_path, class: "btn btn-primary" %>
 </section>

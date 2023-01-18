@@ -1,23 +1,41 @@
-<section class="modes">
-  <div class="mode">
-    <h1><%= t('mode') %>: <%= @mode.name %></h1>
-    <p>
-      <strong><%= t('distance') %>: </strong>
-      <%= t('from') %> <%= @mode.min_distance %> <%= t('to') %> <%= @mode.max_distance %>
-    </p>
-    <p>
-      <strong><%= t('weight') %>: </strong>
-      <%= t('from') %> <%= @mode.min_weight %> <%= t('to') %> <%= @mode.max_weight %>
-    </p>
-    <p><strong><%= t('fixed_fee') %>: </strong><%= t('$') %> <%= @mode.fixed_fee %></p>
-    <p>
-      <strong><%= t('status') %>: </strong>
-      <span class="<%= @mode.active ? 'ativo' : 'inativo' %>">
-        <%= @mode.active ? t('active') : t('inactive') %>
-      </span>
-    </p>
+<section>
+  <div class="modes">
+    <h1><%= t('mode') %></h1>
+    <%= button_to(t("back"), modes_path, method: :get, class: "btn btn-primary modes__btn") %>
+    
+    <table class="modes__table table table-success table-striped">
+      <tr>
+        <th><%= t('name') %></th>
+        <td><%= @mode.name %></td>
+      </tr>
+      <tr>
+        <th><%= t('min_distance') %></th>
+        <td><%= @mode.min_distance %></td>
+      </tr>
+      <tr>
+        <th><%= t('max_distance') %></th>
+        <td><%= @mode.max_distance %></td>
+      </tr>
+      <tr>
+        <th><%= t('min_weight') %></th>
+        <td><%= @mode.min_weight %></td>
+      </tr>
+      <tr>
+        <th><%= t('max_weight') %></th>
+        <td><%= @mode.max_weight %></td>
+      </tr>
+      <tr>
+        <th><%= t('fixed_fee') %></th>
+        <td><%= t('$') %> <%= @mode.fixed_fee %></td>
+      </tr>
+      <tr>
+        <th><%= t('active') %></th>
+        <td>
+          <span class="<%= @mode.active ? 'ativo' : 'inativo' %>">
+            <%= @mode.active ? t('active') : t('inactive') %>
+          </span>
+        </td>
+      </tr>
+    </table>
   </div>
-</section>
-<section class="back">
-  <%= link_to t("back"), modes_path, class: "btn btn-primary" %>
 </section>

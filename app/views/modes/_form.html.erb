@@ -11,7 +11,7 @@
 </div>
 <div class="form">
   <%= form_with(model: mode) do |f| %>
-    <table class="vehicle__form table table-success table-striped">
+    <table class="modes__form table table-success table-striped">
       <tr>
         <th><%= f.label :name, class: "form-label" %></th>
         <td><%= f.text_field :name, class: "form-control" %></td>
@@ -43,7 +43,7 @@
         </td>
       </tr>
     </table>
-    <div class="">
+    <div class="modes__btn">
       <%= f.submit t('save'), class: "btn btn-success" %>
     </div>
   <% end %>

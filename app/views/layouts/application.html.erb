@@ -11,24 +11,54 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   </head>
-  <body>
-    <header>
-      <nav class="navbar bg-dark flex-column" data-bs-theme="dark">
-          <div class="container-fluid">
-            <div>
-              <h2><%= link_to t('logistics'), root_path, class: "navbar-brand" %></h2>
-            </div>
-            <div class="">
-              <ul class="navbar-nav">
-                <li class="nav-item"><%= link_to t('modes'), modes_path %></li>
-                <li class="nav-item"><%= link_to t('vehicles'), vehicles_path %></li>
-              </ul>
-            </div>
-          </div>
-        </nav>
+  <body class="d-flex flex-nowrap">
+    <header class="fixed-top d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
+      <p>
+        <%= link_to root_path, 
+          class: 'd-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none logo' do %>
+          <i class="fa fa-truck-fast"></i>&nbsp;&nbsp;<%= t('fastlog') %>
+        <% end %>
+      </p>
+      <hr>
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+          <%= link_to root_path, class: 'nav-link active text-white' do %>
+            <i class="fa fa-house"></i>&nbsp;&nbsp;<%= t('home') %>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to modes_path, class: 'nav-link text-white' do %>
+            <i class="fa fa-earth-americas"></i>&nbsp;&nbsp;<%= t('modes') %>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to vehicles_path, class: 'nav-link text-white' do %>
+            <i class="fa fa-truck"></i>&nbsp;&nbsp;<%= t('vehicles') %>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to modes_path, class: 'nav-link text-white' do %>
+            <i class="fa fa-envelope"></i>&nbsp;&nbsp;<%= t('contact') %>
+          <% end %>
+        </li>
+      </ul>
+      <hr>
+      <div class="dropdown">
+        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+          <strong>mdo</strong>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+          <li><a class="dropdown-item" href="#">New project...</a></li>
+          <li><a class="dropdown-item" href="#">Settings</a></li>
+          <li><a class="dropdown-item" href="#">Profile</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="#">Sign out</a></li>
+        </ul>
+      </div>
     </header>
-    <main>
-      <div class="container">
+    <main class="container" style="margin-left: 280px !important; margin-bottom: 300px">
+      <div>
         <div class="alert"><%= alert %></div>
         <div class="notice"><%= notice %></div>
         <%= yield %>
@@ -36,6 +66,6 @@
     </main>
     <footer></footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/05c36d9c97.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/da4ddd9139.js" crossorigin="anonymous"></script>
   </body>
 </html>

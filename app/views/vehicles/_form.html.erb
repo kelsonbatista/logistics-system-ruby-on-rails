@@ -11,7 +11,7 @@
 
 <div class="form">
   <%= form_with(model: vehicle) do |f| %>
-    <table class="vehicle__form table table-success table-striped">
+    <table class="vehicles__form table table-success table-striped">
       <tr>
         <th class=""><%= f.label :mode_id, t('mode'), class: "form-label" %></th>
         <td><%= f.collection_select :mode_id, @modes, :id, :name, {}, { class: "form-select" } %></td>
@@ -48,8 +48,8 @@
         </td>
       </tr>
     </table>
-    <div class="">
+    <div class="vehicles__btn">
       <%= f.submit t('save'), class: "btn btn-success" %>
-    </div>
+    </div>  
   <% end %>
 </div>
