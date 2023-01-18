@@ -10,19 +10,19 @@
       </tr>
       <tr>
         <th><%= t('min_distance') %></th>
-        <td><%= @mode.min_distance %></td>
+        <td><%= @mode.min_distance %> Km</td>
       </tr>
       <tr>
         <th><%= t('max_distance') %></th>
-        <td><%= @mode.max_distance %></td>
+        <td><%= @mode.max_distance %> Km</td>
       </tr>
       <tr>
         <th><%= t('min_weight') %></th>
-        <td><%= @mode.min_weight %></td>
+        <td><%= @mode.min_weight %> Kg</td>
       </tr>
       <tr>
         <th><%= t('max_weight') %></th>
-        <td><%= @mode.max_weight %></td>
+        <td><%= @mode.max_weight %> Kg</td>
       </tr>
       <tr>
         <th><%= t('fixed_fee') %></th>
@@ -37,5 +37,8 @@
         </td>
       </tr>
     </table>
+  </div>
+  <div class="modes__btn-bottom">
+    <%= button_to(t("edit"), edit_mode_path(@mode.id), method: :get, class: "btn btn-warning") %>
   </div>
 </section>

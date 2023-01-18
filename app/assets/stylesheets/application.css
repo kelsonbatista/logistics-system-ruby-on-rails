@@ -35,13 +35,13 @@ a.logo {
   max-width: 500px;
 }
 
-.vehicles__btn, .modes__btn, .vehicles__btn-bottom {
+.vehicles__btn, .modes__btn-bottom, .modes__btn, .vehicles__btn-bottom {
   display: flex;
   justify-content: space-between;
   max-width: 500px;
 }
 
-.vehicles__btn-bottom {
+.modes__btn-bottom, .vehicles__btn-bottom {
   padding-top: 20px;
 }
 

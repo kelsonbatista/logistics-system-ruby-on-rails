@@ -1,5 +1,5 @@
 class ModesController < ApplicationController
-  before_action :mode_find, only: [:show] 
+  before_action :mode_find, only: [:show, :edit, :update] 
 
   def index
     @modes = Mode.all
@@ -20,6 +20,18 @@ class ModesController < ApplicationController
     end
     flash.now[:alert] = t("error_on_creating_mode")
     render :new, status: :unprocessable_entity
+  end
+
+  def edit
+  end
+
+  def update
+    if @mode.update(mode_params)
+      flash[:notice] = "Modalidade atualizada com sucesso"
+      return redirect_to @mode
+    end
+    flash.now[:alert] = "Erro ao atualizar a modalidade"
+    render :edit, status: :unprocessable_entity
   end
 
   private

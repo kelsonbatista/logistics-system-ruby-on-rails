@@ -9,10 +9,10 @@ pt-BR:
         active: Ativo
         fixed_fee: Taxa fixa
         modes: Modalidades
-        max_distance: Distância máxima
-        max_weight: Peso máximo
-        min_distance: Distância mínima
-        min_weight: Peso mínimo
+        max_distance: Distância Máxima
+        max_weight: Peso Máximo
+        min_distance: Distância Mínima
+        min_weight: Peso Mínimo
         name: Nome
         new_mode: Nova Modalidade
         

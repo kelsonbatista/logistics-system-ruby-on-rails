@@ -1,0 +1,9 @@
+<section>
+  <div class="modes">
+    <h1><%= t('edit') << " " << t('mode') %></h1>
+    <%= button_to(t("back"), modes_path, method: :get, class: "btn btn-primary modes__btn") %>
+  </div>
+  <div class="modes__list">
+    <%= render partial: "form", locals: { mode: @mode } %>
+  </div>
+</section>
