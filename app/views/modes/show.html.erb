@@ -40,5 +40,6 @@
   </div>
   <div class="modes__btn-bottom">
     <%= button_to(t("edit"), edit_mode_path(@mode.id), method: :get, class: "btn btn-warning") %>
+    <%= button_to(t("delete"), mode_path(@mode.id), method: :delete, class: "btn btn-danger") %>
   </div>
 </section>
