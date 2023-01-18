@@ -1,14 +1,15 @@
-<div class="messages">
   <!-- Existe alguma mensagem de erro de sistema? -->
   <% if(mode.errors.any?) %>
-    <p><%= t('verify_the_following_errors') %>:</p>
-    <ul>
-      <% mode.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
+    <div class="messages alert alert-warning" role="alert">
+      <p><%= t('verify_the_following_errors') %>:</p>
+      <ul>
+        <% mode.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
-</div>
+
 <div class="form">
   <%= form_with(model: mode) do |f| %>
     <table class="modes__form table table-success table-striped">

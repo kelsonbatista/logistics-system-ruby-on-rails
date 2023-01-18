@@ -1,13 +1,13 @@
-<div class="messages">
 <% if vehicle.errors.any? %>
-  <p>Verifique os erros abaixo:</p>
-  <ul>
-    <% vehicle.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
+  <div class="messages alert alert-warning" role="alert">
+    <p><%= t('verify_the_following_errors') %>:</p>
+    <ul>
+      <% vehicle.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
-</div>
 
 <div class="form">
   <%= form_with(model: vehicle) do |f| %>
