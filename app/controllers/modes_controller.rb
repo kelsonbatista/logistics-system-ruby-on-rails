@@ -1,11 +1,20 @@
 class ModesController < ApplicationController
-  before_action :mode_find, only: [:show, :edit, :update] 
+  before_action :mode_find, only: [:show, :edit, :update, :destroy] 
 
   def index
     @modes = Mode.all
   end
 
   def show
+  end
+
+  def destroy
+    if @mode.destroy
+      flash[:notice] = "Modalidade apagada com sucesso"
+      return redirect_to modes_path
+    end
+    flash.now[:alert] = "Erro ao apagar a modalidade"
+    render :show, status: :unprocessable_entity
   end
 
   def new
