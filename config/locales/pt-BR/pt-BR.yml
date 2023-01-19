@@ -7,6 +7,8 @@ pt-BR:
   capacity: Capacidade
   category: Categoria
   create_vehicle: Cadastrar Veículo
+  deadline: Prazo
+  deadlines: Prazos
   delete: Apagar
   distance: Distância
   edit: Editar
@@ -27,9 +29,11 @@ pt-BR:
   modes: Modalidades
   mode_created_sucessfully: Modalidade criada com sucesso
   name: Nome
+  new_deadline: Novo Prazo
   new_mode: Nova Modalidade
   new_price: Novo Preço
   new_vehicle: Novo Veículo
+  no_deadlines_registered: Nenhum prazo cadastrado
   no_modes_registered: Nenhuma modalidade cadastrada
   no_prices_registered: Nenhum preço cadastrado
   no_vehicles_registered: Nenhum veículo cadastrado

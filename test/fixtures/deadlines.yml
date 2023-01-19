@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  min_distance: 1
+  max_distance: 1
+  deadline: 1
+  mode: one
+
+two:
+  min_distance: 1
+  max_distance: 1
+  deadline: 1
+  mode: two

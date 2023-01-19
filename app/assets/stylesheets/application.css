@@ -43,13 +43,15 @@ a.logo {
 
 .modes__table, .modes__price-list, .modes__form, 
 .vehicles__table, .vehicles__form,
-.prices__table, .prices__form  {
+.prices__table, .prices__form,
+.deadlines__table, .deadlines__form {
   max-width: 500px;
 }
 
 .modes__btn, .modes__btn-bottom,
 .vehicles__btn, .vehicles__btn-bottom,
-.prices__btn, .prices__btn-bottom {
+.prices__btn, .prices__btn-bottom,
+.deadlines__btn, .deadlines__btn-bottom {
   display: flex;
   justify-content: space-between;
   max-width: 500px;
@@ -58,7 +60,8 @@ a.logo {
 .modes__price-list,
 .modes__btn-bottom,
 .vehicles__btn-bottom,
-.prices__btn-bottom {
+.prices__btn-bottom,
+.deadline__btn-bottom {
   padding-top: 20px;
 }
 
@@ -73,7 +76,8 @@ section {
 
 div.modes h1,
 div.vehicles h1,
-div.prices h1 {
+div.prices h1,
+div.deadlines h1 {
   margin-top: 20px !important;
   padding-bottom: 15px !important;
 }
@@ -90,7 +94,8 @@ input[type="submit"], button[type="submit"] {
   width: 130px !important;
 }
 
-button.prices__btn {
+button.prices__btn,
+button.deadlines__btn {
   width: 80px !important;
 }
 

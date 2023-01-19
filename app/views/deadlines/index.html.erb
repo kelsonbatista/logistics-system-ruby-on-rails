@@ -1,0 +1,38 @@
+<section>
+  <div class="deadlines">
+    <h1><%= t('deadlines') %></h1>
+    <p><%= link_to t('new_deadline'), new_deadline_path, class: "btn btn-primary" %></p>
+  </div>
+  <div class="deadlines__list">
+    <% if @deadlines.empty? %>
+      <h3><%= t('no_deadlines_registered') %></h3>
+    <% else %>
+      <table class="deadlines__list container table table-success table-striped">
+        <thead>
+          <tr>
+            <th scope="col" colspan="2"><%= t('distance') %></th>
+            <th scope="col"><%= t('deadline') %></th>
+            <th scope="col"><%= t('mode') %></th>
+            <th scope="col" colspan="2"><%= t('actions') %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @deadlines.each do |deadline| %>
+            <tr>
+              <td><%= deadline.min_distance %> Km</td>
+              <td><%= deadline.max_distance %> Km</td>
+              <td><%= deadline.deadline %> hs</td>
+              <td><%= deadline.mode.name %></td>
+              <td><%= button_to(t("edit"), edit_deadline_path(deadline.id), class: "btn btn-warning deadlines__btn", method: :get) %></td>
+              <td><%= button_to(t("delete"),
+                deadline_path(deadline.id),
+                form: { data: { turbo_confirm: "Tem certeza?" }},
+                class: "btn btn-danger deadlines__btn",
+                method: :delete) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</section>

@@ -42,6 +42,11 @@
           <% end %>
         </li>
         <li class="nav-item">
+          <%= link_to deadlines_path, class: 'nav-link text-white' do %>
+            <i class="fa-solid fa-hourglass-half"></i>&nbsp;&nbsp;<%= t('deadlines') %>
+          <% end %>
+        </li>
+        <li class="nav-item">
           <%= link_to modes_path, class: 'nav-link text-white' do %>
             <i class="fa fa-envelope"></i>&nbsp;&nbsp;<%= t('contact') %>
           <% end %>
