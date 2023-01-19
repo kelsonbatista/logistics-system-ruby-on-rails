@@ -41,10 +41,10 @@ a.logo {
   border-radius: 5px;
 }
 
-.modes__table, .modes__price-list, .modes__deadline-list, .modes__form, 
-.vehicles__table, .vehicles__form,
-.prices__table, .prices__form,
-.deadlines__table, .deadlines__form {
+.modes__form, 
+.vehicles__form,
+.prices__form,
+.deadlines__form {
   max-width: 500px;
 }
 
@@ -54,11 +54,13 @@ a.logo {
 .deadlines__btn, .deadlines__btn-bottom {
   display: flex;
   justify-content: space-between;
-  max-width: 500px;
+  padding-bottom: 20px;
 }
 
-.modes__deadline-list,
 .modes__price-list,
+.modes__deadline-list,
+.modes__in_operation-list,
+.modes__in_maintenance-list,
 .modes__btn-bottom,
 .vehicles__btn-bottom,
 .prices__btn-bottom,

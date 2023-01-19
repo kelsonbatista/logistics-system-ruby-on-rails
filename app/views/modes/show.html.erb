@@ -39,10 +39,15 @@
     </table>
   </div>
 
+  <div class="modes__btn-bottom">
+    <%= button_to(t("edit"), edit_mode_path(@mode.id), method: :get, class: "btn btn-warning") %>
+    <%= button_to(t("delete"), mode_path(@mode.id), method: :delete, class: "btn btn-danger") %>
+  </div>
+
   <div class="modes__price-list">
     <h3><%= t('pricing_table') %></h3>
     <% if @prices.empty? %>
-      <h5><%= t('this_modal_does_not_has_pricing_table') %></h5>
+      <h5><%= t('this_modal_does_not_have_pricing_table') %></h5>
     <% else %>
       <table class="container table table-success table-striped">
         <thead>
@@ -67,7 +72,7 @@
   <div class="modes__deadline-list">
     <h3><%= t('deadlines_table') %></h3>
     <% if @deadlines.empty? %>
-      <h5><%= t('this_modal_does_not_has_deadlines_table') %></h5>
+      <h5><%= t('this_modal_does_not_have_deadlines_table') %></h5>
     <% else %>
       <table class="container table table-success table-striped">
         <thead>
@@ -89,8 +94,56 @@
     <% end %>
   </div>
 
-  <div class="modes__btn-bottom">
-    <%= button_to(t("edit"), edit_mode_path(@mode.id), method: :get, class: "btn btn-warning") %>
-    <%= button_to(t("delete"), mode_path(@mode.id), method: :delete, class: "btn btn-danger") %>
+  <div class="modes__in_operation-list">
+    <h3><%= t('in_operation_vehicles') %></h3>
+    <% if @in_operation.empty? %>
+      <h5><%= t('this_modal_does_not_have_in_operation_vehicles') %></h5>
+    <% else %>
+      <table class="container table table-success table-striped">
+        <thead>
+          <tr>
+            <th scope="col"><%= t('plate') %></th>
+            <th scope="col"><%= t('model') %></th>
+            <th scope="col"><%= t('category') %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @in_operation.each do |vehicle| %>
+            <tr>
+              <td><%= vehicle.plate %></td>
+              <td><%= vehicle.model %></td>
+              <td><%= vehicle.category %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
   </div>
+
+  <div class="modes__in_maintenance-list">
+    <h3><%= t('in_maintenance_vehicles') %></h3>
+    <% if @in_maintenance.empty? %>
+      <h5><%= t('this_modal_does_not_have_in_maintenance_vehicles') %></h5>
+    <% else %>
+      <table class="container table table-success table-striped">
+        <thead>
+          <tr>
+            <th scope="col"><%= t('plate') %></th>
+            <th scope="col"><%= t('model') %></th>
+            <th scope="col"><%= t('category') %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @in_maintenance.each do |vehicle| %>
+            <tr>
+              <td><%= vehicle.plate %></td>
+              <td><%= vehicle.model %></td>
+              <td><%= vehicle.category %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+
 </section>

@@ -8,6 +8,8 @@ class ModesController < ApplicationController
   def show
     @prices = Price.where(mode_id: @mode.id).order(:min_weight)
     @deadlines = Deadline.where(mode_id: @mode.id).order(:min_distance)
+    @in_operation = Vehicle.where(mode_id: @mode.id, status: true).order(:plate)
+    @in_maintenance = Vehicle.where(mode_id: @mode.id, status: false).order(:plate)
   end
 
   def destroy

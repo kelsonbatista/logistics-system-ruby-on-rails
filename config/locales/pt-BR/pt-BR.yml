@@ -17,7 +17,9 @@ pt-BR:
   fixed_fee: Taxa fixa
   from: de
   in_maintenance: Em manutenção
+  in_maintenance_vehicles: Veículos em manutenção
   in_operation: Em operação
+  in_operation_vehicles: Veículos em operação
   inactive: Inativo
   interval: Intervalo
   logistics: Transportadoras
@@ -45,8 +47,10 @@ pt-BR:
   price_created_sucessfully: Preço criado com sucesso
   pricing_table: Tabela de preços
   save: Salvar
-  this_modal_does_not_has_deadlines_table: Essa modalidade ainda não possui tabela de prazos
-  this_modal_does_not_has_pricing_table: Essa modalidade ainda não possui tabela de preços
+  this_modal_does_not_have_deadlines_table: Essa modalidade ainda não possui tabela de prazos
+  this_modal_does_not_have_in_maintenance_vehicles: Essa modalidade não possui veículos em manutenção
+  this_modal_does_not_have_in_operation_vehicles: Essa modalidade não possui veículos em operação
+  this_modal_does_not_have_pricing_table: Essa modalidade ainda não possui tabela de preços
   to: até
   vehicle: Veículo
   vehicles: Veículos
