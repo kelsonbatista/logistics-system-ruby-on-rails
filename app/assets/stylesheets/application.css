@@ -41,7 +41,7 @@ a.logo {
   border-radius: 5px;
 }
 
-.modes__table, .modes__price-list, .modes__form, 
+.modes__table, .modes__price-list, .modes__deadline-list, .modes__form, 
 .vehicles__table, .vehicles__form,
 .prices__table, .prices__form,
 .deadlines__table, .deadlines__form {
@@ -57,6 +57,7 @@ a.logo {
   max-width: 500px;
 }
 
+.modes__deadline-list,
 .modes__price-list,
 .modes__btn-bottom,
 .vehicles__btn-bottom,
@@ -110,4 +111,8 @@ section.back a.btn {
 .messages {
   left: -20px !important;
   max-width: 500px !important;
+}
+
+div h5 {
+  margin: 30px 0 !important;
 }

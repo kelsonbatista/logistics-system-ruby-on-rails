@@ -7,6 +7,7 @@ class ModesController < ApplicationController
 
   def show
     @prices = Price.where(mode_id: @mode.id).order(:min_weight)
+    @deadlines = Deadline.where(mode_id: @mode.id).order(:min_distance)
   end
 
   def destroy

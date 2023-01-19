@@ -42,7 +42,7 @@
   <div class="modes__price-list">
     <h3><%= t('pricing_table') %></h3>
     <% if @prices.empty? %>
-      <h4><%= t('this_modal_does_not_has_pricing_table') %></h4>
+      <h5><%= t('this_modal_does_not_has_pricing_table') %></h5>
     <% else %>
       <table class="container table table-success table-striped">
         <thead>
@@ -57,6 +57,31 @@
               <td><%= price.min_weight %> Kg</td>
               <td><%= price.max_weight %> Kg</td>
               <td>R$ <%= price.price_per_km %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+
+  <div class="modes__deadline-list">
+    <h3><%= t('deadlines_table') %></h3>
+    <% if @deadlines.empty? %>
+      <h5><%= t('this_modal_does_not_has_deadlines_table') %></h5>
+    <% else %>
+      <table class="container table table-success table-striped">
+        <thead>
+          <tr>
+            <th scope="col" colspan="2"><%= t('distance') %></th>
+            <th scope="col"><%= t('deadline') %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @deadlines.each do |deadline| %>
+            <tr>
+              <td><%= deadline.min_distance %> Kg</td>
+              <td><%= deadline.max_distance %> Kg</td>
+              <td>R$ <%= deadline.deadline %></td>
             </tr>
           <% end %>
         </tbody>
