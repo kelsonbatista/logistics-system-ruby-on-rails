@@ -5,6 +5,15 @@ class DeadlinesController < ApplicationController
     @deadlines = Deadline.all
   end
 
+  def destroy
+    if @deadline.destroy
+      flash[:notice] = "Prazo excluído com sucesso"
+      return redirect_to deadlines_path
+    end
+    flash.now[:alert] = "Erro ao excluir o prazo"
+    render :index, status: :unprocessable_entity
+  end
+
   def new
     @deadline = Deadline.new
     @modes = Mode.all.order(:name)
