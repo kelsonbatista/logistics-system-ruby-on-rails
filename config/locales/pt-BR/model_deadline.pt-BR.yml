@@ -6,6 +6,6 @@ pt-BR:
         other: Prazos
     attributes:
       deadline:
-        max_distance: Distância Máximo
-        min_distance: Distância Mínimo
+        max_distance: Distância Máxima
+        min_distance: Distância Mínima
         deadline: Prazo
