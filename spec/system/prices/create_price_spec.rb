@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-fdescribe "Create price" do
+describe "Create price" do
   before(:each) do
     #Arrange
     for i in 1..3 do
@@ -25,7 +25,7 @@ fdescribe "Create price" do
     expect(page).to have_content 'Novo Preço'
     expect(page).to have_field 'Peso Mínimo (Kg)'
     expect(page).to have_field 'Peso Máximo (Kg)'
-    expect(page).to have_field 'Preço (R$)'
+    expect(page).to have_field 'Preço por Km (R$)'
     expect(page).to have_field 'Modalidade'
     expect(page).to have_button 'Salvar'
   end
@@ -37,7 +37,7 @@ fdescribe "Create price" do
     click_on 'Novo Preço'
     fill_in "Peso Mínimo (Kg)",	with: '11'
     fill_in "Peso Máximo (Kg)",	with: '20'
-    fill_in "Preço (R$)",	with: "0.55"
+    fill_in "Preço por Km (R$)",	with: "0.55"
     select "Modalidade 2", from: "Modalidade"
     click_on 'Salvar'
     #Assert
@@ -62,7 +62,7 @@ fdescribe "Create price" do
     click_on 'Novo Preço'
     fill_in "Peso Mínimo (Kg)",	with: ''
     fill_in "Peso Máximo (Kg)",	with: ''
-    fill_in "Preço (R$)",	with: ''
+    fill_in "Preço por Km (R$)",	with: ''
     select "Modalidade 2", from: "Modalidade"
     click_on 'Salvar'
     #Assert
