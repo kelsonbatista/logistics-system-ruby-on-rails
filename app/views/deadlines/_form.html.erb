@@ -1,0 +1,36 @@
+<% if deadline.errors.any? %>
+  <div class="messages alert alert-warning" role="alert">
+    <p><%= t('verify_the_following_errors') %>:</p>
+    <ul>
+      <% deadline.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="form">
+  <%= form_with(model: deadline) do |f| %>
+    <table class="deadlines__form table table-success table-striped">
+      <tr>
+        <th><%= f.label :min_distance, t('min_distance') << ' (Km)', class: "form-label" %></th>
+        <td><%= f.number_field :min_distance, class: "form-control" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :max_distance, t('max_distance') << ' (Km)', class: "form-label" %></th>
+        <td><%= f.number_field :max_distance, class: "form-control" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :deadline, t('deadline') << ' (hs)', class: "form-label" %></th>
+        <td><%= f.number_field :deadline, class: "form-control" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :mode_id, t('mode'), class: "form-label" %></th>
+        <td><%= f.collection_select :mode_id, @modes, :id, :name, {}, { class: "form-select" } %></td>
+      </tr>
+    </table>
+    <div class="deadlines__btn">
+      <%= f.submit t('save'), class: "btn btn-success" %>
+    </div>  
+  <% end %>
+</div>

@@ -1,0 +1,7 @@
+<section>
+  <div class="deadlines">
+    <h1><%= t('edit') << " " << t('deadline') %></h1>
+    <%= button_to(t("back"), deadlines_path, method: :get, class: "btn btn-primary deadlines__btn") %>
+    <%= render partial: "form", locals: { deadline: @deadline } %>
+  </div>
+</section>
