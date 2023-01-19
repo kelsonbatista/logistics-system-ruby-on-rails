@@ -38,7 +38,9 @@ pt-BR:
   prices: Preços
   price_per_km: Preço por Km
   price_created_sucessfully: Preço criado com sucesso
+  pricing_table: Tabela de preços
   save: Salvar
+  this_modal_does_not_has_pricing_table: Essa modalidade ainda não possui tabela de preços
   to: até
   vehicle: Veículo
   vehicles: Veículos

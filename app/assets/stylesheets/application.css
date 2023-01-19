@@ -41,7 +41,7 @@ a.logo {
   border-radius: 5px;
 }
 
-.modes__table, .modes__form, 
+.modes__table, .modes__price-list, .modes__form, 
 .vehicles__table, .vehicles__form,
 .prices__table, .prices__form  {
   max-width: 500px;
@@ -55,6 +55,7 @@ a.logo {
   max-width: 500px;
 }
 
+.modes__price-list,
 .modes__btn-bottom,
 .vehicles__btn-bottom,
 .prices__btn-bottom {
