@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-fdescribe "Create deadline" do
+describe "Create deadline" do
   before(:each) do
     #Arrange
     for i in 1..3 do
