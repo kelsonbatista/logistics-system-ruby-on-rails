@@ -47,10 +47,6 @@ a.logo {
   max-width: 500px;
 }
 
-/* .prices__table, .prices__form {
-  max-width: 80%;
-} */
-
 .modes__btn, .modes__btn-bottom,
 .vehicles__btn, .vehicles__btn-bottom,
 .prices__btn, .prices__btn-bottom {
@@ -91,6 +87,10 @@ input[value="Salvar"] {
 
 input[type="submit"], button[type="submit"] {
   width: 130px !important;
+}
+
+button.prices__btn {
+  width: 80px !important;
 }
 
 section.back a.btn {

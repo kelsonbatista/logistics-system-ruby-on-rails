@@ -5,6 +5,15 @@ class PricesController < ApplicationController
     @prices = Price.all
   end
 
+  def destroy
+    if @price.destroy
+      flash[:notice] = "Preço excluído com sucesso"
+      return redirect_to prices_path
+    end
+    flash.now[:alert] = "Erro ao excluir o preço"
+    render :index, status: :unprocessable_entity
+  end
+
   def new
     @price = Price.new
     @modes = Mode.all.order(:name)
