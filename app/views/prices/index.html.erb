@@ -23,7 +23,8 @@
               <td><%= price.max_weight %> Kg</td>
               <td>R$ <%= price.price_per_km %></td>
               <td><%= price.mode.name %></td>
-              <td><%= t('edit') %></td>
+              <td><%= button_to(t("edit"), edit_price_path(price.id), class: "btn btn-warning", method: :get) %>
+              </td>
               <td><%= t('delete') %></td>
             </tr>
           <% end %>
