@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_18_193032) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_19_040422) do
+  create_table "deadlines", force: :cascade do |t|
+    t.integer "min_distance"
+    t.integer "max_distance"
+    t.integer "deadline"
+    t.integer "mode_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mode_id"], name: "index_deadlines_on_mode_id"
+  end
+
   create_table "modes", force: :cascade do |t|
     t.string "name"
     t.integer "min_distance"
@@ -47,6 +57,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_18_193032) do
     t.index ["mode_id"], name: "index_vehicles_on_mode_id"
   end
 
+  add_foreign_key "deadlines", "modes"
   add_foreign_key "prices", "modes"
   add_foreign_key "vehicles", "modes"
 end

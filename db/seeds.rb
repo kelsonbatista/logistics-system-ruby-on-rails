@@ -31,17 +31,32 @@
 #   )
 # end
 
+# for i in 1..3 do
+#   Price.create!(
+#     min_weight: 5 * i,
+#     max_weight: 10 * i,
+#     price_per_km: 0.11 * i,
+#     mode_id: 1
+#   )
+#   Price.create!(
+#     min_weight: 7 * i,
+#     max_weight: 12 * i,
+#     price_per_km: 0.16 * i,
+#     mode_id: 2
+#   )
+# end
+
 for i in 1..3 do
-  Price.create!(
-    min_weight: 5 * i,
-    max_weight: 10 * i,
-    price_per_km: 0.11 * i,
+  Deadline.create!(
+    min_distance: 5 * i,
+    max_distance: 10 * i,
+    deadline: 15 * i,
     mode_id: 1
   )
-  Price.create!(
-    min_weight: 7 * i,
-    max_weight: 12 * i,
-    price_per_km: 0.16 * i,
+  Deadline.create!(
+    min_distance: 8 * i,
+    max_distance: 14 * i,
+    deadline: 18 * i,
     mode_id: 2
   )
 end
