@@ -1,11 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
-
+############# MODES #############
 # 5.times do |i|
 #   Mode.create!(
 #     name: "Mode #{i + 1}",
@@ -18,6 +11,7 @@
 #   )
 # end
 
+############# VEHICLES #############
 # for i in 1..3 do
 #   Vehicle.create!(
 #     plate: "ABC-123#{i}",
@@ -31,6 +25,7 @@
 #   )
 # end
 
+############# PRICES #############
 # for i in 1..3 do
 #   Price.create!(
 #     min_weight: 5 * i,
@@ -46,6 +41,7 @@
 #   )
 # end
 
+############# DEADLINES #############
 # for i in 1..3 do
 #   Deadline.create!(
 #     min_distance: 5 * i,
@@ -61,17 +57,78 @@
 #   )
 # end
 
-for i in 1..2 do
-  User.create!(
-    name: "Usuario #{i}",
-    email: "usuario#{i}@email.com",
-    password: '123456',
-    role: "user"
+############# USERS #############
+# for i in 1..2 do
+#   User.create!(
+#     name: "Usuario #{i}",
+#     email: "usuario#{i}@email.com",
+#     password: '123456',
+#     role: "user"
+#   )
+#   User.create!(
+#     name: "Admin #{i}",
+#     email: "admin#{i}@email.com",
+#     password: '123456',
+#     role: "admin"
+#   )
+# end
+
+############# ADDRESSES #############
+# for i in 1..3 do
+#   Address.create!(
+#     person: "recipient",
+#     address_one: "Av Paulista, 100#{i}",
+#     address_two: "Bela Vista",
+#     city: "São Paulo",
+#     state: "SP",
+#     zip: "10000-10#{i}"
+#   )
+#   Address.create!(
+#     person: "sender",
+#     address_one: "Av Atlântica, 200#{i}",
+#     address_two: "Copacabana",
+#     city: "Rio de Janeiro",
+#     state: "RJ",
+#     zip: "20000-20#{i}"
+#   )
+# end
+
+############# ORDERS #############
+# for i in 1..5 do
+#   Order.create!(
+#     code: "LOG700#{i}",
+#     recipient: i,
+#     sender: i + 1,
+#     product: i,
+#     distance: 100 * i,
+#     status: 5
+#   )
+# end
+
+############# PRODUCTS #############
+for i in 1..3 do
+  Product.create!(
+    code: "ABC100#{i}",
+    width: 50 * i,
+    height: 30 * i,
+    depth: 10 * i,
+    weight: 100 * i,
+    order_id: i
   )
-  User.create!(
-    name: "Admin #{i}",
-    email: "admin#{i}@email.com",
-    password: '123456',
-    role: "admin"
+  Product.create!(
+    code: "ABC200#{i}",
+    width: 40 * i,
+    height: 20 * i,
+    depth: 5 * i,
+    weight: 50 * i,
+    order_id: i + 1
+  )
+  Product.create!(
+    code: "ABC300#{i}",
+    width: 70 * i,
+    height: 50 * i,
+    depth: 30 * i,
+    weight: 150 * i,
+    order_id: i + 2
   )
 end
