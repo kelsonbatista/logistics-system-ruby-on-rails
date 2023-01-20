@@ -39,6 +39,13 @@ a.logo {
   margin-bottom: -15px !important;
 }
 
+a.logo2 {
+  font-size: 1.3em;
+  font-weight: 900;
+  text-decoration: uppercase;
+  font-style: italic;
+}
+
 .ui-effects-wrapper {
   display:inline;
 }
