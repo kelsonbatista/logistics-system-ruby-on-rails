@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_19_165722) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_20_185030) do
+  create_table "addresses", force: :cascade do |t|
+    t.string "person"
+    t.string "address_one"
+    t.string "address_two"
+    t.string "city"
+    t.string "state", limit: 2
+    t.string "zip", limit: 9
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "deadlines", force: :cascade do |t|
     t.integer "min_distance"
     t.integer "max_distance"
@@ -33,6 +44,26 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_19_165722) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "order_addresses", force: :cascade do |t|
+    t.integer "order_id", null: false
+    t.integer "address_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["address_id"], name: "index_order_addresses_on_address_id"
+    t.index ["order_id"], name: "index_order_addresses_on_order_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "code", limit: 15
+    t.integer "recipient"
+    t.integer "sender"
+    t.integer "product"
+    t.integer "distance"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "prices", force: :cascade do |t|
     t.integer "min_weight"
     t.integer "max_weight"
@@ -41,6 +72,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_19_165722) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["mode_id"], name: "index_prices_on_mode_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "code"
+    t.integer "width"
+    t.integer "height"
+    t.integer "depth"
+    t.integer "weight"
+    t.integer "order_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_products_on_order_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -72,6 +115,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_19_165722) do
   end
 
   add_foreign_key "deadlines", "modes"
+  add_foreign_key "order_addresses", "addresses"
+  add_foreign_key "order_addresses", "orders"
   add_foreign_key "prices", "modes"
+  add_foreign_key "products", "orders"
   add_foreign_key "vehicles", "modes"
 end
