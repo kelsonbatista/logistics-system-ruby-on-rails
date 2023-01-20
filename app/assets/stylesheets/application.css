@@ -7,6 +7,13 @@ header {
 }
 
 .main__login {
+  /* height: 100%;
+  display: flex;
+  justify-content: center;
+  align-itens: center; */
+}
+
+.main__block {
   margin-left: 280px !important;
   margin-bottom: 300px;
 }
@@ -120,4 +127,16 @@ section div h3 {
 
 div h5 {
   margin: 30px 0 !important;
+}
+
+section div.login {
+  width: 400px !important;
+  background: #ccc;
+  padding: 30px 40px !important;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 12px 8px !important;
+}
+
+section div.login input, section div.login h2 {
+  margin-bottom: 20px !important;
 }
