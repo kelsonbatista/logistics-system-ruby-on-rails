@@ -45,16 +45,12 @@ Deadlines - command:        rspec --format=documentation ./spec/system/deadlines
 ---
 # Deployment / *Implantação*
 
-See it in action/ **Veja em ação**: [https://project-delivery-app-front.vercel.app/](https://project-delivery-app-front.vercel.app/)
+See it in action/ **Veja em ação**: [https://xxxxxxxxxxxxxx.app/](https://xxxxxxxxxxxxx.app/)
 
 Commands:
 
-- git clone git@github.com:kelsonbatista/project-delivery-app.git
-- Run npm install in / , and /front-end and /back-end
-- Run database inside Docker: in / run "docker compose:up:dev
-- In /back-end run "npm run dev"
-- In /back-end run "npm run db:reset" to seed basic information into db
-- In /front-end run "npm start"
+- git clone git@github.com:kelsonbatista/xxxxxxxxx.git
+- Run xxxxxxxxxxxx
 - Access http://localhost:3000, register a new user, ready to go.
 
 
