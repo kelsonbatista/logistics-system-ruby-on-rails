@@ -22,7 +22,7 @@
       </div>
     </header>
     <main>
-      <div class="container <%= user_signed_in? ? "main__login" : "" %>">
+      <div class="container <%= user_signed_in? ? 'main__login' : '' %>">
         <% flash.each do |type, msg| %>
           <div class="notice alert <%= flash[:alert] ? 'alert-danger' : 'alert-success' %>" role="alert">
             <%= msg %>

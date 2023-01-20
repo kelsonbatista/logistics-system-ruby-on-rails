@@ -1,3 +1,7 @@
+header {
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 32px 18px !important;
+}
+
 .header__vertical {
   height: 100vh;
 }
@@ -9,18 +13,6 @@
 
 .header__vertical-logout:hover {
   width: 100%  !important;
-}
-
-table {
-  text-align: center;
-}
-
-table th {
-  vertical-align: middle;
-}
-
-.ui-effects-wrapper {
-  display:inline;
 }
 
 .fa {
@@ -38,6 +30,30 @@ a.logo {
   font-style: italic;
   margin-top: 8px;
   margin-bottom: -15px !important;
+}
+
+.ui-effects-wrapper {
+  display:inline;
+}
+
+section {
+  margin: 30px !important;
+}
+
+section h1 {
+  padding-bottom: 15px !important;
+}
+
+table {
+  margin-top: 30px !important;
+}
+
+table {
+  text-align: center;
+}
+
+table th {
+  vertical-align: middle;
 }
 
 .ativo {
@@ -62,47 +78,13 @@ a.logo {
   max-width: 500px;
 }
 
-.modes__btn, .modes__btn-bottom,
-.vehicles__btn, .vehicles__btn-bottom,
-.prices__btn, .prices__btn-bottom,
-.deadlines__btn, .deadlines__btn-bottom {
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: 20px;
-}
-
-.modes__price-list,
-.modes__deadline-list,
-.modes__in_operation-list,
-.modes__in_maintenance-list,
 .modes__btn-bottom,
 .vehicles__btn-bottom,
 .prices__btn-bottom,
-.deadline__btn-bottom,
-.users__btn-bottom {
-  padding-top: 20px;
-}
-
-header {
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 32px 18px;
-}
-
-section {
-  width: 90% !important;
-  margin-left: 30px !important;
-}
-
-div.modes h1,
-div.vehicles h1,
-div.prices h1,
-div.deadlines h1,
-div.users h1 {
-  margin-top: 20px !important;
-  padding-bottom: 15px !important;
-}
-
-table {
-  margin-top: 30px !important;
+.deadlines__btn-bottom {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0 !important;
 }
 
 input[value="Salvar"] {
@@ -129,6 +111,11 @@ section.back a.btn {
 .messages {
   left: -20px !important;
   max-width: 500px !important;
+}
+
+section div h3 {
+  padding-top: 20px !important;
+  margin-bottom: -20px !important;
 }
 
 div h5 {
