@@ -147,3 +147,10 @@ section div.login {
 section div.login input, section div.login h2 {
   margin-bottom: 20px !important;
 }
+
+nav div ul li a {
+  font-size: 1.1em;
+  font-weight: 500;
+  text-decoration: none !important;
+  color: white !important;
+}
