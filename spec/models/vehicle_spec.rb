@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Vehicle, type: :model do  
-  fdescribe "#valid?" do
+  describe "#valid?" do
     context 'presence' do
       before(:each) do
         #Arrange
