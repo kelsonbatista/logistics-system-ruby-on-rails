@@ -1,0 +1,21 @@
+<section>
+  <div class="users">
+    <h1><%= t('profile') %></h1>
+  </div>
+  <div>
+    <table class="users__info table table-success table-striped">
+      <tr>
+        <th><%= t('name') %></th>
+        <td><%= current_user.name %></td>
+      </tr>
+      <tr>
+        <th><%= t('email') %></th>
+        <td><%= current_user.email %></td>
+      </tr>
+      <tr>
+        <th><%= t('role') %></th>
+        <td><%= current_user.role %></td>
+      </tr>
+    </table>
+  </div>
+</section>

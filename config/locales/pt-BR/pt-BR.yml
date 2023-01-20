@@ -66,8 +66,11 @@ pt-BR:
   log_out: Sair
   forgot_your_password: Esqueceu sua senha
   new_password: Nova senha
+  profile: Perfil
   sign_in: Entrar
   sign_in_with: Entrar com
   sign_up: Cadastrar
   reset_password: Redefinir senha
   unlock_account: Desbloquear conta
+  user: Usuário
+  users: Usuários

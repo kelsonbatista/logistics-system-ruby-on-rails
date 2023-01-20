@@ -45,9 +45,7 @@
       <strong><%= current_user.name %> </strong>
     </a>
     <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-      <li><a class="dropdown-item" href="#">New project...</a></li>
-      <li><a class="dropdown-item" href="#">Settings</a></li>
-      <li><a class="dropdown-item" href="#">Profile</a></li>
+      <li><%= link_to t("profile"), user_path(current_user.id), class: "dropdown-item" %></li>
       <li><hr class="dropdown-divider"></li>
       <li><%= button_to t("sign_out"), destroy_user_session_path, method: :delete, class: 'dropdown-item header__vertical-logout' %></li>
     </ul>
