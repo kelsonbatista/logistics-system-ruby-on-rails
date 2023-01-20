@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: MyString
+  width: 1
+  height: 1
+  depth: 1
+  weight: 1
+  order: one
+
+two:
+  code: MyString
+  width: 1
+  height: 1
+  depth: 1
+  weight: 1
+  order: two
