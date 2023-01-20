@@ -1,0 +1,17 @@
+pt-BR:
+  activerecord:
+    models:
+      address:
+        one: Endereço
+        other: Endereços
+    attributes:
+      address:
+        address_one: Endereço
+        address_two: Complemento
+        city: Cidade
+        recipient: Destinatário
+        recipient_address: Endereço do Destinatário
+        sender: Remetente
+        sender_address: Endereço do Remetente
+        state: Estado
+        zip: CEP

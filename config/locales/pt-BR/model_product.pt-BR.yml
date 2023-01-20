@@ -1,0 +1,16 @@
+pt-BR:
+  activerecord:
+    models:
+      product:
+        one: Produto
+        other: Produtos
+    attributes:
+      product:
+        code: Código
+        depth: Profundidade
+        dimensions: Dimensões
+        height: Altura
+        product_code: Código do Produto
+        size: Tamanho
+        weight: Peso
+        width: Largura

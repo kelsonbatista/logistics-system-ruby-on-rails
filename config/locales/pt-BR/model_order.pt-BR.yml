@@ -1,0 +1,17 @@
+pt-BR:
+  activerecord:
+    models:
+      order:
+        one: Pedido
+        other: Pedidos
+    attributes:
+      order:
+        code: Código
+        distance: Distância
+        product: Produto
+        product_code: Código do Produto
+        products: Produtos
+        recipient: Destinatário
+        recipient_address: Endereço do Destinatário
+        sender: Remetente
+        sender_address: Endereço do Remetente
