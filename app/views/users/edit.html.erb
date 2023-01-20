@@ -1,0 +1,26 @@
+<section>
+  <div class="users">
+    <h1><%= t('profile') %></h1>
+  </div>
+  <div class="form">
+    <%= form_with(model: user) do |f| %>
+      <table class="users__info table table-success table-striped">
+        <tr>
+          <th><%= f.label :name, t('name'), class: "form-label" %></th>
+          <td><%= f.text_field :name, class: "form-control" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :email, t('email'), class: "form-label" %></th>
+          <td><%= f.text_field :email, class: "form-control" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :role, t('role'), class: "form-label" %></th>
+          <td><%= f.text_field :role, class: "form-control" %></td>
+        </tr>
+      </table>
+      <div class="users__btn">
+        <%= f.submit t('save'), class: "btn btn-success" %>
+      </div>  
+    <% end %>
+  </div>
+</section>

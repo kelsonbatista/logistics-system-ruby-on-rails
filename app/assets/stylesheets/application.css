@@ -78,7 +78,8 @@ a.logo {
 .modes__btn-bottom,
 .vehicles__btn-bottom,
 .prices__btn-bottom,
-.deadline__btn-bottom {
+.deadline__btn-bottom,
+.users__btn-bottom {
   padding-top: 20px;
 }
 
