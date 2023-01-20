@@ -46,17 +46,32 @@
 #   )
 # end
 
-for i in 1..3 do
-  Deadline.create!(
-    min_distance: 5 * i,
-    max_distance: 10 * i,
-    deadline: 15 * i,
-    mode_id: 1
+# for i in 1..3 do
+#   Deadline.create!(
+#     min_distance: 5 * i,
+#     max_distance: 10 * i,
+#     deadline: 15 * i,
+#     mode_id: 1
+#   )
+#   Deadline.create!(
+#     min_distance: 8 * i,
+#     max_distance: 14 * i,
+#     deadline: 18 * i,
+#     mode_id: 2
+#   )
+# end
+
+for i in 1..2 do
+  User.create!(
+    name: "Usuario #{i}",
+    email: "usuario#{i}@email.com",
+    password: '123456',
+    role: "user"
   )
-  Deadline.create!(
-    min_distance: 8 * i,
-    max_distance: 14 * i,
-    deadline: 18 * i,
-    mode_id: 2
+  User.create!(
+    name: "Admin #{i}",
+    email: "admin#{i}@email.com",
+    password: '123456',
+    role: "admin"
   )
 end

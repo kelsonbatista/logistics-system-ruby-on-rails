@@ -1,5 +1,10 @@
-header, header div:nth-child(1) {
+.header__vertical {
   height: 100vh;
+}
+
+.main__login {
+  margin-left: 280px !important;
+  margin-bottom: 300px;
 }
 
 table {
@@ -8,6 +13,10 @@ table {
 
 table th {
   vertical-align: middle;
+}
+
+.ui-effects-wrapper {
+  display:inline;
 }
 
 .fa {

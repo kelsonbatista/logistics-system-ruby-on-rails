@@ -57,3 +57,17 @@ pt-BR:
   verify_the_following_errors: Verifique os seguintes erros
   weight: Peso
   year: Ano
+  # LOGIN SYSTEM
+  change_password: Alterar a senha
+  characters_minimum: caracteres no mínimo
+  confirm_new_password: Confirmar nova senha
+  confirm_registration: Confirmar cadastro
+  log_in: Entrar
+  log_out: Sair
+  forgot_your_password: Esqueceu sua senha
+  new_password: Nova senha
+  sign_in: Entrar
+  sign_in_with: Entrar com
+  sign_up: Cadastrar
+  reset_password: Redefinir senha
+  unlock_account: Desbloquear conta

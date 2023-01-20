@@ -1,0 +1,55 @@
+<div class="fixed-top d-flex flex-column flex-shrink-0 p-3 text-bg-dark header__vertical" style="width: 280px;">
+  <p>
+    <%= link_to root_path, 
+      class: 'd-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none logo' do %>
+      <i class="fa fa-truck-fast"></i>&nbsp;&nbsp;<%= t('fastlog') %>
+    <% end %>
+  </p>
+  <hr>
+  <ul class="nav nav-pills flex-column mb-auto">
+    <li class="nav-item">
+      <%= link_to root_path, class: "nav-link text-white #{ current_page?(root_path) ? 'active' : ''}" do %>
+        <i class="fa fa-house"></i>&nbsp;&nbsp;<%= t('home') %>
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to modes_path, class: "nav-link text-white #{ current_page?(controller: 'modes') ? 'active' : ''}" do %>
+        <i class="fa fa-earth-americas"></i>&nbsp;&nbsp;<%= t('modes') %>
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to vehicles_path, class: "nav-link text-white #{ current_page?(controller: 'vehicles') ? 'active' : ''}" do %>
+        <i class="fa fa-truck"></i>&nbsp;&nbsp;<%= t('vehicles') %>
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to prices_path, class: "nav-link text-white #{ current_page?(controller: 'prices') ? 'active' : ''}" do %>
+        <i class="fa-solid fa-dollar-sign"></i>&nbsp;&nbsp;<%= t('prices') %>
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to deadlines_path, class: "nav-link text-white #{ current_page?(controller: 'deadlines') ? 'active' : ''}" do %>
+        <i class="fa-solid fa-hourglass-half"></i>&nbsp;&nbsp;<%= t('deadlines') %>
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to modes_path, class: 'nav-link text-white' do %>
+        <i class="fa fa-envelope"></i>&nbsp;&nbsp;<%= t('contact') %>
+      <% end %>
+    </li>
+  </ul>
+  <hr>
+  <div class="dropdown">
+    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+      <strong>mdo</strong>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+      <li><a class="dropdown-item" href="#">New project...</a></li>
+      <li><a class="dropdown-item" href="#">Settings</a></li>
+      <li><a class="dropdown-item" href="#">Profile</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><%= link_to t("sign_out"), destroy_user_session_path, class: 'dropdown-item' %></li>
+    </ul>
+  </div>
+</div>
