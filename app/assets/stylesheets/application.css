@@ -7,6 +7,10 @@
   margin-bottom: 300px;
 }
 
+.header__vertical-logout:hover {
+  width: 100% !important;
+}
+
 table {
   text-align: center;
 }
