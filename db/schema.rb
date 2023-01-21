@@ -55,11 +55,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_20_185030) do
 
   create_table "orders", force: :cascade do |t|
     t.string "code", limit: 15
-    t.integer "recipient"
-    t.integer "sender"
-    t.integer "product"
     t.integer "distance"
-    t.integer "status"
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

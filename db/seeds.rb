@@ -97,38 +97,35 @@
 # for i in 1..5 do
 #   Order.create!(
 #     code: "LOG700#{i}",
-#     recipient: i,
-#     sender: i + 1,
-#     product: i,
 #     distance: 100 * i,
 #     status: 5
 #   )
 # end
 
 ############# PRODUCTS #############
-for i in 1..3 do
-  Product.create!(
-    code: "ABC100#{i}",
-    width: 50 * i,
-    height: 30 * i,
-    depth: 10 * i,
-    weight: 100 * i,
-    order_id: i
-  )
-  Product.create!(
-    code: "ABC200#{i}",
-    width: 40 * i,
-    height: 20 * i,
-    depth: 5 * i,
-    weight: 50 * i,
-    order_id: i + 1
-  )
-  Product.create!(
-    code: "ABC300#{i}",
-    width: 70 * i,
-    height: 50 * i,
-    depth: 30 * i,
-    weight: 150 * i,
-    order_id: i + 2
-  )
-end
+# for i in 1..3 do
+#   Product.create!(
+#     code: "ABC100#{i}",
+#     width: 50 * i,
+#     height: 30 * i,
+#     depth: 10 * i,
+#     weight: 100 * i,
+#     order_id: i
+#   )
+#   Product.create!(
+#     code: "ABC200#{i}",
+#     width: 40 * i,
+#     height: 20 * i,
+#     depth: 5 * i,
+#     weight: 50 * i,
+#     order_id: i + 1
+#   )
+#   Product.create!(
+#     code: "ABC300#{i}",
+#     width: 70 * i,
+#     height: 50 * i,
+#     depth: 30 * i,
+#     weight: 150 * i,
+#     order_id: i + 2
+#   )
+# end

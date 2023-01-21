@@ -28,6 +28,11 @@
       <% end %>
     </li>
     <li class="nav-item">
+      <%= link_to orders_path, class: "nav-link text-white #{ current_page?(controller: 'orders') ? 'active' : ''}" do %>
+        <i class="fa-solid fa-cube"></i>&nbsp;&nbsp;<%= t('orders') %>
+      <% end %>
+    </li>
+    <li class="nav-item">
       <%= link_to deadlines_path, class: "nav-link text-white #{ current_page?(controller: 'deadlines') ? 'active' : ''}" do %>
         <i class="fa-solid fa-hourglass-half"></i>&nbsp;&nbsp;<%= t('deadlines') %>
       <% end %>

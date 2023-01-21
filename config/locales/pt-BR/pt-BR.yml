@@ -6,6 +6,7 @@ pt-BR:
   brand: Marca
   capacity: Capacidade
   category: Categoria
+  code: Código
   create_vehicle: Cadastrar Veículo
   deadline: Prazo
   deadlines: Prazos
@@ -34,12 +35,16 @@ pt-BR:
   name: Nome
   new_deadline: Novo Prazo
   new_mode: Nova Modalidade
+  new_order: Novo Pedido
   new_price: Novo Preço
   new_vehicle: Novo Veículo
   no_deadlines_registered: Nenhum prazo cadastrado
   no_modes_registered: Nenhuma modalidade cadastrada
   no_prices_registered: Nenhum preço cadastrado
   no_vehicles_registered: Nenhum veículo cadastrado
+  order: Pedido
+  order_date: Data
+  orders: Pedidos
   plate: Placa
   price: Preço
   prices: Preços
@@ -57,7 +62,8 @@ pt-BR:
   verify_the_following_errors: Verifique os seguintes erros
   weight: Peso
   year: Ano
-  # LOGIN SYSTEM
+
+  ############# LOGIN SYSTEM #############
   change_password: Alterar a senha
   characters_minimum: caracteres no mínimo
   confirm_new_password: Confirmar nova senha
@@ -74,3 +80,13 @@ pt-BR:
   unlock_account: Desbloquear conta
   user: Usuário
   users: Usuários
+
+  ############# ORDER STATUS #############
+  canceled: Cancelado
+  delivered: Entregue
+  in_transit: Em trânsito
+  no_orders_registered: Nenhum pedido registrado
+  pending: Pendente
+  returned: Retornado
+  sent: Enviado
+  waiting: Aguardando

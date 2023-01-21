@@ -7,6 +7,8 @@ pt-BR:
     attributes:
       order:
         code: Código
+        created_at: Criado em
+        date: Data
         distance: Distância
         product: Produto
         product_code: Código do Produto
@@ -15,3 +17,5 @@ pt-BR:
         recipient_address: Endereço do Destinatário
         sender: Remetente
         sender_address: Endereço do Remetente
+        updated_at: Atualizado em
+        weight: Peso

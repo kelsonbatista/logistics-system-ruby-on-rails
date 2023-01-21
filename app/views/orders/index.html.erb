@@ -1,0 +1,36 @@
+<section>
+  <div class="orders">
+    <h1><%= t('orders') %></h1>
+    <p><%= link_to t('new_order'), new_order_path, class: "btn btn-primary" %></p>
+  </div>
+  <div class="orders__list">
+    <% if @order_products.empty? %>
+      <h3><%= t('no_orders_registered') %></h3>
+    <% else %>
+      <table class="orders__list container table table-success table-striped">
+        <thead>
+          <tr>
+            <th scope="col"><%= t('code') %></th>
+            <th scope="col"><%= t('order_date') %></th>
+            <th scope="col"><%= t('volumes') %> (un)</th>
+            <th scope="col"><%= t('weight') %> (Kg)</th>
+            <th scope="col"><%= t('distance') %> (Km)</th>
+            <th scope="col"><%= t('status') %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order_products.each do |order| %>
+            <tr>
+              <td scope="row"><%= link_to order.code, order_path(order.id) %></td>
+              <td scope="row"><%= order.created_at.strftime("%d/%m/%Y") %></td>
+              <td scope="row"><%= order.total_products %></td>
+              <td scope="row"><%= order.total_weight %></td>
+              <td scope="row"><%= order.distance %></td>
+              <td scope="row"><%= t(order.status) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</section>
