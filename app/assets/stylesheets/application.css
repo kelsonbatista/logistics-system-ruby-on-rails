@@ -6,13 +6,6 @@ header {
   height: 100vh;
 }
 
-.main__login {
-  /* height: 100%;
-  display: flex;
-  justify-content: center;
-  align-itens: center; */
-}
-
 .main__block {
   margin-left: 280px !important;
   margin-bottom: 300px;
@@ -153,4 +146,31 @@ nav div ul li a {
   font-weight: 500;
   text-decoration: none !important;
   color: white !important;
+}
+
+table.addresss__form tr:nth-child(3) td {
+  display: flex;
+  justify-content: space-between;
+}
+
+table.addresss__form tr:nth-child(3) td input {
+  width: 85% !important;
+  margin-right: 10px !important;
+}
+
+table.addresss__form tr:nth-child(3) td select {
+  width: 15% !important;  
+}
+
+h2.accordion-header button {
+  background: #dedede !important;
+  font-size: 1.4rem !important;
+}
+
+div.order__form {
+  margin-top: 30px !important;
+}
+
+table.product__form tr td {
+  width: 80px !important;
 }

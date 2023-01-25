@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'addresses/new'
+  get 'order_addresses/new'
+  get 'products/new'
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -10,7 +13,10 @@ Rails.application.routes.draw do
     resources :vehicles, only: [:index, :show, :new, :create, :edit, :update, :destroy]
     resources :prices, only: [:index, :show, :new, :create, :edit, :update, :destroy]
     resources :deadlines, only: [:index, :show, :new, :create, :edit, :update, :destroy]
-    resources :orders, only: [:new, :create, :edit, :update, :destroy]
+    resources :orders, only: [:destroy]
   end
-  resources :orders, only: [:index, :show]
+  resources :orders, only: [:index, :show, :new, :create, :edit, :update] do
+    resources :order_products, only: [:index, :show, :new, :create, :edit, :update]
+    resources :order_addresses, only: [:index, :show, :new, :create, :edit, :update]
+  end
 end

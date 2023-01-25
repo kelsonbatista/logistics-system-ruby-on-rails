@@ -1,0 +1,10 @@
+<%= f.fields_for :products do |prod| %>
+  <tr class="nested-fields">
+    <td><%= prod.text_field :code, { class: "form-control product__field" } %></td>
+    <td><%= prod.text_field :width, class: "form-control product__field" %></td>
+    <td><%= prod.text_field :height, class: "form-control product__field" %></td>
+    <td><%= prod.text_field :depth, class: "form-control product__field" %></td>
+    <td><%= prod.text_field :weight, class: "form-control product__field" %></td>
+    <td><%= link_to_remove_association 'Remover', f %></td>
+  </tr>
+<% end %>

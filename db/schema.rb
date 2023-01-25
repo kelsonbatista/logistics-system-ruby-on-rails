@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_20_185030) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_25_192855) do
   create_table "addresses", force: :cascade do |t|
     t.string "person"
     t.string "address_one"
@@ -53,6 +53,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_20_185030) do
     t.index ["order_id"], name: "index_order_addresses_on_order_id"
   end
 
+  create_table "order_products", force: :cascade do |t|
+    t.integer "product_id", null: false
+    t.integer "order_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_products_on_order_id"
+    t.index ["product_id"], name: "index_order_products_on_product_id"
+  end
+
   create_table "orders", force: :cascade do |t|
     t.string "code", limit: 15
     t.integer "distance"
@@ -77,10 +86,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_20_185030) do
     t.integer "height"
     t.integer "depth"
     t.integer "weight"
-    t.integer "order_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["order_id"], name: "index_products_on_order_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -114,7 +121,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_20_185030) do
   add_foreign_key "deadlines", "modes"
   add_foreign_key "order_addresses", "addresses"
   add_foreign_key "order_addresses", "orders"
+  add_foreign_key "order_products", "orders"
+  add_foreign_key "order_products", "products"
   add_foreign_key "prices", "modes"
-  add_foreign_key "products", "orders"
   add_foreign_key "vehicles", "modes"
 end

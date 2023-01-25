@@ -90,3 +90,16 @@ pt-BR:
   returned: Retornado
   sent: Enviado
   waiting: Aguardando
+
+  ############# ORDER #############
+  address_one: Endereço
+  address_two: Complemento
+  city: Cidade
+  zip: CEP
+
+  ############# PRODUCT #############
+  width: Comprimento(cm)
+  height: Altura(cm)
+  depth: Profundidade(cm)
+  weight: Peso(Kg)
+  actions: Ações
