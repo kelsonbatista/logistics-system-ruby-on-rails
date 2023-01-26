@@ -4,7 +4,7 @@ class Order < ApplicationRecord
   has_many :order_products, dependent: :destroy
   has_many :products, through: :order_products
 
-  accepts_nested_attributes_for :order_addresses, allow_destroy: true
+  accepts_nested_attributes_for :addresses, allow_destroy: true
   accepts_nested_attributes_for :order_products, allow_destroy: true
 
   enum status: { pending: 0, waiting: 1, sent: 2, delivered: 3, canceled: 4, returned: 5 }
