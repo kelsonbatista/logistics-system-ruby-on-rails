@@ -3,6 +3,5 @@ class OrderAddress < ApplicationRecord
   belongs_to :address
 
   accepts_nested_attributes_for :address, allow_destroy: true
-
-  validates_associated :address
+  # validates :order, :address, presence: true
 end

@@ -11,7 +11,9 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    @addresses = @order.addresses.build
+    @order.addresses.build
+    # @order_products = @order.order_products.build
+    @order.products.build
   end
 
   def create
@@ -28,8 +30,8 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:code, :distance, :status, 
-      addresses_attributes: [:id, :person, :address_one, :address_two, :city, :state, :zip, :_destroy], 
-      order_products_attributes: [:id, :product_id, :order_id, :_destroy,
+      addresses_attributes: [:id, :person, :address_one, :address_two, :city, :state, :zip, :_destroy],
+      order_products_attributes: [:id, :order_id, :product_id, :_destroy,
       products_attributes: [:id, :code, :width, :height, :depth, :weight, :_destroy]])
   end
   
