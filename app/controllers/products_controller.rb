@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
   private
 
   def address_params
-    params.require(:product).permit(:person, :address_one, :address_two, :city, :state, :zip)
+    params.require(:product).permit(:code, :width, :height, :depth, :weight)
   end
 
   def address_find
