@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
 
   def index
     @orders = Order.all
-    @order_products = Order.joins(:products).group(:order_id).select("orders.*, count(products.id) as total_products, sum(products.weight) as total_weight")
+    @order_products_pending = Order.joins(:products).group(:order_id).select("orders.*, count(products.id) as total_products, sum(products.weight) as total_weight").where(status: 'pending')
   end
 
   def show
@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
     if @order.save
       return redirect_to new_order_address_path(order_id: @order.id)
     end
-    flash.now[:alert] = "Erro ao registrar pedido!"
+    flash.now[:alert] = "Erro ao registrar ordem de entrega!"
     render :new, status: :unprocessable_entity
   end
 
