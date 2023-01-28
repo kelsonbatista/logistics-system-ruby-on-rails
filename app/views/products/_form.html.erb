@@ -11,7 +11,7 @@
 <% end %>
 
 <div class="order__form">
-  <%= form_with(model: [@order, @product], local: true) do |form| %>
+  <%= form_with(model: order, local: true) do |form| %>
       <div>
         <table class="product__form table table-success table-striped">
           <thead>
@@ -25,12 +25,12 @@
             </tr>
           </thead>
           <tbody class="order-products">
-            <%= form.fields_for :products do |product| %>
-              <%= render partial: "order_product_fields", locals: { f: product } %>
+            <%= form.fields_for :order_products do |order_product| %>
+              <%= render partial: "order_product_fields", locals: { f: order_product } %>
             <% end %>
           </tbody>
         </table>
-        <%= link_to_add_association 'Adicionar Produto', form, :products,
+        <%= link_to_add_association 'Adicionar Produto', form, :order_products,
           'data-association-insertion-node' => ".order-products",
           'data-association-insertion-method' => "append",
           class: "btn btn-secondary" %>

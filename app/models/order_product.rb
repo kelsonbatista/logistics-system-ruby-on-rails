@@ -2,7 +2,7 @@ class OrderProduct < ApplicationRecord
   belongs_to :order
   belongs_to :product
 
-  accepts_nested_attributes_for :product, allow_destroy: true
-  validates_associated :product, presence: true
+  # accepts_nested_attributes_for :product, allow_destroy: true
+  # validates_associated :product, presence: true
   # validates :product, presence: true
 end
