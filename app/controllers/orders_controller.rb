@@ -19,8 +19,8 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     if @order.save
-      flash[:notice] = "Pedido registrado com sucesso!"
-      return redirect_to orders_path
+      # flash[:notice] = "Pedido registrado com sucesso!"
+      return redirect_to new_order_address_path(order_id: @order.id)
     end
     flash.now[:alert] = "Erro ao registrar pedido!"
     render :new, status: :unprocessable_entity

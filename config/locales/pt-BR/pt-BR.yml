@@ -95,6 +95,9 @@ pt-BR:
   address_one: Endereço
   address_two: Complemento
   city: Cidade
+  next: Próximo
+  recipient_address: Endereço Destinatário
+  sender_address: Endereço Remetente
   zip: CEP
 
   ############# PRODUCT #############

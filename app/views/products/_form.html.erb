@@ -1,0 +1,42 @@
+<!-- Existe alguma mensagem de erro de sistema? -->
+<% if(order.errors.any?) %>
+  <div class="messages alert alert-warning" role="alert">
+    <p><%= t('verify_the_following_errors') %>:</p>
+    <ul>
+      <% order.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="order__form">
+  <%= form_with(model: [@order, @product], local: true) do |form| %>
+      <div>
+        <table class="product__form table table-success table-striped">
+          <thead>
+            <tr>
+              <th><%= t('code') %></th>
+              <th><%= t('width') %></th>
+              <th><%= t('height') %></th>
+              <th><%= t('depth') %></th>
+              <th><%= t('weight') %></th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody class="order-products">
+            <%= form.fields_for :products do |order_product| %>
+              <%= render partial: "order_product_fields", locals: { f: product } %>
+            <% end %>
+          </tbody>
+        </table>
+        <%= link_to_add_association 'Adicionar Produto', form, :products,
+          'data-association-insertion-node' => ".order-products",
+          'data-association-insertion-method' => "append",
+          class: "btn btn-secondary" %>
+    </div>
+    <div class="orders__btn">
+      <%= form.submit t('save'), class: "btn btn-success" %>
+    </div>
+  <% end %>
+</div>
