@@ -10,7 +10,7 @@ describe "View orders" do
     it "visit page" do
       #Act
       visit root_path
-      click_on 'Pedidos'
+      click_on 'Ordens de Entrega'
       #Assert
       expect(current_path).to eq orders_path
     end
@@ -37,7 +37,7 @@ describe "View orders" do
 
       #Act
       visit root_path
-      click_on 'Pedidos'
+      click_on 'Ordens de Entrega'
       #Assert
       within('div.orders__products') do
         within('table thead tr:nth-child(1)') do
@@ -60,9 +60,9 @@ describe "View orders" do
     it "no registered orders" do
       #Act
       visit root_path
-      click_on 'Pedidos'
+      click_on 'Ordens de Entrega'
       #Assert
-      expect(page).to have_content 'Nenhum pedido registrado'
+      expect(page).to have_content 'Nenhuma ordem de entrega pendente'
     end
   end
 
@@ -81,7 +81,7 @@ describe "View orders" do
     it "visit page" do
       #Act
       visit root_path
-      click_on 'Pedidos'
+      click_on 'Ordens de Entrega'
       #Assert
       expect(current_path).to eq orders_path
     end
@@ -108,7 +108,7 @@ describe "View orders" do
 
       #Act
       visit root_path
-      click_on 'Pedidos'
+      click_on 'Ordens de Entrega'
       #Assert
       within('div.orders__products') do
         within('table thead tr:nth-child(1)') do
@@ -131,9 +131,9 @@ describe "View orders" do
     it "no registered orders" do
       #Act
       visit root_path
-      click_on 'Pedidos'
+      click_on 'Ordens de Entrega'
       #Assert
-      expect(page).to have_content 'Nenhum pedido registrado'
+      expect(page).to have_content 'Nenhuma ordem de entrega pendente'
     end
   end
 end

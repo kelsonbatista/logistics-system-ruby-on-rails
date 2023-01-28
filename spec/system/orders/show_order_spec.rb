@@ -28,7 +28,7 @@ describe "Show order" do
     it "click on section link" do
       #Act
       visit root_path
-      click_on 'Pedidos'
+      click_on 'Ordens de Entrega'
       click_on @order.code
       #Assert
       expect(current_path).to eq order_path(@order.id)
@@ -43,10 +43,10 @@ describe "Show order" do
     it "successfully" do
       #Act
       visit root_path
-      click_on 'Pedidos'
+      click_on 'Ordens de Entrega'
       click_on @order.code
       #Assert 
-      expect(page).to have_content "Pedido #{Order.last.code}"
+      expect(page).to have_content "Ordem de Entrega #{Order.last.code}"
       expect(page).to have_button 'Voltar'
       within('div.orders__status h3') do
         expect(page).to have_content 'Status: Pendente'
@@ -116,7 +116,7 @@ describe "Show order" do
     it "returns to orders page" do
       #Act
       visit root_path
-      click_on 'Pedidos'
+      click_on 'Ordens de Entrega'
       click_on @order.code
       click_on 'Voltar'
       #Assert
@@ -152,10 +152,10 @@ describe "Show order" do
     it "successfully" do
       #Act
       visit root_path
-      click_on 'Pedidos'
+      click_on 'Ordens de Entrega'
       click_on @order.code
       #Assert 
-      expect(page).to have_content "Pedido #{Order.last.code}"
+      expect(page).to have_content "Ordem de Entrega #{Order.last.code}"
       expect(page).to have_button 'Voltar'
       within('div.orders__status h3') do
         expect(page).to have_content 'Status: Pendente'
@@ -225,7 +225,7 @@ describe "Show order" do
     it "returns to orders page" do
       #Act
       visit root_path
-      click_on 'Pedidos'
+      click_on 'Ordens de Entrega'
       click_on @order.code
       click_on 'Voltar'
       #Assert

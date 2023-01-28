@@ -5,8 +5,8 @@ describe "Create order" do
     it "click on section link" do
       #Act
       visit root_path
-      click_on 'Pedidos'
-      click_on 'Novo Pedido'
+      click_on 'Ordens de Entrega'
+      click_on 'Nova Ordem de Entrega'
       #Assert
       expect(current_path).to eq new_order_path
       expect(page).to have_button 'Voltar'
@@ -27,8 +27,8 @@ describe "Create order" do
     it "view page and form" do
       #Act
       visit root_path
-      click_on 'Pedidos'
-      click_on 'Novo Pedido'
+      click_on 'Ordens de Entrega'
+      click_on 'Nova Ordem de Entrega'
       #Assert
       expect(current_path).to eq new_order_path
       expect(page).to have_button 'Voltar'
@@ -43,8 +43,8 @@ describe "Create order" do
     it "successfully" do
       #Act
       visit root_path
-      click_on 'Pedidos'
-      click_on 'Novo Pedido'
+      click_on 'Ordens de Entrega'
+      click_on 'Nova Ordem de Entrega'
       #Act - Distance
       fill_in "Distância",	with: 100
       click_on 'Próximo'
@@ -69,8 +69,8 @@ describe "Create order" do
       find("#product_weight").set('500')
       click_on 'Salvar'
       #Assert
-      expect(page).to have_content 'Pedido registrado com sucesso'  
-      expect(page).to have_content "Pedido #{Order.last.code}"
+      expect(page).to have_content 'Ordem de entrega registrada com sucesso'  
+      expect(page).to have_content "Ordem de Entrega #{Order.last.code}"
       expect(page).to have_button 'Voltar'
       within('div.orders__status h3') do
         expect(page).to have_content 'Status: Pendente'
@@ -148,8 +148,8 @@ describe "Create order" do
     it "not empty fields - distance" do
       #Act
       visit root_path
-      click_on 'Pedidos'
-      click_on 'Novo Pedido'
+      click_on 'Ordens de Entrega'
+      click_on 'Nova Ordem de Entrega'
       #Act - Distance
       fill_in "Distância",	with: ''
       click_on 'Próximo'
@@ -160,8 +160,8 @@ describe "Create order" do
     it "not empty fields - sender address" do
       #Act
       visit root_path
-      click_on 'Pedidos'
-      click_on 'Novo Pedido'
+      click_on 'Ordens de Entrega'
+      click_on 'Nova Ordem de Entrega'
       #Act - Distance
       fill_in "Distância",	with: 100
       click_on 'Próximo'
@@ -182,8 +182,8 @@ describe "Create order" do
     it "not empty fields - sender address" do
       #Act
       visit root_path
-      click_on 'Pedidos'
-      click_on 'Novo Pedido'
+      click_on 'Ordens de Entrega'
+      click_on 'Nova Ordem de Entrega'
       #Act - Distance
       fill_in "Distância",	with: 100
       click_on 'Próximo'
@@ -211,8 +211,8 @@ describe "Create order" do
     it "not empty fields - sender address" do
       #Act
       visit root_path
-      click_on 'Pedidos'
-      click_on 'Novo Pedido'
+      click_on 'Ordens de Entrega'
+      click_on 'Nova Ordem de Entrega'
       #Act - Distance
       fill_in "Distância",	with: 100
       click_on 'Próximo'
@@ -254,8 +254,8 @@ describe "Create order" do
     it "view page and form" do
       #Act
       visit root_path
-      click_on 'Pedidos'
-      click_on 'Novo Pedido'
+      click_on 'Ordens de Entrega'
+      click_on 'Nova Ordem de Entrega'
       #Assert
       expect(current_path).to eq new_order_path
       expect(page).to have_button 'Voltar'
@@ -270,8 +270,8 @@ describe "Create order" do
     it "successfully" do
       #Act
       visit root_path
-      click_on 'Pedidos'
-      click_on 'Novo Pedido'
+      click_on 'Ordens de Entrega'
+      click_on 'Nova Ordem de Entrega'
       #Act - Distance
       fill_in "Distância",	with: 100
       click_on 'Próximo'
@@ -296,8 +296,8 @@ describe "Create order" do
       find("#product_weight").set('500')
       click_on 'Salvar'
       #Assert
-      expect(page).to have_content 'Pedido registrado com sucesso'  
-      expect(page).to have_content "Pedido #{Order.last.code}"
+      expect(page).to have_content 'Ordem de entrega registrada com sucesso'  
+      expect(page).to have_content "Ordem de Entrega #{Order.last.code}"
       expect(page).to have_button 'Voltar'
       within('div.orders__status h3') do
         expect(page).to have_content 'Status: Pendente'
@@ -375,8 +375,8 @@ describe "Create order" do
     it "not empty fields - distance" do
       #Act
       visit root_path
-      click_on 'Pedidos'
-      click_on 'Novo Pedido'
+      click_on 'Ordens de Entrega'
+      click_on 'Nova Ordem de Entrega'
       #Act - Distance
       fill_in "Distância",	with: ''
       click_on 'Próximo'
@@ -387,8 +387,8 @@ describe "Create order" do
     it "not empty fields - sender address" do
       #Act
       visit root_path
-      click_on 'Pedidos'
-      click_on 'Novo Pedido'
+      click_on 'Ordens de Entrega'
+      click_on 'Nova Ordem de Entrega'
       #Act - Distance
       fill_in "Distância",	with: 100
       click_on 'Próximo'
@@ -409,8 +409,8 @@ describe "Create order" do
     it "not empty fields - sender address" do
       #Act
       visit root_path
-      click_on 'Pedidos'
-      click_on 'Novo Pedido'
+      click_on 'Ordens de Entrega'
+      click_on 'Nova Ordem de Entrega'
       #Act - Distance
       fill_in "Distância",	with: 100
       click_on 'Próximo'
@@ -438,8 +438,8 @@ describe "Create order" do
     it "not empty fields - sender address" do
       #Act
       visit root_path
-      click_on 'Pedidos'
-      click_on 'Novo Pedido'
+      click_on 'Ordens de Entrega'
+      click_on 'Nova Ordem de Entrega'
       #Act - Distance
       fill_in "Distância",	with: 100
       click_on 'Próximo'

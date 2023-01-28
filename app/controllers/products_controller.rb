@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
     @order = Order.find(params[:order_id])
     @product = Product.new(product_params)
     if @product.save
-      flash[:notice] = "Pedido registrado com sucesso!"
+      flash[:notice] = "Ordem de entrega registrada com sucesso!"
       OrderProduct.create(order_id: @order.id, product_id: @product.id)
       return redirect_to order_path(@order.id)
     end

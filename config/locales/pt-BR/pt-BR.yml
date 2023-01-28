@@ -35,16 +35,16 @@ pt-BR:
   name: Nome
   new_deadline: Novo Prazo
   new_mode: Nova Modalidade
-  new_order: Novo Pedido
+  new_order: Nova Ordem de Entrega
   new_price: Novo Preço
   new_vehicle: Novo Veículo
   no_deadlines_registered: Nenhum prazo cadastrado
   no_modes_registered: Nenhuma modalidade cadastrada
   no_prices_registered: Nenhum preço cadastrado
   no_vehicles_registered: Nenhum veículo cadastrado
-  order: Pedido
+  order: Ordem de Entrega
   order_date: Data
-  orders: Pedidos
+  orders: Ordens de Entrega
   plate: Placa
   price: Preço
   prices: Preços
@@ -85,7 +85,10 @@ pt-BR:
   canceled: Cancelado
   delivered: Entregue
   in_transit: Em trânsito
-  no_orders_registered: Nenhum pedido registrado
+  no_pending_orders: Nenhuma ordem de entrega pendente
+  no_canceled_orders: Nenhuma ordem de entrega cancelada
+  no_in_transist_orders: Nenhuma ordem de entrega em trânsito
+  no_returned_orders: Nenhuma ordem de entrega retornada
   pending: Pendente
   returned: Retornado
   sent: Enviado
@@ -98,9 +101,9 @@ pt-BR:
   next: Próximo
   recipient_address: Endereço de Entrega
   sender_address: Endereço de Retirada
-  this_order_does_not_have_product: Esse pedido ainda não possui produtos
-  this_order_does_not_have_recipient_address: Esse pedido ainda não possui endereço destinatário
-  this_order_does_not_have_sender_address: Esse pedido ainda não possui endereço remetente
+  this_order_does_not_have_product: Essa ordem de entrega ainda não possui produtos
+  this_order_does_not_have_recipient_address: Essa ordem de entrega ainda não possui endereço destinatário
+  this_order_does_not_have_sender_address: Essa ordem de entrega ainda não possui endereço remetente
   zip: CEP
 
   ############# PRODUCT #############
