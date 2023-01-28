@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-fdescribe "View orders" do
+describe "View orders" do
   context "user not authenticated" do
     it "visit section directly" do
       visit orders_path
@@ -17,88 +17,44 @@ fdescribe "View orders" do
 
     it "successfully" do
       #Arrange
-      ############ ADDRESS #############
-      for i in 1..3 do
-        Address.create!(
-          person: "recipient",
-          address_one: "Av Paulista, 100#{i}",
-          address_two: "Bela Vista",
-          city: "São Paulo",
-          state: "SP",
-          zip: "10000-10#{i}"
-        )
-        Address.create!(
-          person: "sender",
-          address_one: "Av Atlântica, 200#{i}",
-          address_two: "Copacabana",
-          city: "Rio de Janeiro",
-          state: "RJ",
-          zip: "20000-20#{i}"
-        )
-      end
+      Address.create!(person: "recipient", address_one: "Av Paulista, 1001", address_two: "Bela Vista", 
+                      city: "São Paulo", state: "SP", zip: "10000-101")
+      Address.create!(person: "sender", address_one: "Av Atlântica, 2002", address_two: "Copacabana", 
+                      city: "Rio de Janeiro", state: "RJ", zip: "20000-202")
 
-      ############ ORDERS #############
-      for i in 1..5 do
-        Order.create!(
-          code: "LOG700#{i}",
-          distance: 100 * i,
-          status: i
-        )
-      end
+      order = Order.create!(distance: 100)
 
-      ############ PRODUCTS #############
-      for i in 1..3 do
-        Product.create!(
-          code: "ABC100#{i}",
-          width: 50 * i,
-          height: 30 * i,
-          depth: 10 * i,
-          weight: 100 * i,
-          order_id: i
-        )
-        Product.create!(
-          code: "ABC200#{i}",
-          width: 40 * i,
-          height: 20 * i,
-          depth: 5 * i,
-          weight: 50 * i,
-          order_id: i + 1
-        )
-        Product.create!(
-          code: "ABC300#{i}",
-          width: 70 * i,
-          height: 50 * i,
-          depth: 30 * i,
-          weight: 150 * i,
-          order_id: i + 2
-        )
-      end
+      OrderAddress.create!(order_id: 1, address_id: 1)
+      OrderAddress.create!(order_id: 1, address_id: 2)
+
+      Product.create!(width: 50, height: 30, depth: 10, weight: 100)
+      Product.create!(width: 70, height: 50, depth: 40, weight: 200)
+      Product.create!(width: 90, height: 70, depth: 80, weight: 300)
+
+      OrderProduct.create!(order_id: 1, product_id: 1)
+      OrderProduct.create!(order_id: 1, product_id: 2)
+      OrderProduct.create!(order_id: 1, product_id: 3)
 
       #Act
       visit root_path
       click_on 'Pedidos'
       #Assert
-      expect(page).to have_content 'Código'
-      expect(page).to have_content 'Data'
-      expect(page).to have_content 'Volumes (un)'
-      expect(page).to have_content 'Peso (Kg)'
-      expect(page).to have_content 'Distância (Km)'
-      expect(page).to have_content 'Status'
-      expect(page).to have_content 'LOG7001'
-      expect(page).to have_content 'LOG7002'
-      expect(page).to have_content 'LOG7003'
-      expect(page).to have_content 'LOG7004'  
-      expect(page).to have_content 'LOG7005'
-      expect(page).to have_content Date.today.strftime("%d/%m/%Y")
-      expect(page).to have_content '100'
-      expect(page).to have_content '300'
-      expect(page).to have_content '500'
-      expect(page).to have_content '550'
-      expect(page).to have_content 'Aguardando'
-      expect(page).to have_content 'Enviado'
-      expect(page).to have_content 'Entregue'
-      expect(page).to have_content 'Cancelado'
-      expect(page).to have_content 'Retornado'
+      within('div.orders__products') do
+        within('table thead tr:nth-child(1)') do
+          expect(page).to have_content 'Código'
+          expect(page).to have_content 'Data'
+          expect(page).to have_content 'Volumes (un)'
+          expect(page).to have_content 'Peso (Kg)'
+          expect(page).to have_content 'Status'
+        end
+        within('table tbody tr:nth-child(1)') do
+          expect(page).to have_content order.code
+          expect(page).to have_content Date.today.strftime("%d/%m/%Y")
+          expect(page).to have_content '3'
+          expect(page).to have_content '600'
+          expect(page).to have_content 'Pendente'
+        end
+      end
     end
 
     it "no registered orders" do
@@ -113,13 +69,7 @@ fdescribe "View orders" do
   context "user authenticated" do
     before(:each) do
       #Arrange
-      user = User.create!(
-        name: "Usuario 1",
-        email: "usuario1@email.com",
-        password: '123456',
-        role: "user"
-      )
-
+      user = User.create!(name: "Jose Silva", email: "jose@email.com", password: '123456', role: "user" )
       login_as(user)
     end
 
@@ -138,88 +88,44 @@ fdescribe "View orders" do
 
     it "successfully" do
       #Arrange
-      ############ ADDRESS #############
-      for i in 1..3 do
-        Address.create!(
-          person: "recipient",
-          address_one: "Av Paulista, 100#{i}",
-          address_two: "Bela Vista",
-          city: "São Paulo",
-          state: "SP",
-          zip: "10000-10#{i}"
-        )
-        Address.create!(
-          person: "sender",
-          address_one: "Av Atlântica, 200#{i}",
-          address_two: "Copacabana",
-          city: "Rio de Janeiro",
-          state: "RJ",
-          zip: "20000-20#{i}"
-        )
-      end
+      Address.create!(person: "recipient", address_one: "Av Paulista, 1001", address_two: "Bela Vista", 
+                      city: "São Paulo", state: "SP", zip: "10000-101")
+      Address.create!(person: "sender", address_one: "Av Atlântica, 2002", address_two: "Copacabana", 
+                      city: "Rio de Janeiro", state: "RJ", zip: "20000-202")
 
-      ############ ORDERS #############
-      for i in 1..5 do
-        Order.create!(
-          code: "LOG700#{i}",
-          distance: 100 * i,
-          status: i
-        )
-      end
+      order = Order.create!(distance: 100)
 
-      ############ PRODUCTS #############
-      for i in 1..3 do
-        Product.create!(
-          code: "ABC100#{i}",
-          width: 50 * i,
-          height: 30 * i,
-          depth: 10 * i,
-          weight: 100 * i,
-          order_id: i
-        )
-        Product.create!(
-          code: "ABC200#{i}",
-          width: 40 * i,
-          height: 20 * i,
-          depth: 5 * i,
-          weight: 50 * i,
-          order_id: i + 1
-        )
-        Product.create!(
-          code: "ABC300#{i}",
-          width: 70 * i,
-          height: 50 * i,
-          depth: 30 * i,
-          weight: 150 * i,
-          order_id: i + 2
-        )
-      end
+      OrderAddress.create!(order_id: 1, address_id: 1)
+      OrderAddress.create!(order_id: 1, address_id: 2)
+
+      Product.create!(width: 50, height: 30, depth: 10, weight: 100)
+      Product.create!(width: 70, height: 50, depth: 40, weight: 200)
+      Product.create!(width: 90, height: 70, depth: 80, weight: 300)
+
+      OrderProduct.create!(order_id: 1, product_id: 1)
+      OrderProduct.create!(order_id: 1, product_id: 2)
+      OrderProduct.create!(order_id: 1, product_id: 3)
 
       #Act
       visit root_path
       click_on 'Pedidos'
       #Assert
-      expect(page).to have_content 'Código'
-      expect(page).to have_content 'Data'
-      expect(page).to have_content 'Volumes (un)'
-      expect(page).to have_content 'Peso (Kg)'
-      expect(page).to have_content 'Distância (Km)'
-      expect(page).to have_content 'Status'
-      expect(page).to have_content 'LOG7001'
-      expect(page).to have_content 'LOG7002'
-      expect(page).to have_content 'LOG7003'
-      expect(page).to have_content 'LOG7004'  
-      expect(page).to have_content 'LOG7005'
-      expect(page).to have_content Date.today.strftime("%d/%m/%Y")
-      expect(page).to have_content '100'
-      expect(page).to have_content '300'
-      expect(page).to have_content '500'
-      expect(page).to have_content '550'
-      expect(page).to have_content 'Aguardando'
-      expect(page).to have_content 'Enviado'
-      expect(page).to have_content 'Entregue'
-      expect(page).to have_content 'Cancelado'
-      expect(page).to have_content 'Retornado'
+      within('div.orders__products') do
+        within('table thead tr:nth-child(1)') do
+          expect(page).to have_content 'Código'
+          expect(page).to have_content 'Data'
+          expect(page).to have_content 'Volumes (un)'
+          expect(page).to have_content 'Peso (Kg)'
+          expect(page).to have_content 'Status'
+        end
+        within('table tbody tr:nth-child(1)') do
+          expect(page).to have_content order.code
+          expect(page).to have_content Date.today.strftime("%d/%m/%Y")
+          expect(page).to have_content '3'
+          expect(page).to have_content '600'
+          expect(page).to have_content 'Pendente'
+        end
+      end
     end
 
     it "no registered orders" do
