@@ -4,6 +4,6 @@
     <%= button_to(t("back"), orders_path, method: :get, class: "btn btn-primary back__btn") %>
   </div>
   <div class="orders__list">
-    <%= render partial: "form", locals: { order: @order } %>
+    <%= render partial: "form", locals: { product: @product } %>
   </div>
 </section>

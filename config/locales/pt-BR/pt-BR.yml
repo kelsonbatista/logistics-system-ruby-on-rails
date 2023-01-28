@@ -96,13 +96,18 @@ pt-BR:
   address_two: Complemento
   city: Cidade
   next: Próximo
-  recipient_address: Endereço Destinatário
-  sender_address: Endereço Remetente
+  recipient_address: Endereço de Entrega
+  sender_address: Endereço de Retirada
+  this_order_does_not_have_product: Esse pedido ainda não possui produtos
+  this_order_does_not_have_recipient_address: Esse pedido ainda não possui endereço destinatário
+  this_order_does_not_have_sender_address: Esse pedido ainda não possui endereço remetente
   zip: CEP
 
   ############# PRODUCT #############
-  width: Largura
-  height: Altura
-  depth: Profundidade
-  weight: Peso
   actions: Ações
+  add_product: Adicionar Produto
+  depth: Profundidade
+  height: Altura
+  product: Produto
+  weight: Peso
+  width: Largura

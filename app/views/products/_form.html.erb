@@ -1,9 +1,9 @@
 <!-- Existe alguma mensagem de erro de sistema? -->
-<% if(order.errors.any?) %>
+<% if(product.errors.any?) %>
   <div class="messages alert alert-warning" role="alert">
     <p><%= t('verify_the_following_errors') %>:</p>
     <ul>
-      <% order.errors.full_messages.each do |msg| %>
+      <% product.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
     </ul>
@@ -11,27 +11,26 @@
 <% end %>
 
 <div class="order__form">
-  <%= form_with(model: [@order, @product], local: true) do |form| %>
-      <div>
-        <table class="product__form table table-success table-striped">
-          <thead>
-            <tr>
-              <th><%= t('width') %> (cm)</th>
-              <th><%= t('height') %> (cm)</th>
-              <th><%= t('depth') %> (cm)</th>
-              <th><%= t('weight') %> (Kg)</th>
-            </tr>
-          </thead>
-          <tbody class="order-products">
-            <tr>
-              <td><%= form.number_field :width, class: "form-control product__field" %></td>
-              <td><%= form.number_field :height, class: "form-control product__field" %></td>
-              <td><%= form.number_field :depth, class: "form-control product__field" %></td>
-              <td><%= form.number_field :weight, class: "form-control product__field" %></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+  <%= form_with(model: [@order, @product]) do |form| %>
+    <div>
+      <table class="product__form table table-success table-striped">
+        <thead>
+          <tr>
+            <th><%= t('width') %> (cm)</th>
+            <th><%= t('height') %> (cm)</th>
+            <th><%= t('depth') %> (cm)</th>
+            <th><%= t('weight') %> (Kg)</th>
+          </tr>
+        </thead>
+        <tbody class="order-products">
+          <tr>
+            <td><%= form.number_field :width, class: "form-control product__field" %></td>
+            <td><%= form.number_field :height, class: "form-control product__field" %></td>
+            <td><%= form.number_field :depth, class: "form-control product__field" %></td>
+            <td><%= form.number_field :weight, class: "form-control product__field" %></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <div class="orders__btn">
       <%= form.submit t('save'), class: "btn btn-success" %>

@@ -2,124 +2,111 @@
   <div class="orders">
     <h1><%= t('order') %> <%= @order.code %></h1>
     <%= button_to(t("back"), orders_path, method: :get, class: "btn btn-primary orders__btn") %>
-    
-  <div class="orders__price-list">
-    <h3><%= t('product') %></h3>
-    <% if @orders.empty? %>
-      <h5><%= t('this_order_does_not_have_product') %></h5>
-    <% else %>
-      <table class="container table table-success table-striped">
-        <thead>
+      <div class="orders__status">
+        <h3><%= t('status') %>: <%= t(@order.status) %></h3>
+      </div>
+
+      <div class="orders__products">
+        <h3><%= t('product') %></h3>  
+        <% if @products.empty? %>
+          <h5><%= t('this_order_does_not_have_product') %></h5>
+        <% else %>
+          <table class="container table table-success table-striped">
+            <thead>
+              <tr>
+                <th><%= t('width') %> (cm)</th>
+                <th><%= t('height') %> (cm)</th>
+                <th><%= t('depth') %> (cm)</th>
+                <th><%= t('weight') %> (Kg)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @products.each do |product| %>
+                <tr>
+                  <td><%= product.width %> cm</td>
+                  <td><%= product.height %> cm</td>
+                  <td><%= product.depth %> cm</td>
+                  <td><%= product.weight %> Kg</td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% end %>
+        <div class="btn__new">
+          <%= button_to(t('add_product'), new_order_product_path(order_id: @order.id), method: :get, class: "btn btn-secondary") %>
+        </div>
+      </div>
+
+      <div class="orders__addresses">
+        <h3><%= t('sender_address') %></h3>
+        <% if @sender_addresses.empty? %>
+          <h5><%= t('this_order_does_not_have_sender_address') %></h5>
+        <% else %>
+          <% @sender_addresses.each do |sa| %>
+            <table class="container table table-success table-striped">
+              <tr>
+                <th><%= t('address_one') %></th>
+                <td><%= sa.address_one %></td>
+              </tr>
+              <tr>
+                <th><%= t('address_two') %></th>
+                <td><%= sa.address_two %></td>
+              </tr>
+              <tr>
+                <th><%= t('city') %></th>
+                <td><%= sa.city %>-<%= sa.state %></td>
+              </tr>
+              <tr>
+                <th><%= t('zip') %></th>
+                <td><%= sa.zip %></td>
+              </tr>
+            </table>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="orders__addresses">
+        <h3><%= t('recipient_address') %></h3>
+        <% if @recipient_addresses.empty? %>
+          <h5><%= t('this_order_does_not_have_recipient_address') %></h5>
+        <% else %>
+          <% @recipient_addresses.each do |ra| %>
+            <table class="container table table-success table-striped">
+              <tr>
+                <th><%= t('address_one') %></th>
+                <td><%= ra.address_one %></td>
+              </tr>
+              <tr>
+                <th><%= t('address_two') %></th>
+                <td><%= ra.address_two %></td>
+              </tr>
+              <tr>
+                <th><%= t('city') %></th>
+                <td><%= ra.city %>-<%= ra.state %></td>
+              </tr>
+              <tr>
+                <th><%= t('zip') %></th>
+                <td><%= ra.zip %></td>
+              </tr>
+            </table>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div>
+        <h3><%= t('distance') %></h3>
+        <table class="orders__table table table-success table-striped">
           <tr>
-            <th><%= t('width') %> (cm)</th>
-            <th><%= t('height') %> (cm)</th>
-            <th><%= t('depth') %> (cm)</th>
-            <th><%= t('weight') %> (Kg)</th>
+            <th><%= t('distance') %></th>
+            <td><%= @order.distance %> Km</td>
           </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><%= order.product.width %> cm</td>
-            <td><%= order.product.height %> cm</td>
-            <td><%= order.product.depth %> cm</td>
-            <td><%= order.product.weight %> Kg</td>
-          </tr>
-        </tbody>
-      </table>
-    <% end %>
-  </div>
+        </table>
+      </div>
 
-  <div class="orders__addresses">
-    <h3><%= t('recipient_address') %></h3>
-    <% if @orders.empty? %>
-      <h5><%= t('this_order_does_not_have_recipient_address') %></h5>
-    <% else %>
-      <table class="container table table-success table-striped">
-        <tr>
-          <th><%= t('address_one') %></th>
-          <td><%= @order.address.address_one %></td>
-        </tr>
-        <tr>
-          <th><%= t('address_two') %></th>
-          <td><%= @order.address.address_two %></td>
-        </tr>
-        <tr>
-          <th><%= t('city') %></th>
-          <td><%= @order.address.city %>-<%= @order.address.state %></td>
-        </tr>
-        <tr>
-          <th><%= t('zip') %></th>
-          <td><%= @order.address.zip %></td>
-        </tr>
-      </table>
-    <% end %>
-  </div>
+      <div class="btn__bottom">
+        <%= button_to(t("edit"), edit_order_path(@order.id), method: :get, class: "btn btn-warning") %>
+        <%= button_to(t("delete"), order_path(@order.id), method: :delete, class: "btn btn-danger") %>
+      </div>
 
-  <div class="orders__orders-list">
-    <h3><%= t('sender_address') %></h3>
-    <% if @orders.empty? %>
-      <h5><%= t('this_order_does_not_have_sender_address') %></h5>
-    <% else %>
-      <table class="container table table-success table-striped">
-        <tr>
-          <th><%= t('address_one') %></th>
-          <td><%= @order.address.address_one %></td>
-        </tr>
-        <tr>
-          <th><%= t('address_two') %></th>
-          <td><%= @order.address.address_two %></td>
-        </tr>
-        <tr>
-          <th><%= t('city') %></th>
-          <td><%= @order.address.city %>-<%= @order.address.state %></td>
-        </tr>
-        <tr>
-          <th><%= t('zip') %></th>
-          <td><%= @order.address.zip %></td>
-        </tr>
-      </table>
-    <% end %>
   </div>
-
-  <table class="orders__table table table-success table-striped">
-      <tr>
-        <th><%= t('name') %></th>
-        <td><%= @order.name %></td>
-      </tr>
-      <tr>
-        <th><%= t('min_distance') %></th>
-        <td><%= @order.min_distance %> Km</td>
-      </tr>
-      <tr>
-        <th><%= t('max_distance') %></th>
-        <td><%= @order.max_distance %> Km</td>
-      </tr>
-      <tr>
-        <th><%= t('min_weight') %></th>
-        <td><%= @order.min_weight %> Kg</td>
-      </tr>
-      <tr>
-        <th><%= t('max_weight') %></th>
-        <td><%= @order.max_weight %> Kg</td>
-      </tr>
-      <tr>
-        <th><%= t('fixed_fee') %></th>
-        <td><%= t('$') %> <%= @order.fixed_fee %></td>
-      </tr>
-      <tr>
-        <th><%= t('status') %></th>
-        <td>
-          <span class="<%= @order.active ? 'ativo' : 'inativo' %>">
-            <%= @order.active ? t('active') : t('inactive') %>
-          </span>
-        </td>
-      </tr>
-    </table>
-  </div>
-
-  <div class="orders__btn-bottom">
-    <%= button_to(t("edit"), edit_order_path(@order.id), method: :get, class: "btn btn-warning") %>
-    <%= button_to(t("delete"), order_path(@order.id), method: :delete, class: "btn btn-danger") %>
-  </div>
-
 </section>

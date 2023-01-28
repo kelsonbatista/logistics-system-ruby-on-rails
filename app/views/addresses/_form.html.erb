@@ -1,9 +1,9 @@
 <!-- Existe alguma mensagem de erro de sistema? -->
-<% if(order.errors.any?) %>
+<% if(address.errors.any?) %>
   <div class="messages alert alert-warning" role="alert">
     <p><%= t('verify_the_following_errors') %>:</p>
     <ul>
-      <% order.errors.full_messages.each do |msg| %>
+      <% address.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
     </ul>
@@ -13,11 +13,15 @@
 <div class="order__form">
   <%= form_with(model: [@order, @address], local: true) do |form| %>
     <div>
-      <h3>Contagem <%= @address_count %></h3>
       <h3><%= @address_count == 0 ? t('recipient_address') : t('sender_address') %></h3>
       <table class="addresss__form table table-success table-striped">
 
-        <%= form.hidden_field :person, value: 'recipient', class: "form-control" %>
+        <% if @address_count == 0 %>
+          <%= form.hidden_field :person, value: 'recipient', class: "form-control" %>
+        <% else %>
+          <%= form.hidden_field :person, value: 'sender', class: "form-control" %>
+        <% end %>
+
         <tr>
           <th><%= form.label :address_one, t('address_one'), class: "form-label" %></th>
           <td><%= form.text_field :address_one, class: "form-control" %></td>

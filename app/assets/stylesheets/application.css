@@ -174,3 +174,21 @@ div.order__form {
 table.product__form tr td {
   width: 80px !important;
 }
+
+div.orders__status {
+  margin-bottom: 20px !important;
+}
+
+div.btn__bottom {
+  display: flex;
+  justify-content: start;
+  margin-top: 20px !important;
+}
+
+div.btn__bottom button {
+  margin-right: 10px !important;
+}
+
+div.btn__new button {
+  width: 180px !important;
+}

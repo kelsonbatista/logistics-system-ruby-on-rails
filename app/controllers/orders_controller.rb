@@ -2,24 +2,29 @@ class OrdersController < ApplicationController
   before_action :order_find, only: [:show, :edit, :update, :destroy]
 
   def index
-    @orders = Order.all 
+    @orders = Order.all
+    # @products = @order.products
     @products = Order.joins(:products).group(:order_id).select("orders.*, count(products.id) as total_products, sum(products.weight) as total_weight")
+    if @products.empty?
+      @products = { total_products: 0, total_weight: 0 }
+    end
   end
 
   def show
+    @products = @order.products
+    @recipient_addresses = @order.addresses.where(person: 'recipient')
+    @sender_addresses = @order.addresses.where(person: 'sender')
   end
 
   def new
     @order = Order.new
     @order.addresses.build
-    # @order_products = @order.order_products.build
     @order.products.build
   end
 
   def create
     @order = Order.new(order_params)
     if @order.save
-      # flash[:notice] = "Pedido registrado com sucesso!"
       return redirect_to new_order_address_path(order_id: @order.id)
     end
     flash.now[:alert] = "Erro ao registrar pedido!"
