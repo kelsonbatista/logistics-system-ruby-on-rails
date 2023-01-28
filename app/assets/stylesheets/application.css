@@ -192,3 +192,12 @@ div.btn__bottom button {
 div.btn__new button {
   width: 180px !important;
 }
+
+div.orders__addresses {
+  display: flex;
+  justify-content: space-between;
+}
+
+div.orders__addresses div {
+  width: 48% !important;
+}

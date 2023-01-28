@@ -3,11 +3,7 @@ class OrdersController < ApplicationController
 
   def index
     @orders = Order.all
-    # @products = @order.products
-    @products = Order.joins(:products).group(:order_id).select("orders.*, count(products.id) as total_products, sum(products.weight) as total_weight")
-    if @products.empty?
-      @products = { total_products: 0, total_weight: 0 }
-    end
+    @order_products = Order.joins(:products).group(:order_id).select("orders.*, count(products.id) as total_products, sum(products.weight) as total_weight")
   end
 
   def show
