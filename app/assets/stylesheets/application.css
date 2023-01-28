@@ -201,3 +201,12 @@ div.orders__addresses {
 div.orders__addresses div {
   width: 48% !important;
 }
+
+div.orders__products button.nav-link.active {
+  background: #aaa !important;
+  color: white !important;
+}
+
+div.orders__products button.nav-link {
+  border: 1px solid #aaa !important;
+}

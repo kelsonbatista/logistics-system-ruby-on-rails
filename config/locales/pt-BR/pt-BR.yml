@@ -87,7 +87,8 @@ pt-BR:
   in_transit: Em trânsito
   no_pending_orders: Nenhuma ordem de entrega pendente
   no_canceled_orders: Nenhuma ordem de entrega cancelada
-  no_in_transist_orders: Nenhuma ordem de entrega em trânsito
+  no_sent_orders: Nenhuma ordem de entrega enviada
+  no_delivered_orders: Nenhuma ordem de entrega entregue
   no_returned_orders: Nenhuma ordem de entrega retornada
   pending: Pendente
   returned: Retornado
