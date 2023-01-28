@@ -13,7 +13,7 @@ class AddressesController < ApplicationController
       # flash[:notice] = "Endereço registrado com sucesso!"
       if (@address_count == 0 || @address_count == 1)
         flash[:notice] = "contagem 0 ou 1"
-        return redirect_to orders_path(@order)
+        return redirect_to new_order_address_path(order_id: @order.id)
       else
         flash[:notice] = "contagem 2"
         return redirect_to new_order_product_path(order_id: @order.id)

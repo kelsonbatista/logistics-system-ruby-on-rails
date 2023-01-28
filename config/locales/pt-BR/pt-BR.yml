@@ -101,8 +101,8 @@ pt-BR:
   zip: CEP
 
   ############# PRODUCT #############
-  width: Comprimento(cm)
-  height: Altura(cm)
-  depth: Profundidade(cm)
-  weight: Peso(Kg)
+  width: Largura
+  height: Altura
+  depth: Profundidade
+  weight: Peso
   actions: Ações

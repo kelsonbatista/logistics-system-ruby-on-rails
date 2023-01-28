@@ -23,7 +23,7 @@ class Order < ApplicationRecord
   private
 
   def generate_code
-    self.code = SecureRandom.alphanumeric(8).upcase
+    self.code = SecureRandom.alphanumeric(15).upcase
   end
 
   def addresses_attributes=(addresses_attributes)

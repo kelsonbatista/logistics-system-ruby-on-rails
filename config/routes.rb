@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'order_products/new'
   get 'addresses/new'
   get 'order_addresses/new'
   get 'products/new'

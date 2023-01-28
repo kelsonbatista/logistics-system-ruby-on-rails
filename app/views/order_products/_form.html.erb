@@ -11,7 +11,7 @@
 <% end %>
 
 <div class="order__form">
-  <%= form_with(model: [@order, @product], local: true) do |form| %>
+  <%= form_with(model: [@order, @products], local: true) do |form| %>
       <div>
         <table class="product__form table table-success table-striped">
           <thead>
@@ -24,10 +24,10 @@
           </thead>
           <tbody class="order-products">
             <tr>
-              <td><%= form.number_field :width, class: "form-control product__field" %></td>
-              <td><%= form.number_field :height, class: "form-control product__field" %></td>
-              <td><%= form.number_field :depth, class: "form-control product__field" %></td>
-              <td><%= form.number_field :weight, class: "form-control product__field" %></td>
+              <td><%= form.text_field :width, class: "form-control product__field" %></td>
+              <td><%= form.text_field :height, class: "form-control product__field" %></td>
+              <td><%= form.text_field :depth, class: "form-control product__field" %></td>
+              <td><%= form.text_field :weight, class: "form-control product__field" %></td>
             </tr>
           </tbody>
         </table>
