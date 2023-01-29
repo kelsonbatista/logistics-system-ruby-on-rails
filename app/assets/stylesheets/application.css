@@ -77,6 +77,13 @@ table th {
   border-radius: 5px;
 }
 
+.transito {
+  background-color: orange;
+  color: white;
+  padding: 5px 10px !important;
+  border-radius: 5px;
+}
+
 .modes__form, 
 .vehicles__form,
 .prices__form,

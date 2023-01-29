@@ -31,8 +31,24 @@
       <tr>
         <th><%= t('status') %></th>
         <td>
-          <span class="<%= @vehicle.status ? 'ativo' : 'inativo' %>">
-            <%= @vehicle.status ? t('in_operation') : t('in_maintenance') %>
+          <span class="
+            <%= if @vehicle.status == 'in_operation'
+                'ativo'
+              elsif @vehicle.status == 'in_transit'
+                'transito'
+              elsif @vehicle.status == 'in_maintenance'
+                'inativo'
+              end
+            %>
+          ">
+            <%= if @vehicle.status == 'in_operation'
+                t('in_operation')
+              elsif @vehicle.status == 'in_transit'
+                t('in_transit')
+              elsif @vehicle.status == 'in_maintenance'
+                t('in_maintenance')
+              end
+            %>
           </span>
         </td>
       </tr>

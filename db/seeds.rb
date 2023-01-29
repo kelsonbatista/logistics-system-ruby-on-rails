@@ -14,13 +14,13 @@ Mode.create!(name: "Star Pack", min_distance: 10, max_distance: 100,
   min_weight: 30, max_weight: 50, fixed_fee: 100, active: true)
 
 Vehicle.create!(plate: "ABC-1231", brand: "Volkswagem", model: "Gol 1.6", category: "Passeio", 
-      year: "2011", capacity: 100, status: true, mode_id: 1)
+      year: "2011", capacity: 100, status: 0, mode_id: 1)
 
 Vehicle.create!(plate: "ABC-1232", brand: "Fiat", model: "Fiorino 1.6", category: "Carga Leve", 
-      year: "2012", capacity: 400, status: true, mode_id: 1)
+      year: "2012", capacity: 400, status: 0, mode_id: 1)
 
 Vehicle.create!(plate: "ABC-1233", brand: "Ford", model: "Furgão 4.0", category: "Carga Média", 
-      year: "2013", capacity: 1000, status: true, mode_id: 1)
+      year: "2013", capacity: 1000, status: 0, mode_id: 1)
 
 Price.create!(min_weight: 1, max_weight: 3, price_per_km: 0.11, mode_id: 1)
 Price.create!(min_weight: 4, max_weight: 7, price_per_km: 0.22, mode_id: 1)

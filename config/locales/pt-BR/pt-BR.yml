@@ -21,6 +21,8 @@ pt-BR:
   in_maintenance_vehicles: Veículos em manutenção
   in_operation: Em operação
   in_operation_vehicles: Veículos em operação
+  in_transit: Em entrega
+  in_transit_vehicles: Veículos em entrega
   inactive: Inativo
   interval: Intervalo
   logistics: Transportadoras

@@ -43,8 +43,7 @@
       <tr>
         <th><%= f.label :status, t('status'), class: "form-label" %></th>
         <td>
-          <%= f.check_box :status, class: "form-check-input" %> 
-          
+          <%= f.select :status, Vehicle.statuses.keys, {}, { class: "form-select" } %>
         </td>
       </tr>
     </table>
