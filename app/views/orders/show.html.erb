@@ -128,7 +128,7 @@
               <% @modes_prices_deadlines.each do |mode| %>
                 <tr>
                   <td><%= mode.name %></td>
-                  <td><%= t('$') %> <%= '%.2f' % (mode.price_per_km * @order.distance) %></td>
+                  <td><%= t('$') %> <%= '%.2f' % ((mode.price_per_km * @order.distance) + mode.fixed_fee) %></td>
                   <td><%= mode.deadline %> dias</td>
                 </tr>
               <% end %>
