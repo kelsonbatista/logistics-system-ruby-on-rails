@@ -66,7 +66,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_25_192855) do
     t.string "code", limit: 15
     t.integer "distance"
     t.integer "mode"
-    t.integer "price"
+    t.float "total"
+    t.float "price_km"
+    t.float "fixed_fee"
     t.integer "deadline"
     t.integer "status", default: 0
     t.datetime "created_at", null: false
