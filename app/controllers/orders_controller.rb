@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
     @prices = Price.all
     @deadlines = Deadline.all
 
-    @modes_prices_deadlines = @modes.joins(:prices).joins(:deadlines).select("modes.name, modes.min_distance, modes.max_distance, modes.min_weight, modes.max_weight, prices.min_weight, prices.max_weight, prices.price_per_km, deadlines.min_distance, deadlines.max_distance, deadlines.deadline").where('modes.min_weight <= ?', @products_weight).where('modes.max_weight >= ?', @products_weight).where('prices.min_weight <= ?', @products_weight).where('prices.max_weight >= ?', @products_weight).where('deadlines.min_distance <= ?', @order.distance).where('deadlines.max_distance >= ?', @order.distance).where(active: true)
+    @modes_prices_deadlines = @modes.joins(:prices).joins(:deadlines).select("modes.name, modes.min_distance, modes.max_distance, modes.min_weight, modes.max_weight, modes.fixed_fee, prices.min_weight, prices.max_weight, prices.price_per_km, deadlines.min_distance, deadlines.max_distance, deadlines.deadline").where('modes.min_weight <= ?', @products_weight).where('modes.max_weight >= ?', @products_weight).where('prices.min_weight <= ?', @products_weight).where('prices.max_weight >= ?', @products_weight).where('deadlines.min_distance <= ?', @order.distance).where('deadlines.max_distance >= ?', @order.distance).where(active: true)
   end
 
   def new
