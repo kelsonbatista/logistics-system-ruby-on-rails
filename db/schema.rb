@@ -65,6 +65,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_25_192855) do
   create_table "orders", force: :cascade do |t|
     t.string "code", limit: 15
     t.integer "distance"
+    t.integer "mode"
+    t.integer "price"
+    t.integer "deadline"
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -111,7 +114,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_25_192855) do
     t.string "category"
     t.integer "year"
     t.integer "capacity"
-    t.boolean "status", default: true
+    t.integer "status", default: 0
     t.integer "mode_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

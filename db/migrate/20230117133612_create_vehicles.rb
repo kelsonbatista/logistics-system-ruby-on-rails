@@ -7,7 +7,7 @@ class CreateVehicles < ActiveRecord::Migration[7.0]
       t.string :category
       t.integer :year
       t.integer :capacity
-      t.boolean :status, default: true
+      t.integer :status, default: 0
       t.references :mode, null: false, foreign_key: true
 
       t.timestamps
