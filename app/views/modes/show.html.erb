@@ -84,9 +84,9 @@
         <tbody>
           <% @deadlines.each do |deadline| %>
             <tr>
-              <td><%= deadline.min_distance %> Kg</td>
-              <td><%= deadline.max_distance %> Kg</td>
-              <td>R$ <%= deadline.deadline %></td>
+              <td><%= deadline.min_distance %> Km</td>
+              <td><%= deadline.max_distance %> Km</td>
+              <td><%= deadline.deadline %> dias</td>
             </tr>
           <% end %>
         </tbody>
