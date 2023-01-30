@@ -3,6 +3,7 @@ class Order < ApplicationRecord
   has_many :addresses, through: :order_addresses
   has_many :order_products, dependent: :destroy
   has_many :products, through: :order_products
+  has_one :budgets, dependent: :destroy
 
   accepts_nested_attributes_for :addresses, allow_destroy: true
   accepts_nested_attributes_for :order_products, allow_destroy: true

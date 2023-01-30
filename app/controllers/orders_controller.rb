@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :order_find, only: [:show, :edit, :update, :destroy]
+  before_action :order_find, only: [:show, :show_confirmed, :edit, :update, :destroy]
 
   def index
     @orders = Order.all
@@ -20,12 +20,14 @@ class OrdersController < ApplicationController
     @products = @order.products
     @recipient_addresses = @order.addresses.where(person: 'recipient')
     @sender_addresses = @order.addresses.where(person: 'sender')
+  end
 
-    @modes = Mode.all
-    @prices = Price.all
-    @deadlines = Deadline.all
-
-    @modes_prices_deadlines = @modes.joins(:prices).joins(:deadlines).select("modes.name, modes.min_distance, modes.max_distance, modes.min_weight, modes.max_weight, modes.fixed_fee, prices.min_weight, prices.max_weight, prices.price_per_km, deadlines.min_distance, deadlines.max_distance, deadlines.deadline").where('modes.min_weight <= ?', @products_weight).where('modes.max_weight >= ?', @products_weight).where('prices.min_weight <= ?', @products_weight).where('prices.max_weight >= ?', @products_weight).where('deadlines.min_distance <= ?', @order.distance).where('deadlines.max_distance >= ?', @order.distance).where(active: true)
+  def show_confirmed
+    @products_weight = Product.joins(:orders).where(orders: {id: @order.id}).sum(:weight)
+    @products = @order.products
+    @recipient_addresses = @order.addresses.where(person: 'recipient')
+    @sender_addresses = @order.addresses.where(person: 'sender')
+    @budget = Budget.find_by(order_id: params[:id])
   end
 
   def new
@@ -43,10 +45,26 @@ class OrdersController < ApplicationController
     render :new, status: :unprocessable_entity
   end
 
+  def edit
+  end
+
+  def update
+    if @order.update(order_params)
+      @mode = Mode.find(@order.mode)
+      @vehicle = Vehicle.where(mode_id: @mode.id).where(status: 'in_operation').first
+      @vehicle.update(status: 'in_transit')
+      flash[:notice] = "Ordem de entrega confirmada!"
+      return redirect_to order_confirmed_path(@order)
+    end
+    flash.now[:alert] = "Erro ao confirmar a ordem de entrega"
+    render :edit, status: :unprocessable_entity
+  end
+
   private
 
   def order_params
-    params.require(:order).permit(:code, :distance, :status, 
+    params.require(:order).permit(:id, :code, :distance, :mode, :total, :price_km, :fixed_fee, :deadline, :status, 
+      budgets_attributes: [:id, :mode, :total, :price_km, :fixed_fee, :deadline, :order_id, :_destroy],
       addresses_attributes: [:id, :person, :address_one, :address_two, :city, :state, :zip, :_destroy],
       order_products_attributes: [:id, :order_id, :product_id, :_destroy,
       products_attributes: [:id, :code, :width, :height, :depth, :weight, :_destroy]])

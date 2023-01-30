@@ -89,7 +89,6 @@ pt-BR:
   in_transit: Em trânsito
   no_canceled_orders: Nenhuma ordem de entrega cancelada
   no_delivered_orders: Nenhuma ordem de entrega entregue
-  no_mode_can_attend_this_order: Nenhuma modalidade atende essa ordem de entrega
   no_pending_orders: Nenhuma ordem de entrega pendente
   no_returned_orders: Nenhuma ordem de entrega retornada
   no_sent_orders: Nenhuma ordem de entrega enviada
@@ -118,3 +117,11 @@ pt-BR:
   product: Produto
   weight: Peso
   width: Largura
+
+  ############ BUDGET ################
+  confirm_order: Confirmar Ordem de Entrega
+  mode: Modalidade
+  no_mode_can_attend_this_order: Nenhuma modalidade atende essa ordem de entrega
+  order: Ordem de entrega
+  select_desired_mode: Selecione a modalidade desejada
+  select_mode: Selecione a modalidade

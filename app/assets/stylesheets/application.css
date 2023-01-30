@@ -133,7 +133,7 @@ section div h3 {
 }
 
 div h5 {
-  margin: 30px 0 !important;
+  margin: 50px 0 !important;
 }
 
 section div.login {
@@ -196,6 +196,15 @@ div.btn__bottom button {
   margin-right: 10px !important;
 }
 
+div.btn__bottom button.orders__btn-budget {
+  width: 210px !important;
+}
+
+div.orders__btn-budget input[type="submit"] {
+  margin: 10px 0 !important;
+  width: 260px !important;
+}
+
 div.btn__new button {
   width: 180px !important;
 }
@@ -210,10 +219,23 @@ div.orders__addresses div {
 }
 
 div.orders__products button.nav-link.active {
-  background: #aaa !important;
+  background: #888 !important;
   color: white !important;
 }
 
 div.orders__products button.nav-link {
-  border: 1px solid #aaa !important;
+  border: 1px solid #888 !important;
+}
+
+div.form-check {
+  display: flex;
+  justify-content: center;
+}
+
+div.form-check input {
+  border: 1px solid #666;
+}
+
+div.budget__form h3 {
+  margin: 10px 0 !important;
 }

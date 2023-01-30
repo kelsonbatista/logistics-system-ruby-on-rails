@@ -1,7 +1,7 @@
 <section>
   <div class="orders">
     <h1><%= t('order') %> <%= @order.code %></h1>
-    <%= button_to(t("back"), orders_path, method: :get, class: "btn btn-primary back__btn") %>
+    <%= button_to(t("back"), order_path(@order), method: :get, class: "btn btn-primary back__btn") %>
   </div>
   <div class="orders__list">
     <%= render partial: "form", locals: { product: @product } %>

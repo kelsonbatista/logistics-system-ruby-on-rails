@@ -1,19 +1,8 @@
-<!-- Existe alguma mensagem de erro de sistema? -->
-<% if(@order.errors.any?) %>
-  <div class="messages alert alert-warning" role="alert">
-    <p><%= t('verify_the_following_errors') %>:</p>
-    <ul>
-      <% @order.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
 <section>
   <div class="orders">
     <h1><%= t('order') %> <%= @order.code %></h1>
     <%= button_to(t("back"), orders_path, method: :get, class: "btn btn-primary orders__btn") %>
+
     <div class="orders__status">
       <h3><%= t('status') %>: <%= t(@order.status) %></h3>
     </div>
@@ -46,9 +35,6 @@
           </tbody>
         </table>
       <% end %>
-      <div class="btn__new">
-        <%= button_to(t('add_product'), new_order_product_path(order_id: @order.id), method: :get, class: "btn btn-secondary") %>
-      </div>
     </div>
 
     <div class="orders__addresses">
@@ -118,11 +104,25 @@
       </table>
     </div>
 
-    <div class="btn__bottom">
-      <%= button_to(t('select_mode'), new_order_budget_path(order_id: @order.id), method: :get, class: "btn btn-secondary orders__btn-budget") %>
-      <%= button_to(t("edit"), edit_order_path(@order.id), method: :get, class: "btn btn-warning") %>
-      <%= button_to(t("delete"), order_path(@order.id), method: :delete, class: "btn btn-danger") %>
+    <div class="orders__budget">
+      <h3><%= t('modes') %></h3>
+      <table class="container table table-success table-striped">
+        <thead>
+          <tr>
+            <th><%= t('name') %></th>
+            <th><%= t('price') %></th>
+            <th><%= t('deadline') %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @budget.mode %></td>
+            <td><%= t('$') %> <%= @budget.total %></td>
+            <td><%= @budget.deadline %> dias</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-
+    
   </div>
 </section>

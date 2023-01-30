@@ -1,0 +1,9 @@
+<section>
+  <div class="budgets">
+    <h1><%= t('modes') %> </h1>
+    <%= button_to(t("back"), order_path(@order), method: :get, class: "btn btn-primary back__btn") %>
+  </div>
+  <div class="budgets__list">
+    <%= render partial: "form", locals: { budget: @budget } %>
+  </div>
+</section>
