@@ -21,7 +21,10 @@ class BudgetsController < ApplicationController
   def create
     @order = Order.find(params[:order_id])
     @budget = Budget.new(budget_params)
-    @budget.mode = params[:budget][:mode]
+    @mode_id = params[:budget][:mode]
+    @mode = Mode.find(@mode_id)
+
+    @budget.mode = @mode.name
     @budget.total = params[:budget][:total]
     @budget.price_km = params[:budget][:price_km]
     @budget.fixed_fee = params[:budget][:fixed_fee]
@@ -34,11 +37,15 @@ class BudgetsController < ApplicationController
     @deadlines = Deadline.all
 
     @modes_prices_deadlines = @modes.joins(:prices).joins(:deadlines).select("modes.id, modes.name, modes.min_distance, modes.max_distance, modes.min_weight, modes.max_weight, modes.fixed_fee, prices.min_weight, prices.max_weight, prices.price_per_km, deadlines.min_distance, deadlines.max_distance, deadlines.deadline").where('modes.min_weight <= ?', @products_weight).where('modes.max_weight >= ?', @products_weight).where('prices.min_weight <= ?', @products_weight).where('prices.max_weight >= ?', @products_weight).where('deadlines.min_distance <= ?', @order.distance).where('deadlines.max_distance >= ?', @order.distance).where(active: true)
+
+    @vehicle = Vehicle.all
+    @vehicle = @vehicle.where(mode_id: @mode_id).where(status: 'in_operation').first
     
-    if @budget.save
+    if @budget.save && @vehicle
+      @vehicle.update(status: 'in_transit')
       return redirect_to order_confirmed_path(@order.id)
     end
-    flash.now[:alert] = "Erro ao registrar modalidade!"
+    flash.now[:alert] = "Não há veículos disponíveis para esta modalidade"
     render :new, status: :unprocessable_entity
   end
 
@@ -46,14 +53,16 @@ class BudgetsController < ApplicationController
   end
 
   def update
-    if @budget.update(budget_params)
-      @mode = Mode.find(@budget.mode)
-      @vehicle = Vehicle.where(mode_id: @mode.id).where(status: 'in_operation').first
+    @mode = Mode.find(@budget.mode)
+    @vehicle = Vehicle.all
+    @vehicle = Vehicle.where(mode_id: @mode.id).where(status: 'in_operation').first
+    
+    if @budget.update(budget_params) && @vehicle
       @vehicle.update(status: 'in_transit')
       flash[:notice] = "Ordem de entrega confirmada!"
       return redirect_to order_confirmed_path(@order)
     end
-    flash.now[:alert] = "Erro ao confirmar a ordem de entrega"
+    flash.now[:alert] = "Não há veículos disponíveis para esta modalidade"
     render :edit, status: :unprocessable_entity
   end
 
