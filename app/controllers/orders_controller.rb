@@ -4,6 +4,10 @@ class OrdersController < ApplicationController
   def index
     @orders = Order.all
 
+    @order_products_open = Order.joins(:products).group(:order_id).select("orders.*, count(products.id) as total_products, sum(products.weight) as total_weight").where(status: 'open')
+
+    @order_products_open_no_product = Order.where.not(id: OrderProduct.select(:order_id))
+
     @order_products_pending = Order.joins(:products).group(:order_id).select("orders.*, count(products.id) as total_products, sum(products.weight) as total_weight").where(status: 'pending')
 
     @order_products_sent = Order.joins(:products).group(:order_id).select("orders.*, count(products.id) as total_products, sum(products.weight) as total_weight").where(status: 'sent')
@@ -39,6 +43,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     if @order.save
+      @order.update(status: 'pending')
       return redirect_to new_order_address_path(order_id: @order.id)
     end
     flash.now[:alert] = "Erro ao registrar ordem de entrega!"
@@ -50,9 +55,6 @@ class OrdersController < ApplicationController
 
   def update
     if @order.update(order_params)
-      @mode = Mode.find(@order.mode)
-      @vehicle = Vehicle.where(mode_id: @mode.id).where(status: 'in_operation').first
-      @vehicle.update(status: 'in_transit')
       flash[:notice] = "Ordem de entrega confirmada!"
       return redirect_to order_confirmed_path(@order)
     end

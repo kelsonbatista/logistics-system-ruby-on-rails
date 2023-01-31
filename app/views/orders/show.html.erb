@@ -51,61 +51,66 @@
       </div>
     </div>
 
-    <div class="orders__addresses">
-      <div>
-        <h3><%= t('sender_address') %></h3>
-        <% if @sender_addresses.empty? %>
-          <h5><%= t('this_order_does_not_have_sender_address') %></h5>
-        <% else %>
-          <% @sender_addresses.each do |sa| %>
-            <table class="container table table-success table-striped">
-              <tr>
-                <th><%= t('address_one') %></th>
-                <td><%= sa.address_one %></td>
-              </tr>
-              <tr>
-                <th><%= t('address_two') %></th>
-                <td><%= sa.address_two %></td>
-              </tr>
-              <tr>
-                <th><%= t('city') %></th>
-                <td><%= sa.city %>-<%= sa.state %></td>
-              </tr>
-              <tr>
-                <th><%= t('zip') %></th>
-                <td><%= sa.zip %></td>
-              </tr>
-            </table>
+    <div>
+      <div class="orders__addresses">
+        <div>
+          <h3><%= t('sender_address') %></h3>
+          <% if @sender_addresses.empty? %>
+            <h5><%= t('this_order_does_not_have_sender_address') %></h5>
+          <% else %>
+            <% @sender_addresses.each do |sa| %>
+              <table class="container table table-success table-striped">
+                <tr>
+                  <th><%= t('address_one') %></th>
+                  <td><%= sa.address_one %></td>
+                </tr>
+                <tr>
+                  <th><%= t('address_two') %></th>
+                  <td><%= sa.address_two %></td>
+                </tr>
+                <tr>
+                  <th><%= t('city') %></th>
+                  <td><%= sa.city %>-<%= sa.state %></td>
+                </tr>
+                <tr>
+                  <th><%= t('zip') %></th>
+                  <td><%= sa.zip %></td>
+                </tr>
+              </table>
+            <% end %>
           <% end %>
-        <% end %>
-      </div>
+        </div>
 
-      <div>
-        <h3><%= t('recipient_address') %></h3>
-        <% if @recipient_addresses.empty? %>
-          <h5><%= t('this_order_does_not_have_recipient_address') %></h5>
-        <% else %>
-          <% @recipient_addresses.each do |ra| %>
-            <table class="container table table-success table-striped">
-              <tr>
-                <th><%= t('address_one') %></th>
-                <td><%= ra.address_one %></td>
-              </tr>
-              <tr>
-                <th><%= t('address_two') %></th>
-                <td><%= ra.address_two %></td>
-              </tr>
-              <tr>
-                <th><%= t('city') %></th>
-                <td><%= ra.city %>-<%= ra.state %></td>
-              </tr>
-              <tr>
-                <th><%= t('zip') %></th>
-                <td><%= ra.zip %></td>
-              </tr>
-            </table>
+        <div>
+          <h3><%= t('recipient_address') %></h3>
+          <% if @recipient_addresses.empty? %>
+            <h5><%= t('this_order_does_not_have_recipient_address') %></h5>
+          <% else %>
+            <% @recipient_addresses.each do |ra| %>
+              <table class="container table table-success table-striped">
+                <tr>
+                  <th><%= t('address_one') %></th>
+                  <td><%= ra.address_one %></td>
+                </tr>
+                <tr>
+                  <th><%= t('address_two') %></th>
+                  <td><%= ra.address_two %></td>
+                </tr>
+                <tr>
+                  <th><%= t('city') %></th>
+                  <td><%= ra.city %>-<%= ra.state %></td>
+                </tr>
+                <tr>
+                  <th><%= t('zip') %></th>
+                  <td><%= ra.zip %></td>
+                </tr>
+              </table>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
+      </div>
+      <div class="btn__new">
+        <%= button_to(t('add_address'), new_order_address_path(order_id: @order.id), method: :get, class: "btn btn-secondary") %>
       </div>
     </div>
 

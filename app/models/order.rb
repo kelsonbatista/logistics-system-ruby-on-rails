@@ -8,7 +8,7 @@ class Order < ApplicationRecord
   accepts_nested_attributes_for :addresses, allow_destroy: true
   accepts_nested_attributes_for :order_products, allow_destroy: true
 
-  enum status: { pending: 0, sent: 5, delivered: 10, canceled: 15, returned: 20 }
+  enum status: { open:0, pending: 3, sent: 5, delivered: 10, canceled: 15, returned: 20 }
 
   enum state: [ :AC, :AL, :AP, :AM, :BA, :CE, :DF, :ES, :GO, :MA, :MT, :MS, :MG, :PA, :PB, :PR, :PE, :PI, :RJ, :RN, :RS, :RO, :RR, :SC, :SP, :SE, :TO ]
 

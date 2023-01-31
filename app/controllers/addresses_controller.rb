@@ -10,6 +10,7 @@ class AddressesController < ApplicationController
     @address = Address.new(address_params)
     @address_count = @order.addresses.count
     if @address.save
+      @order.update(status: 'pending') if (@order.products.count > 0 && @order.addresses.count > 0)
       OrderAddress.create(order_id: @order.id, address_id: @address.id)
       if @address_count == 0
         return redirect_to new_order_address_path(order_id: @order.id)

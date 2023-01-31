@@ -13,6 +13,7 @@
             <th scope="col"><%= t('plate') %></th>
             <th scope="col"><%= t('model') %></th>
             <th scope="col"><%= t('category') %></th>
+            <th scope="col"><%= t('mode') %></th>
             <th scope="col"><%= t('status') %></th>
           </tr>
         </thead>
@@ -22,6 +23,7 @@
               <td scope="row"><%= link_to vehicle.plate, vehicle_path(vehicle.id) %></td>
               <td><%= vehicle.model %></td>
               <td><%= vehicle.category %></td>
+              <td><%= vehicle.mode.name %></td>
               <td>
                 <span class="
                   <%= if vehicle.status == 'in_operation'

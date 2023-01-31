@@ -43,6 +43,7 @@ class BudgetsController < ApplicationController
     
     if @budget.save && @vehicle
       @vehicle.update(status: 'in_transit')
+      @order.update(status: 'sent')
       return redirect_to order_confirmed_path(@order.id)
     end
     flash.now[:alert] = "Não há veículos disponíveis para esta modalidade"

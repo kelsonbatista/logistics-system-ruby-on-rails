@@ -89,9 +89,11 @@ pt-BR:
   in_transit: Em trânsito
   no_canceled_orders: Nenhuma ordem de entrega cancelada
   no_delivered_orders: Nenhuma ordem de entrega entregue
+  no_open_orders: Nenhuma ordem de entrega aberta
   no_pending_orders: Nenhuma ordem de entrega pendente
   no_returned_orders: Nenhuma ordem de entrega retornada
   no_sent_orders: Nenhuma ordem de entrega enviada
+  open: Aberto
   pending: Pendente
   returned: Retornado
   sent: Enviado
@@ -100,6 +102,7 @@ pt-BR:
   ############# ORDER #############
   address_one: Endereço
   address_two: Complemento
+  add_address: Adicionar Endereço
   city: Cidade
   next: Próximo
   recipient_address: Endereço de Entrega
