@@ -1,13 +1,15 @@
-header {
+.header__vertical {
+  height: 100vh;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 32px 18px !important;
 }
 
-.header__vertical {
-  height: 100vh;
+.header__logout {
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 32px 18px !important;
 }
 
-.main__block {
-  margin-left: 280px !important;
+.main__login {
+  width: 100vw !important;
+  padding-left: 220px !important;
   margin-bottom: 300px;
 }
 
