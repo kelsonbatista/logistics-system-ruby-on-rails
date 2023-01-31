@@ -52,7 +52,7 @@ describe "View orders" do
           expect(page).to have_content Date.today.strftime("%d/%m/%Y")
           expect(page).to have_content '3'
           expect(page).to have_content '600'
-          expect(page).to have_content 'Pendente'
+          expect(page).to have_content 'Aberto'
         end
       end
     end
@@ -62,7 +62,7 @@ describe "View orders" do
       visit root_path
       click_on 'Ordens de Entrega'
       #Assert
-      expect(page).to have_content 'Nenhuma ordem de entrega pendente'
+      expect(page).to have_content 'Nenhuma ordem de entrega aberta'
     end
   end
 
@@ -123,7 +123,7 @@ describe "View orders" do
           expect(page).to have_content Date.today.strftime("%d/%m/%Y")
           expect(page).to have_content '3'
           expect(page).to have_content '600'
-          expect(page).to have_content 'Pendente'
+          expect(page).to have_content 'Aberto'
         end
       end
     end

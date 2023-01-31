@@ -43,7 +43,7 @@ describe "Delete vehicle" do
           category: "Categoria #{i}",
           year: "201#{i}",
           capacity: 100 * i,
-          status: true,
+          status: "operational",
           mode_id: 1
         )
       end

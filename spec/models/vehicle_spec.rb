@@ -36,7 +36,7 @@ RSpec.describe Vehicle, type: :model do
           category: "Categoria 1",
           year: "2011",
           capacity: 100,
-          status: true,
+          status: "operational",
           mode_id: 1
         )
         #Act
@@ -54,7 +54,7 @@ RSpec.describe Vehicle, type: :model do
           category: "Categoria 1",
           year: "2011",
           capacity: 100,
-          status: true,
+          status: "operational",
           mode_id: 1
         )
         #Act
@@ -72,7 +72,7 @@ RSpec.describe Vehicle, type: :model do
           category: "Categoria 1",
           year: "2011",
           capacity: 100,
-          status: true,
+          status: "operational",
           mode_id: 1
         )
         #Act
@@ -90,7 +90,7 @@ RSpec.describe Vehicle, type: :model do
           category: "",
           year: "2011",
           capacity: 100,
-          status: true,
+          status: "operational",
           mode_id: 1
         )
         #Act
@@ -108,7 +108,7 @@ RSpec.describe Vehicle, type: :model do
           category: "Categoria 1",
           year: "",
           capacity: 100,
-          status: true,
+          status: "operational",
           mode_id: 1
         )
         #Act
@@ -126,7 +126,7 @@ RSpec.describe Vehicle, type: :model do
           category: "Categoria 1",
           year: "2011",
           capacity: '',
-          status: true,
+          status: "operational",
           mode_id: 1
         )
         #Act
@@ -144,7 +144,7 @@ RSpec.describe Vehicle, type: :model do
           category: "Categoria 1",
           year: "2011",
           capacity: 100,
-          status: true,
+          status: "operational",
           mode_id: ''
         )
         #Act

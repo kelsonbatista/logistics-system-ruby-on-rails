@@ -110,7 +110,7 @@
         </div>
       </div>
       <div class="btn__new">
-        <%= button_to(t('add_address'), new_order_address_path(order_id: @order.id), method: :get, class: "btn btn-secondary") %>
+        <%= button_to(t('add_address'), new_order_address_path(order_id: @order.id), method: :get, disabled:  (@sender_addresses.count > 0 && @recipient_addresses.count > 0 ? true : false), class: "btn btn-secondary") %>
       </div>
     </div>
 

@@ -67,7 +67,7 @@ describe "Create vehicle" do
       fill_in "Categoria",	with: 'Categoria 1'
       fill_in "Ano",	with: '2011'
       fill_in "Capacidade",	with: '100'
-      check "Status"
+      select 'operational', from: 'Status'
       click_on 'Salvar'
       #Assert
       expect(current_path).to eq vehicles_path
@@ -87,7 +87,7 @@ describe "Create vehicle" do
       fill_in "Categoria",	with: ''
       fill_in "Ano",	with: ''
       fill_in "Capacidade",	with: ''
-      check "Status"
+      select 'operational', from: 'Status'
       click_on 'Salvar'
       #Assert
       expect(page).to have_content 'Erro ao criar o veículo'

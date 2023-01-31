@@ -4,8 +4,8 @@
     <p><%= link_to t('new_order'), new_order_path, class: "btn btn-primary" %></p>
   </div>
   <div class="orders__products">
-    <% if @order_products_pending.empty? %>
-      <h3><%= t('no_pending_orders') %></h3>
+    <% if @order_products_open.empty? && @order_products_open_no_product.empty? %>
+      <h3><%= t('no_open_orders') %></h3>
     <% else %>
       <table class="form__main container table table-success table-striped">
         <thead>
@@ -18,12 +18,21 @@
           </tr>
         </thead>
         <tbody>
-          <% @order_products_pending.each do |order| %>
+          <% @order_products_open.each do |order| %>
             <tr>
               <td scope="row"><%= link_to order.code, order_path(order.id) %></td>
               <td scope="row"><%= order.created_at.strftime("%d/%m/%Y") %></td>
               <td scope="row"><%= order.total_products %></td>
               <td scope="row"><%= order.total_weight %></td>
+              <td scope="row"><%= t(order.status) %></td>
+            </tr>
+          <% end %>
+          <% @order_products_open_no_product.each do |order| %>
+            <tr>
+              <td scope="row"><%= link_to order.code, order_path(order.id) %></td>
+              <td scope="row"><%= order.created_at.strftime("%d/%m/%Y") %></td>
+              <td scope="row"><%= '0' %></td>
+              <td scope="row"><%= '0' %></td>
               <td scope="row"><%= t(order.status) %></td>
             </tr>
           <% end %>

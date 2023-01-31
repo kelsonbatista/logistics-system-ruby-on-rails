@@ -43,7 +43,7 @@ describe "Edit vehicle" do
           category: "Categoria #{i}",
           year: "201#{i}",
           capacity: 100 * i,
-          status: true,
+          status: "operational",
           mode_id: 1
         )
       end
@@ -82,7 +82,7 @@ describe "Edit vehicle" do
       fill_in "Categoria",	with: "Categoria 9999"
       fill_in "Ano",	with: "2019"
       fill_in "Capacidade",	with: "9999"
-      check "Status"
+      select "operational", from: "Status"
       click_on "Salvar"
       #Assert
       expect(current_path).to eq vehicle_path(1)

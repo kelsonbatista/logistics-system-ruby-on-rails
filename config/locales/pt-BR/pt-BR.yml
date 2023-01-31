@@ -65,6 +65,11 @@ pt-BR:
   weight: Peso
   year: Ano
 
+  ############# VEHICLE #################
+  operational: Em operação
+  transit: Em trânsito
+  repair: Em manutenção
+
   ############# LOGIN SYSTEM #############
   change_password: Alterar a senha
   characters_minimum: caracteres no mínimo
@@ -123,8 +128,6 @@ pt-BR:
 
   ############ BUDGET ################
   confirm_order: Confirmar Ordem de Entrega
-  mode: Modalidade
   no_mode_can_attend_this_order: Nenhuma modalidade atende essa ordem de entrega
-  order: Ordem de entrega
   select_desired_mode: Selecione a modalidade desejada
   select_mode: Selecione a modalidade

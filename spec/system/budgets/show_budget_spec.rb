@@ -20,13 +20,13 @@ describe "Show budget in order" do
               min_weight: 30, max_weight: 50, fixed_fee: 100, active: true)
 
       Vehicle.create!(plate: "ABC-1231", brand: "Volkswagem", model: "Gol 1.6", category: "Passeio", 
-                  year: "2011", capacity: 100, status: true, mode_id: 1)
+                  year: "2011", capacity: 100, status: "operational", mode_id: 1)
 
       Vehicle.create!(plate: "ABC-1232", brand: "Fiat", model: "Fiorino 1.6", category: "Carga Leve", 
-                  year: "2012", capacity: 400, status: true, mode_id: 1)
+                  year: "2012", capacity: 400, status: "operational", mode_id: 1)
 
       Vehicle.create!(plate: "ABC-1233", brand: "Ford", model: "Furgão 4.0", category: "Carga Média", 
-                  year: "2013", capacity: 1000, status: true, mode_id: 1)
+                  year: "2013", capacity: 1000, status: "operational", mode_id: 1)
 
       Price.create!(min_weight: 1, max_weight: 3, price_per_km: 0.11, mode_id: 1)
       Price.create!(min_weight: 4, max_weight: 7, price_per_km: 0.22, mode_id: 1)
@@ -76,13 +76,14 @@ describe "Show budget in order" do
       visit root_path
       click_on 'Ordens de Entrega'
       click_on @order.code
+      click_on 'Selecione a modalidade'
       #Assert 
-      expect(page).to have_content "Ordem de Entrega #{Order.last.code}"
+      
       expect(page).to have_button 'Voltar'
 
-      within('div.orders__modes') do
+      within('div.orders__budget') do
         within('h3') do
-          expect(page).to have_content 'Modalidades'
+          expect(page).to have_content 'Selecione a modalidade desejada'
         end
         within('table thead tr:nth-child(1)') do
           expect(page).to have_content 'Nome'
@@ -108,13 +109,13 @@ describe "Show budget in order" do
         min_weight: 1, max_weight: 10, fixed_fee: 20,  active: true)
 
       Vehicle.create!(plate: "ABC-1231", brand: "Volkswagem", model: "Gol 1.6", category: "Passeio", 
-                  year: "2011", capacity: 100, status: true, mode_id: 1)
+                  year: "2011", capacity: 100, status: "operational", mode_id: 1)
 
       Vehicle.create!(plate: "ABC-1232", brand: "Fiat", model: "Fiorino 1.6", category: "Carga Leve", 
-                  year: "2012", capacity: 400, status: true, mode_id: 1)
+                  year: "2012", capacity: 400, status: "operational", mode_id: 1)
 
       Vehicle.create!(plate: "ABC-1233", brand: "Ford", model: "Furgão 4.0", category: "Carga Média", 
-                  year: "2013", capacity: 1000, status: true, mode_id: 1)
+                  year: "2013", capacity: 1000, status: "operational", mode_id: 1)
 
       Price.create!(min_weight: 1, max_weight: 3, price_per_km: 0.11, mode_id: 1)
       Price.create!(min_weight: 4, max_weight: 7, price_per_km: 0.22, mode_id: 1)
@@ -146,13 +147,14 @@ describe "Show budget in order" do
       visit root_path
       click_on 'Ordens de Entrega'
       click_on @order.code
+      click_on 'Selecione a modalidade'
       #Assert 
-      expect(page).to have_content "Ordem de Entrega #{Order.last.code}"
+      
       expect(page).to have_button 'Voltar'
 
-      within('div.orders__modes') do
+      within('div.orders__budget') do
         within('h3') do
-          expect(page).to have_content 'Modalidades'
+          expect(page).to have_content 'Selecione a modalidade desejada'
         end
         within('table thead tr:nth-child(1)') do
           expect(page).to have_content 'Nome'
@@ -173,13 +175,13 @@ describe "Show budget in order" do
         min_weight: 1, max_weight: 10, fixed_fee: 20,  active: true)
 
       Vehicle.create!(plate: "ABC-1231", brand: "Volkswagem", model: "Gol 1.6", category: "Passeio", 
-                  year: "2011", capacity: 100, status: true, mode_id: 1)
+                  year: "2011", capacity: 100, status: "operational", mode_id: 1)
 
       Vehicle.create!(plate: "ABC-1232", brand: "Fiat", model: "Fiorino 1.6", category: "Carga Leve", 
-                  year: "2012", capacity: 400, status: true, mode_id: 1)
+                  year: "2012", capacity: 400, status: "operational", mode_id: 1)
 
       Vehicle.create!(plate: "ABC-1233", brand: "Ford", model: "Furgão 4.0", category: "Carga Média", 
-                  year: "2013", capacity: 1000, status: true, mode_id: 1)
+                  year: "2013", capacity: 1000, status: "operational", mode_id: 1)
 
       Price.create!(min_weight: 1, max_weight: 3, price_per_km: 0.11, mode_id: 1)
       Price.create!(min_weight: 4, max_weight: 7, price_per_km: 0.22, mode_id: 1)
@@ -211,13 +213,14 @@ describe "Show budget in order" do
       visit root_path
       click_on 'Ordens de Entrega'
       click_on @order.code
+      click_on 'Selecione a modalidade'
       #Assert 
-      expect(page).to have_content "Ordem de Entrega #{Order.last.code}"
+      
       expect(page).to have_button 'Voltar'
 
-      within('div.orders__modes') do
+      within('div.orders__budget') do
         within('h3') do
-          expect(page).to have_content 'Modalidades'
+          expect(page).to have_content 'Selecione a modalidade desejada'
         end
         within('table thead tr:nth-child(1)') do
           expect(page).to have_content 'Nome'
@@ -238,13 +241,13 @@ describe "Show budget in order" do
         min_weight: 1, max_weight: 10, fixed_fee: 20,  active: true)
 
       Vehicle.create!(plate: "ABC-1231", brand: "Volkswagem", model: "Gol 1.6", category: "Passeio", 
-                  year: "2011", capacity: 100, status: true, mode_id: 1)
+                  year: "2011", capacity: 100, status: "operational", mode_id: 1)
 
       Vehicle.create!(plate: "ABC-1232", brand: "Fiat", model: "Fiorino 1.6", category: "Carga Leve", 
-                  year: "2012", capacity: 400, status: true, mode_id: 1)
+                  year: "2012", capacity: 400, status: "operational", mode_id: 1)
 
       Vehicle.create!(plate: "ABC-1233", brand: "Ford", model: "Furgão 4.0", category: "Carga Média", 
-                  year: "2013", capacity: 1000, status: true, mode_id: 1)
+                  year: "2013", capacity: 1000, status: "operational", mode_id: 1)
 
       Address.create!(person: "sender", address_one: "Av Atlântica, 2002", address_two: "Copacabana", 
                   city: "Rio de Janeiro", state: "RJ", zip: "20000-202")
@@ -268,11 +271,12 @@ describe "Show budget in order" do
       visit root_path
       click_on 'Ordens de Entrega'
       click_on @order.code
+      click_on 'Selecione a modalidade'
       #Assert 
-      expect(page).to have_content "Ordem de Entrega #{Order.last.code}"
+      
       expect(page).to have_button 'Voltar'
 
-      within('div.orders__modes') do
+      within('div.orders__budget') do
         within('h5') do
           expect(page).to have_content 'Nenhuma modalidade atende essa ordem de entrega'
         end
@@ -301,13 +305,13 @@ describe "Show budget in order" do
               min_weight: 30, max_weight: 50, fixed_fee: 100, active: true)
 
       Vehicle.create!(plate: "ABC-1231", brand: "Volkswagem", model: "Gol 1.6", category: "Passeio", 
-                  year: "2011", capacity: 100, status: true, mode_id: 1)
+                  year: "2011", capacity: 100, status: "operational", mode_id: 1)
 
       Vehicle.create!(plate: "ABC-1232", brand: "Fiat", model: "Fiorino 1.6", category: "Carga Leve", 
-                  year: "2012", capacity: 400, status: true, mode_id: 1)
+                  year: "2012", capacity: 400, status: "operational", mode_id: 1)
 
       Vehicle.create!(plate: "ABC-1233", brand: "Ford", model: "Furgão 4.0", category: "Carga Média", 
-                  year: "2013", capacity: 1000, status: true, mode_id: 1)
+                  year: "2013", capacity: 1000, status: "operational", mode_id: 1)
 
       Price.create!(min_weight: 1, max_weight: 3, price_per_km: 0.11, mode_id: 1)
       Price.create!(min_weight: 4, max_weight: 7, price_per_km: 0.22, mode_id: 1)
@@ -359,13 +363,14 @@ describe "Show budget in order" do
       visit root_path
       click_on 'Ordens de Entrega'
       click_on @order.code
+      click_on 'Selecione a modalidade'
       #Assert 
-      expect(page).to have_content "Ordem de Entrega #{Order.last.code}"
+      
       expect(page).to have_button 'Voltar'
 
-      within('div.orders__modes') do
+      within('div.orders__budget') do
         within('h3') do
-          expect(page).to have_content 'Modalidades'
+          expect(page).to have_content 'Selecione a modalidade desejada'
         end
         within('table thead tr:nth-child(1)') do
           expect(page).to have_content 'Nome'
@@ -393,13 +398,13 @@ describe "Show budget in order" do
         min_weight: 1, max_weight: 10, fixed_fee: 20,  active: true)
 
       Vehicle.create!(plate: "ABC-1231", brand: "Volkswagem", model: "Gol 1.6", category: "Passeio", 
-                  year: "2011", capacity: 100, status: true, mode_id: 1)
+                  year: "2011", capacity: 100, status: "operational", mode_id: 1)
 
       Vehicle.create!(plate: "ABC-1232", brand: "Fiat", model: "Fiorino 1.6", category: "Carga Leve", 
-                  year: "2012", capacity: 400, status: true, mode_id: 1)
+                  year: "2012", capacity: 400, status: "operational", mode_id: 1)
 
       Vehicle.create!(plate: "ABC-1233", brand: "Ford", model: "Furgão 4.0", category: "Carga Média", 
-                  year: "2013", capacity: 1000, status: true, mode_id: 1)
+                  year: "2013", capacity: 1000, status: "operational", mode_id: 1)
 
       Price.create!(min_weight: 1, max_weight: 3, price_per_km: 0.11, mode_id: 1)
       Price.create!(min_weight: 4, max_weight: 7, price_per_km: 0.22, mode_id: 1)
@@ -433,13 +438,14 @@ describe "Show budget in order" do
       visit root_path
       click_on 'Ordens de Entrega'
       click_on @order.code
+      click_on 'Selecione a modalidade'
       #Assert 
-      expect(page).to have_content "Ordem de Entrega #{Order.last.code}"
+      
       expect(page).to have_button 'Voltar'
 
-      within('div.orders__modes') do
+      within('div.orders__budget') do
         within('h3') do
-          expect(page).to have_content 'Modalidades'
+          expect(page).to have_content 'Selecione a modalidade desejada'
         end
         within('table thead tr:nth-child(1)') do
           expect(page).to have_content 'Nome'
@@ -462,13 +468,13 @@ describe "Show budget in order" do
         min_weight: 1, max_weight: 10, fixed_fee: 20,  active: true)
 
       Vehicle.create!(plate: "ABC-1231", brand: "Volkswagem", model: "Gol 1.6", category: "Passeio", 
-                  year: "2011", capacity: 100, status: true, mode_id: 1)
+                  year: "2011", capacity: 100, status: "operational", mode_id: 1)
 
       Vehicle.create!(plate: "ABC-1232", brand: "Fiat", model: "Fiorino 1.6", category: "Carga Leve", 
-                  year: "2012", capacity: 400, status: true, mode_id: 1)
+                  year: "2012", capacity: 400, status: "operational", mode_id: 1)
 
       Vehicle.create!(plate: "ABC-1233", brand: "Ford", model: "Furgão 4.0", category: "Carga Média", 
-                  year: "2013", capacity: 1000, status: true, mode_id: 1)
+                  year: "2013", capacity: 1000, status: "operational", mode_id: 1)
 
       Price.create!(min_weight: 1, max_weight: 3, price_per_km: 0.11, mode_id: 1)
       Price.create!(min_weight: 4, max_weight: 7, price_per_km: 0.22, mode_id: 1)
@@ -502,13 +508,14 @@ describe "Show budget in order" do
       visit root_path
       click_on 'Ordens de Entrega'
       click_on @order.code
+      click_on 'Selecione a modalidade'
       #Assert 
-      expect(page).to have_content "Ordem de Entrega #{Order.last.code}"
+      
       expect(page).to have_button 'Voltar'
 
-      within('div.orders__modes') do
+      within('div.orders__budget') do
         within('h3') do
-          expect(page).to have_content 'Modalidades'
+          expect(page).to have_content 'Selecione a modalidade desejada'
         end
         within('table thead tr:nth-child(1)') do
           expect(page).to have_content 'Nome'
@@ -531,13 +538,13 @@ describe "Show budget in order" do
         min_weight: 1, max_weight: 10, fixed_fee: 20,  active: true)
 
       Vehicle.create!(plate: "ABC-1231", brand: "Volkswagem", model: "Gol 1.6", category: "Passeio", 
-                  year: "2011", capacity: 100, status: true, mode_id: 1)
+                  year: "2011", capacity: 100, status: "operational", mode_id: 1)
 
       Vehicle.create!(plate: "ABC-1232", brand: "Fiat", model: "Fiorino 1.6", category: "Carga Leve", 
-                  year: "2012", capacity: 400, status: true, mode_id: 1)
+                  year: "2012", capacity: 400, status: "operational", mode_id: 1)
 
       Vehicle.create!(plate: "ABC-1233", brand: "Ford", model: "Furgão 4.0", category: "Carga Média", 
-                  year: "2013", capacity: 1000, status: true, mode_id: 1)
+                  year: "2013", capacity: 1000, status: "operational", mode_id: 1)
 
       Address.create!(person: "sender", address_one: "Av Atlântica, 2002", address_two: "Copacabana", 
                   city: "Rio de Janeiro", state: "RJ", zip: "20000-202")
@@ -563,11 +570,12 @@ describe "Show budget in order" do
       visit root_path
       click_on 'Ordens de Entrega'
       click_on @order.code
+      click_on 'Selecione a modalidade'
       #Assert 
-      expect(page).to have_content "Ordem de Entrega #{Order.last.code}"
+      
       expect(page).to have_button 'Voltar'
 
-      within('div.orders__modes') do
+      within('div.orders__budget') do
         within('h5') do
           expect(page).to have_content 'Nenhuma modalidade atende essa ordem de entrega'
         end

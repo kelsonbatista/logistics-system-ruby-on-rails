@@ -49,7 +49,7 @@ describe "Show order" do
       expect(page).to have_content "Ordem de Entrega #{Order.last.code}"
       expect(page).to have_button 'Voltar'
       within('div.orders__status h3') do
-        expect(page).to have_content 'Status: Pendente'
+        expect(page).to have_content 'Status: Aberto'
       end
       within('div.orders__products') do
         within('h3') do
@@ -158,7 +158,7 @@ describe "Show order" do
       expect(page).to have_content "Ordem de Entrega #{Order.last.code}"
       expect(page).to have_button 'Voltar'
       within('div.orders__status h3') do
-        expect(page).to have_content 'Status: Pendente'
+        expect(page).to have_content 'Status: Aberto'
       end
       within('div.orders__products') do
         within('h3') do

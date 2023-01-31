@@ -32,21 +32,21 @@
         <th><%= t('status') %></th>
         <td>
           <span class="
-            <%= if @vehicle.status == 'in_operation'
+            <%= if @vehicle.status == 'operational'
                 'ativo'
-              elsif @vehicle.status == 'in_transit'
+              elsif @vehicle.status == 'transit'
                 'transito'
-              elsif @vehicle.status == 'in_maintenance'
+              elsif @vehicle.status == 'repair'
                 'inativo'
               end
             %>
           ">
-            <%= if @vehicle.status == 'in_operation'
-                t('in_operation')
-              elsif @vehicle.status == 'in_transit'
-                t('in_transit')
-              elsif @vehicle.status == 'in_maintenance'
-                t('in_maintenance')
+            <%= if @vehicle.status == 'operational'
+                t('operational')
+              elsif @vehicle.status == 'transit'
+                t('transit')
+              elsif @vehicle.status == 'repair'
+                t('repair')
               end
             %>
           </span>

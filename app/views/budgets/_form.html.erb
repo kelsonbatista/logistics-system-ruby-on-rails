@@ -29,12 +29,6 @@
           <tbody>
             <% @modes_prices_deadlines.each do |mode| %>
               <% @total_price = '%.2f' % ((mode.price_per_km * @order.distance) + mode.fixed_fee) %>
-              <%# <%= f.hidden_field :mode, value: mode.id %>
-              <%= f.hidden_field :total, value: @total_price %>
-              <%= f.hidden_field :price_km, value: mode.price_per_km %>
-              <%= f.hidden_field :fixed_fee, value: mode.fixed_fee %>
-              <%= f.hidden_field :deadline, value: mode.deadline %>
-              <%= f.hidden_field :order_id, value: @order.id %>
               <tr>
                 <td>
                   <div class="form-check">
@@ -44,6 +38,12 @@
                 <td><%= mode.name %></td>
                 <td><%= t('$') %> <%= @total_price %></td>
                 <td><%= mode.deadline %> dias</td>
+                <%# <%= f.hidden_field :mode, value: mode.id %>
+                <%= f.hidden_field :total, value: @total_price %>
+                <%= f.hidden_field :price_km, value: mode.price_per_km %>
+                <%= f.hidden_field :fixed_fee, value: mode.fixed_fee %>
+                <%= f.hidden_field :deadline, value: mode.deadline %>
+                <%= f.hidden_field :order_id, value: @order.id %>
               </tr>
             <% end %>
           </tbody>
@@ -51,7 +51,7 @@
       <% end %>
     </div>
     <div class="orders__btn-budget">
-      <%= f.submit t('confirm_order'), class: "btn btn-success", disabled: false %>
+      <%= f.submit t('confirm_order'), class: "btn btn-success", disabled: (@modes_prices_deadlines.empty? ? true : false) %>
     </div>
   <% end %>
 </div>
