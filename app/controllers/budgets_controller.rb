@@ -39,10 +39,10 @@ class BudgetsController < ApplicationController
     @modes_prices_deadlines = @modes.joins(:prices).joins(:deadlines).select("modes.id, modes.name, modes.min_distance, modes.max_distance, modes.min_weight, modes.max_weight, modes.fixed_fee, prices.min_weight, prices.max_weight, prices.price_per_km, deadlines.min_distance, deadlines.max_distance, deadlines.deadline").where('modes.min_weight <= ?', @products_weight).where('modes.max_weight >= ?', @products_weight).where('prices.min_weight <= ?', @products_weight).where('prices.max_weight >= ?', @products_weight).where('deadlines.min_distance <= ?', @order.distance).where('deadlines.max_distance >= ?', @order.distance).where(active: true)
 
     @vehicle = Vehicle.all
-    @vehicle = @vehicle.where(mode_id: @mode_id).where(status: 'in_operation').first
+    @vehicle = @vehicle.where(mode_id: @mode_id).where(status: 'operational').first
     
     if @budget.save && @vehicle
-      @vehicle.update(status: 'in_transit')
+      @vehicle.update(status: 'transit')
       @order.update(status: 'sent')
       return redirect_to order_confirmed_path(@order.id)
     end
@@ -56,10 +56,10 @@ class BudgetsController < ApplicationController
   def update
     @mode = Mode.find(@budget.mode)
     @vehicle = Vehicle.all
-    @vehicle = Vehicle.where(mode_id: @mode.id).where(status: 'in_operation').first
+    @vehicle = Vehicle.where(mode_id: @mode.id).where(status: 'operational').first
     
     if @budget.update(budget_params) && @vehicle
-      @vehicle.update(status: 'in_transit')
+      @vehicle.update(status: 'transit')
       flash[:notice] = "Ordem de entrega confirmada!"
       return redirect_to order_confirmed_path(@order)
     end

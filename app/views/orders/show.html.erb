@@ -124,7 +124,7 @@
     </div>
 
     <div class="btn__bottom">
-      <%= button_to(t('select_mode'), new_order_budget_path(order_id: @order.id), method: :get, class: "btn btn-secondary orders__btn-budget") %>
+      <%= button_to(t('select_mode'), new_order_budget_path(order_id: @order.id), method: :get, disabled:  (@products.count > 0 && @sender_addresses.count > 0 && @recipient_addresses.count > 0 ? false : true), class: "btn btn-secondary orders__btn-budget") %>
       <%= button_to(t("edit"), edit_order_path(@order.id), method: :get, class: "btn btn-warning") %>
       <%= button_to(t("delete"), order_path(@order.id), method: :delete, class: "btn btn-danger") %>
     </div>
