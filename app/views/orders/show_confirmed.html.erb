@@ -18,17 +18,15 @@
     </div>
 
     <% if @order.delivered? %>
-      <div class="order__status-condition <% @order.on_time? ? 'green' : 'red' %>">
-        <div>
-          <strong><%= t('this_order_was_closed') %>
-            <% if @order.on_time? %>
-              <span class=''><%= t('on_time').downcase %></span>
-            <% end %>
-            <% if @order.late? %>
-              <span class=''><%= t('late').downcase %></span>
-            <% end %>
-          </strong>
-        </div>
+      <div class="order__status-condition <%= @order.on_time? ? 'green' : 'red' %>">
+        <strong><%= t('this_order_was_closed') %>
+          <% if @order.on_time? %>
+            <span class=''><%= t('on_time').downcase %></span>
+          <% end %>
+          <% if @order.late? %>
+            <span class=''><%= t('late').downcase %></span>
+          <% end %>
+        </strong>
 
         <% if @order.late? %>
           <div class="order__status-ontime">
