@@ -1,0 +1,16 @@
+<section>
+  <div class="main__home-logout">
+    <h1>Acompanhe seu objeto</h1>
+    <p>Digite o código de rastreamento abaixo</p>
+    <div class="d-flex justify-content-center h-100">
+      <div class="search">
+        <%= form_with(url: search_orders_path, method: :get) do |f| %>
+          <%= f.text_field :query, class: "search-input", placeholder: "Buscar encomenda..." %>
+          <%= button_tag(class: "search-icon") do %>
+            <i class ='fa fa-search'></i>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

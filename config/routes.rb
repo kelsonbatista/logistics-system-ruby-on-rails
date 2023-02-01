@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :order_products, only: [:index, :show, :new, :create, :edit, :update]
     resources :order_addresses, only: [:index, :show, :new, :create, :edit, :update]
     resources :budgets, only: [:index, :show, :new, :create, :edit, :update]
+    get 'search', on: :collection
     post 'delivered', on: :member
     post 'canceled', on: :member
     post 'returned', on: :member

@@ -119,6 +119,8 @@ pt-BR:
   please_inform_the_reason: Por favor, informe o motivo
   reason: Motivo
   recipient_address: Endereço de Entrega
+  search_order: Buscar pedido
+  search: Buscar
   sender_address: Endereço de Retirada
   this_order_does_not_have_product: Essa ordem de entrega ainda não possui produtos
   this_order_does_not_have_recipient_address: Essa ordem de entrega ainda não possui endereço destinatário
