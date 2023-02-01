@@ -72,13 +72,11 @@ describe "Create order" do
       expect(page).to have_content 'Ordem de entrega registrada com sucesso'  
       expect(page).to have_content "Ordem de Entrega #{Order.last.code}"
       expect(page).to have_button 'Voltar'
-      within('div.orders__status h3') do
+      within('div.order__status h3') do
         expect(page).to have_content 'Status: Pendente'
       end
-      within('div.orders__products') do
-        within('h3') do
-          expect(page).to have_content 'Produto'
-        end
+      within('div.order__block') do
+        expect(page).to have_content 'Produto'
         within('table thead tr:nth-child(1)') do
           expect(page).to have_content 'Código'
           expect(page).to have_content 'Largura (cm)'
@@ -95,7 +93,7 @@ describe "Create order" do
         end
       end
 
-      within('div.orders__addresses div:nth-child(1)') do
+      within('div.order__block-flex div:nth-child(1)') do
         within('h3') do
           expect(page).to have_content 'Endereço de Retirada'
         end
@@ -117,7 +115,7 @@ describe "Create order" do
         end
       end
 
-      within('div.orders__addresses div:nth-child(2)') do
+      within('div.order__block-flex div:nth-child(2)') do
         within('h3') do
           expect(page).to have_content 'Endereço de Entrega'
         end
@@ -299,13 +297,11 @@ describe "Create order" do
       expect(page).to have_content 'Ordem de entrega registrada com sucesso'  
       expect(page).to have_content "Ordem de Entrega #{Order.last.code}"
       expect(page).to have_button 'Voltar'
-      within('div.orders__status h3') do
+      within('div.order__status h3') do
         expect(page).to have_content 'Status: Pendente'
       end
-      within('div.orders__products') do
-        within('h3') do
-          expect(page).to have_content 'Produto'
-        end
+      within('div.order__block') do
+        expect(page).to have_content 'Produto'
         within('table thead tr:nth-child(1)') do
           expect(page).to have_content 'Código'
           expect(page).to have_content 'Largura (cm)'
@@ -322,7 +318,7 @@ describe "Create order" do
         end
       end
 
-      within('div.orders__addresses div:nth-child(1)') do
+      within('div.order__block-flex div:nth-child(1)') do
         within('h3') do
           expect(page).to have_content 'Endereço de Retirada'
         end
@@ -344,7 +340,7 @@ describe "Create order" do
         end
       end
 
-      within('div.orders__addresses div:nth-child(2)') do
+      within('div.order__block-flex div:nth-child(2)') do
         within('h3') do
           expect(page).to have_content 'Endereço de Entrega'
         end

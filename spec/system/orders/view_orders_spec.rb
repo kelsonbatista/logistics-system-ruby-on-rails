@@ -39,7 +39,7 @@ describe "View orders" do
       visit root_path
       click_on 'Ordens de Entrega'
       #Assert
-      within('div.orders__products') do
+      within('div.orders__tabs') do
         within('table thead tr:nth-child(1)') do
           expect(page).to have_content 'Código'
           expect(page).to have_content 'Data'
@@ -110,7 +110,7 @@ describe "View orders" do
       visit root_path
       click_on 'Ordens de Entrega'
       #Assert
-      within('div.orders__products') do
+      within('div.orders__tabs') do
         within('table thead tr:nth-child(1)') do
           expect(page).to have_content 'Código'
           expect(page).to have_content 'Data'

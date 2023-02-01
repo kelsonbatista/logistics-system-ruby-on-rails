@@ -48,10 +48,10 @@ describe "Show order" do
       #Assert 
       expect(page).to have_content "Ordem de Entrega #{Order.last.code}"
       expect(page).to have_button 'Voltar'
-      within('div.orders__status h3') do
+      within('div.order__status h3') do
         expect(page).to have_content 'Status: Aberto'
       end
-      within('div.orders__products') do
+      within('div.order__block') do
         within('h3') do
           expect(page).to have_content 'Produto'
         end
@@ -71,7 +71,7 @@ describe "Show order" do
         end
       end
 
-      within('div.orders__addresses div:nth-child(1)') do
+      within('div.order__block-flex div:nth-child(1)') do
         within('h3') do
           expect(page).to have_content 'Endereço de Retirada'
         end
@@ -89,7 +89,7 @@ describe "Show order" do
         end
       end
 
-      within('div.orders__addresses div:nth-child(2)') do
+      within('div.order__block-flex div:nth-child(2)') do
         within('h3') do
           expect(page).to have_content 'Endereço de Entrega'
         end
@@ -157,10 +157,10 @@ describe "Show order" do
       #Assert 
       expect(page).to have_content "Ordem de Entrega #{Order.last.code}"
       expect(page).to have_button 'Voltar'
-      within('div.orders__status h3') do
+      within('div.order__status h3') do
         expect(page).to have_content 'Status: Aberto'
       end
-      within('div.orders__products') do
+      within('div.order__block') do
         within('h3') do
           expect(page).to have_content 'Produto'
         end
@@ -180,7 +180,7 @@ describe "Show order" do
         end
       end
 
-      within('div.orders__addresses div:nth-child(1)') do
+      within('div.order__block-flex div:nth-child(1)') do
         within('h3') do
           expect(page).to have_content 'Endereço de Retirada'
         end
@@ -198,7 +198,7 @@ describe "Show order" do
         end
       end
 
-      within('div.orders__addresses div:nth-child(2)') do
+      within('div.order__block-flex div:nth-child(2)') do
         within('h3') do
           expect(page).to have_content 'Endereço de Entrega'
         end
