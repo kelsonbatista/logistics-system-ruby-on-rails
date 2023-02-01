@@ -1,7 +1,7 @@
 <section>
   <div class="orders">
     <h1><%= t('order') %> <%= @order.code %></h1>
-    <%= button_to(t("back"), orders_path, method: :get, class: "btn btn-primary orders__btn") %>
+    <%= button_to(t("back"), orders_path, method: :get, class: "btn btn-primary back__btn") %>
 
     <div class="order__status">
       <div>
@@ -29,7 +29,7 @@
         </strong>
 
         <% if @order.late? %>
-          <div class="order__status-ontime">
+          <div class="order__status-late">
             <% if !@order.reason? %>
               <p><%= t('please_inform_the_reason') %>:</p>
               <%= form_with(model: @order, method: :patch) do |f| %>
@@ -47,7 +47,7 @@
       </div>
     <% end %>
 
-    <div class="orders__block">
+    <div class="order__block">
       <h3><%= t('product') %></h3>
       <% if @products.empty? %>
         <h5><%= t('this_order_does_not_have_product') %></h5>

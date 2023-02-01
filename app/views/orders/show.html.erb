@@ -13,7 +13,7 @@
 <section>
   <div class="order">
     <h1><%= t('order') %> <%= @order.code %></h1>
-    <%= button_to(t("back"), orders_path, method: :get, class: "btn btn-primary orders__btn") %>
+    <%= button_to(t("back"), orders_path, method: :get, class: "btn btn-primary back__btn") %>
     <div class="order__status">
       <div>
         <h3><%= t('status') %>: <%= t(@order.status) %></h3>

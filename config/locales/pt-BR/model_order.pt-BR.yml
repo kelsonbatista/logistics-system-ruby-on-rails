@@ -13,6 +13,7 @@ pt-BR:
         product: Produto
         product_code: Código do Produto
         products: Produtos
+        reason: Motivo
         recipient: Destinatário
         recipient_address: Endereço de Entrega
         sender: Remetente
