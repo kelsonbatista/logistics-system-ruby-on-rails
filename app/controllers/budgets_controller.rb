@@ -40,13 +40,19 @@ class BudgetsController < ApplicationController
 
     @vehicle = Vehicle.all
     @vehicle = @vehicle.where(mode_id: @mode_id).where(status: 'operational').first
+    @budget.vehicle_id = @vehicle.id
+
+    if !@vehicle
+      flash.now[:alert] = "Não há veículos disponíveis para esta modalidade"
+      return render :new, status: :unprocessable_entity
+    end
     
     if @budget.save && @vehicle
       @vehicle.update(status: 'transit')
       @order.update(status: 'sent')
       return redirect_to order_confirmed_path(@order.id)
     end
-    flash.now[:alert] = "Não há veículos disponíveis para esta modalidade"
+    flash.now[:alert] = "Erro ao selecionar modalidade"
     render :new, status: :unprocessable_entity
   end
 

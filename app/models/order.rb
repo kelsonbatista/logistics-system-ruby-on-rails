@@ -10,6 +10,8 @@ class Order < ApplicationRecord
 
   enum status: { open:0, pending: 3, sent: 5, delivered: 10, canceled: 15, returned: 20 }
 
+  enum condition: { on_time: 0, late: 10 }
+
   enum state: [ :AC, :AL, :AP, :AM, :BA, :CE, :DF, :ES, :GO, :MA, :MT, :MS, :MG, :PA, :PB, :PR, :PE, :PI, :RJ, :RN, :RS, :RO, :RR, :SC, :SP, :SE, :TO ]
 
   validates :distance, :status, presence: true

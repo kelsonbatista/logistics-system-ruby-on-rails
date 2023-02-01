@@ -11,14 +11,21 @@
 <% end %>
 
 <section>
-  <div class="orders">
+  <div class="order">
     <h1><%= t('order') %> <%= @order.code %></h1>
     <%= button_to(t("back"), orders_path, method: :get, class: "btn btn-primary orders__btn") %>
-    <div class="orders__status">
-      <h3><%= t('status') %>: <%= t(@order.status) %></h3>
+    <div class="order__status">
+      <div>
+        <h3><%= t('status') %>: <%= t(@order.status) %></h3>
+      </div>
+      <div class="order__status-btn">
+        <% if !@order.canceled? %>
+          <%= button_to(t('mark_as_canceled'), canceled_order_path(order_id: @order.id), method: :post, class: "btn btn-danger") %>
+        <% end %>
+      </div>
     </div>
 
-    <div class="orders__products">
+    <div class="order__block">
       <h3><%= t('product') %></h3>
       <% if @products.empty? %>
         <h5><%= t('this_order_does_not_have_product') %></h5>
@@ -46,13 +53,13 @@
           </tbody>
         </table>
       <% end %>
-      <div class="btn__new">
+      <div class="order__block-btn">
         <%= button_to(t('add_product'), new_order_product_path(order_id: @order.id), method: :get, class: "btn btn-secondary") %>
       </div>
     </div>
 
     <div>
-      <div class="orders__addresses">
+      <div class="order__block-flex">
         <div>
           <h3><%= t('sender_address') %></h3>
           <% if @sender_addresses.empty? %>
@@ -109,7 +116,7 @@
           <% end %>
         </div>
       </div>
-      <div class="btn__new">
+      <div class="order__block-btn">
         <%= button_to(t('add_address'), new_order_address_path(order_id: @order.id), method: :get, disabled:  (@sender_addresses.count > 0 && @recipient_addresses.count > 0 ? true : false), class: "btn btn-secondary") %>
       </div>
     </div>
@@ -123,7 +130,7 @@
       </table>
     </div>
 
-    <div class="btn__bottom">
+    <div class="order__block-btn-flex">
       <%= button_to(t('select_mode'), new_order_budget_path(order_id: @order.id), method: :get, disabled:  (@products.count > 0 && @sender_addresses.count > 0 && @recipient_addresses.count > 0 ? false : true), class: "btn btn-secondary orders__btn-budget") %>
       <%= button_to(t("edit"), edit_order_path(@order.id), method: :get, class: "btn btn-warning") %>
       <%= button_to(t("delete"), order_path(@order.id), method: :delete, class: "btn btn-danger") %>

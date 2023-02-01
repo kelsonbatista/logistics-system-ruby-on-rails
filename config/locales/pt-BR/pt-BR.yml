@@ -109,12 +109,21 @@ pt-BR:
   address_two: Complemento
   add_address: Adicionar Endereço
   city: Cidade
+  closed: Fechamento
+  late: Com atraso
+  mark_as_canceled: Marcar como Cancelado
+  mark_as_delivered: Marcar como Entregue
+  mark_as_returned: Marcar como Retornado
   next: Próximo
+  on_time: No prazo
+  please_inform_the_reason: Por favor, informe o motivo
+  reason: Motivo
   recipient_address: Endereço de Entrega
   sender_address: Endereço de Retirada
   this_order_does_not_have_product: Essa ordem de entrega ainda não possui produtos
   this_order_does_not_have_recipient_address: Essa ordem de entrega ainda não possui endereço destinatário
   this_order_does_not_have_sender_address: Essa ordem de entrega ainda não possui endereço remetente
+  this_order_was_closed: Essa ordem de entrega foi encerrada
   zip: CEP
 
   ############# PRODUCT #############

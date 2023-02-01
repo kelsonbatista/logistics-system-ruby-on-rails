@@ -29,9 +29,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_30_132849) do
     t.float "fixed_fee"
     t.integer "deadline"
     t.integer "order_id", null: false
+    t.integer "vehicle_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["order_id"], name: "index_budgets_on_order_id"
+    t.index ["vehicle_id"], name: "index_budgets_on_vehicle_id"
   end
 
   create_table "deadlines", force: :cascade do |t|
@@ -77,6 +79,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_30_132849) do
   create_table "orders", force: :cascade do |t|
     t.string "code", limit: 15
     t.integer "distance"
+    t.integer "condition"
+    t.text "reason"
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -131,6 +135,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_30_132849) do
   end
 
   add_foreign_key "budgets", "orders"
+  add_foreign_key "budgets", "vehicles"
   add_foreign_key "deadlines", "modes"
   add_foreign_key "order_addresses", "addresses"
   add_foreign_key "order_addresses", "orders"

@@ -53,8 +53,12 @@ section h1 {
   padding-bottom: 15px !important;
 }
 
-table {
-  margin-top: 30px !important;
+section div a:nth-child(1) {
+  margin-bottom: 15px !important;
+}
+
+section div button.back__btn {
+  margin-bottom: 30px !important;
 }
 
 table {
@@ -129,11 +133,6 @@ section.back a.btn {
   max-width: 500px !important;
 }
 
-section div h3 {
-  padding-top: 20px !important;
-  margin-bottom: -20px !important;
-}
-
 div h5 {
   margin: 50px 0 !important;
 }
@@ -184,21 +183,75 @@ table.product__form tr td {
   width: 80px !important;
 }
 
-div.orders__status {
-  margin-bottom: 20px !important;
+div.order__status, div.order__status-condition {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #dedede;
+  padding: 20px 20px !important;
+  margin: 30px 0 !important;
+  border: 3px solid #ccc !important;
+  border-radius: 10px;
 }
 
-div.btn__bottom {
+div.order__status-condition {
+  font-size: 1.2em;
+  display: block !important;
+}
+
+div.order__status-condition div:nth-child(1) {
+  margin-bottom: 15px !important;
+}
+
+div.order__status-btn {
+  display: flex;
+}
+
+div.order__status-btn button {
+  margin-left: 10px !important;
+  width: 210px !important;
+}
+
+.green {
+  background-color: #bdffb5 !important;
+  border-color: #6fd159 !important;
+}
+
+.red {
+  background-color: #ffcccc !important;
+  border-color: #f99090  !important;
+}
+
+div.order__block h3, div.order__block-flex h3 {
+  margin: 30px 0 20px 0 !important;
+}
+
+div.order__block-flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+div.order__block-flex div {
+  width: 48% !important;
+}
+
+div.order__block-btn button {
+  margin: 10px 0 !important;
+  width: 180px !important;
+}
+
+div.order__block-btn-flex {
   display: flex;
   justify-content: start;
   margin-top: 20px !important;
 }
 
-div.btn__bottom button {
+div.order__block-btn-flex button {
   margin-right: 10px !important;
+  margin-top: 20px !important;
 }
 
-div.btn__bottom button.orders__btn-budget {
+button.orders__btn-budget {
   width: 210px !important;
 }
 
@@ -207,26 +260,18 @@ div.orders__btn-budget input[type="submit"] {
   width: 260px !important;
 }
 
-div.btn__new button {
-  width: 180px !important;
-}
-
-div.orders__addresses {
-  display: flex;
-  justify-content: space-between;
-}
-
-div.orders__addresses div {
-  width: 48% !important;
-}
-
-div.orders__products button.nav-link.active {
+div.orders__tabs button.nav-link.active {
   background: #888 !important;
   color: white !important;
 }
 
-div.orders__products button.nav-link {
+div.orders__tabs button.nav-link {
   border: 1px solid #888 !important;
+}
+
+div.orders__tabs-body h3 {
+  text-align: center !important;
+  margin-top: 100px !important;
 }
 
 div.form-check {

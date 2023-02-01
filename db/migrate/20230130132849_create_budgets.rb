@@ -7,6 +7,7 @@ class CreateBudgets < ActiveRecord::Migration[7.0]
       t.float :fixed_fee
       t.integer :deadline
       t.references :order, null: false, foreign_key: true
+      t.references :vehicle, null: false, foreign_key: true
 
       t.timestamps
     end

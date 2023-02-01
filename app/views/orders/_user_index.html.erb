@@ -3,7 +3,7 @@
     <h1><%= t('orders') %></h1>
     <p><%= link_to t('new_order'), new_order_path, class: "btn btn-primary" %></p>
   </div>
-  <div class="orders__products">
+  <div class="orders__tabs">
     <ul class="nav nav-tabs nav-justified mb-6" id="myTab" role="tablist">
       <li class="nav-item" role="presentation">
         <button class="nav-link active" id="open-tab" data-bs-toggle="tab" data-bs-target="#open" type="button" role="tab" aria-controls="open" aria-selected="true"><%= t('open') %></button>
@@ -24,7 +24,7 @@
         <button class="nav-link" id="returned-tab" data-bs-toggle="tab" data-bs-target="#returned" type="button" role="tab" aria-controls="returned" aria-selected="false"><%= t('returned') %></button>
       </li>
     </ul>
-    <div class="tab-content" id="myTabContent">
+    <div class="tab-content orders__tabs-body" id="myTabContent">
 
       <div class="tab-pane show active" id="open" role="tabpanel" aria-labelledby="open-tab">
         <% if @order_products_open.empty? && @order_products_open_no_product.empty? %>
@@ -105,16 +105,19 @@
                 <th scope="col"><%= t('volumes') %> (un)</th>
                 <th scope="col"><%= t('weight') %> (Kg)</th>
                 <th scope="col"><%= t('status') %></th>
+                <th scope="col"><%= t('vehicle') %></th>
               </tr>
             </thead>
             <tbody>
               <% @order_products_sent.each do |order| %>
+                <% @budget = @budgets.find_by(order_id: order.id) %>
                 <tr>
                   <td scope="row"><%= link_to order.code, order_confirmed_path(order.id) %></td>
                   <td scope="row"><%= order.created_at.strftime("%d/%m/%Y") %></td>
                   <td scope="row"><%= order.total_products %></td>
                   <td scope="row"><%= order.total_weight %></td>
                   <td scope="row"><%= t(order.status) %></td>
+                  <td scope="row"><%= @vehicles.find(@budget.vehicle_id).plate %></td>
                 </tr>
               <% end %>
             </tbody>
@@ -134,6 +137,7 @@
                 <th scope="col"><%= t('volumes') %> (un)</th>
                 <th scope="col"><%= t('weight') %> (Kg)</th>
                 <th scope="col"><%= t('status') %></th>
+                <th scope="col"><%= t('closed') %></th>
               </tr>
             </thead>
             <tbody>
@@ -144,6 +148,23 @@
                   <td scope="row"><%= order.total_products %></td>
                   <td scope="row"><%= order.total_weight %></td>
                   <td scope="row"><%= t(order.status) %></td>
+                  <td>
+                    <span class="
+                      <%= if order.condition == 'on_time'
+                        'ativo'
+                        elsif order.condition == 'late'
+                        'inativo'
+                        end
+                      %>
+                    ">
+                      <%= if order.condition == 'on_time'
+                        t('on_time')
+                        elsif order.condition == 'late'
+                        t('late')
+                        end
+                      %>
+                    </span>
+                  </td>
                 </tr>
               <% end %>
             </tbody>
