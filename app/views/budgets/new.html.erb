@@ -1,4 +1,4 @@
-<section>
+<section class="<%= 'orders__logout' if !user_signed_in? %>">
   <div class="budgets">
     <h1><%= t('modes') %> </h1>
     <%= button_to(t("back"), order_path(@order), method: :get, class: "btn btn-primary back__btn") %>

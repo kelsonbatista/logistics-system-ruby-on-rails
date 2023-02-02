@@ -34,6 +34,14 @@ class OrdersController < ApplicationController
     @recipient_addresses = @order.addresses.where(person: 'recipient')
     @sender_addresses = @order.addresses.where(person: 'sender')
     @budget = Budget.find_by(order_id: params[:id])
+    if @budget.present?
+      @sent = @budget.created_at.strftime("%d/%m/%Y")
+      @forecast = (@budget.created_at.to_date + @budget.deadline.to_i).strftime("%d/%m/%Y")
+      @time = @budget.created_at.strftime("%H:%M")
+      @delivered = @order.updated_at.strftime("%d/%m/%Y")
+      @delivered_time = @order.updated_at.strftime("%H:%M")
+      @vehicle = Vehicle.find_by(id: @budget.vehicle_id)
+    end
   end
 
   def new
@@ -64,6 +72,21 @@ class OrdersController < ApplicationController
     render :edit, status: :unprocessable_entity
   end
 
+  def search
+    # @orders = Order.where('tracking_code LIKE ?', "%#{params[:query]}%")
+    @order = Order.where("tracking_code = ? OR code = ?", params[:query], params[:query]).first
+    @budget = Budget.find_by(order_id: @order.id)
+    if !@order.present?
+      flash[:alert] = 'Nenhum objeto encontrado com esse código de rastreio'
+      return redirect_to root_path
+    end
+    if @budget.present?
+      redirect_to order_confirmed_path(@order)
+    else
+      redirect_to order_path(@order)
+    end
+  end
+
   def delivered
     if @order.delivered!
       @budget = Budget.find_by(order_id: params[:id])
@@ -71,7 +94,9 @@ class OrdersController < ApplicationController
       @vehicle.operational!
       @order.condition = (@order.updated_at.to_date - @budget.created_at.to_date).to_i <= @budget.deadline.to_i ? 'on_time' : 'late'
       @order.save
-      flash[:notice] = "Ordem de entrega marcada como entregue!"
+      if user_signed_in?
+        flash[:notice] = "Ordem de entrega marcada como entregue!"
+      end
       return redirect_to order_confirmed_path(@order)
     end
     flash.now[:alert] = "Erro ao marcar a ordem de entrega como entregue"
@@ -99,7 +124,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:id, :code, :distance, :condition, :reason, :mode, :total, :price_km, :fixed_fee, :deadline, :status, 
+    params.require(:order).permit(:id, :code, :distance, :condition, :reason, :tracking_code, :mode, :total, :price_km, :fixed_fee, :deadline, :status, 
       budgets_attributes: [:id, :mode, :total, :price_km, :fixed_fee, :deadline, :order_id, :_destroy],
       addresses_attributes: [:id, :person, :address_one, :address_two, :city, :state, :zip, :_destroy],
       order_products_attributes: [:id, :order_id, :product_id, :_destroy,

@@ -10,16 +10,16 @@
   </div>
 <% end %>
 
-<section>
+<section class="<%= 'orders__logout' if !user_signed_in? %>">
   <div class="order">
     <h1><%= t('order') %> <%= @order.code %></h1>
-    <%= button_to(t("back"), orders_path, method: :get, class: "btn btn-primary back__btn") %>
+    <%= button_to(t("back"), orders_path, method: :get, class: "btn btn-primary back__btn") if user_signed_in? %>
     <div class="order__status">
       <div>
         <h3><%= t('status') %>: <%= t(@order.status) %></h3>
       </div>
       <div class="order__status-btn">
-        <% if !@order.canceled? %>
+        <% if (@order.open? || @order.pending?) %>
           <%= button_to(t('mark_as_canceled'), canceled_order_path(order_id: @order.id), method: :post, class: "btn btn-danger") %>
         <% end %>
       </div>

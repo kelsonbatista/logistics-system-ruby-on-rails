@@ -81,6 +81,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_30_132849) do
     t.integer "distance"
     t.integer "condition"
     t.text "reason"
+    t.string "tracking_code"
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

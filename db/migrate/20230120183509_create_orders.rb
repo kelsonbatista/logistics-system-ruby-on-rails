@@ -5,6 +5,7 @@ class CreateOrders < ActiveRecord::Migration[7.0]
       t.integer :distance
       t.integer :condition
       t.text :reason
+      t.string :tracking_code
       t.integer :status, default: 0
 
       t.timestamps

@@ -50,6 +50,7 @@ class BudgetsController < ApplicationController
     if @budget.save && @vehicle
       @vehicle.update(status: 'transit')
       @order.update(status: 'sent')
+      @order.update(tracking_code: SecureRandom.uuid)
       return redirect_to order_confirmed_path(@order.id)
     end
     flash.now[:alert] = "Erro ao selecionar modalidade"

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'budgets/new'
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -14,7 +13,7 @@ Rails.application.routes.draw do
     resources :deadlines, only: [:index, :show, :new, :create, :edit, :update, :destroy]
     resources :orders, only: [:destroy]
   end
-  resources :orders, only: [:index, :show, :new, :create, :edit, :update] do
+  resources :orders, only: [:index, :show, :show_confirmed, :new, :create, :edit, :update] do
     resources :products, only: [:index, :show, :new, :create, :edit, :update]
     resources :addresses, only: [:index, :show, :new, :create, :edit, :update]
     resources :order_products, only: [:index, :show, :new, :create, :edit, :update]

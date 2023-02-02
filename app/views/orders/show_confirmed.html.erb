@@ -1,24 +1,42 @@
-<section>
+<section class="<%= 'orders__logout' if !user_signed_in? %>">
   <div class="orders">
     <h1><%= t('order') %> <%= @order.code %></h1>
-    <%= button_to(t("back"), orders_path, method: :get, class: "btn btn-primary back__btn") %>
+    <%= button_to(t("back"), orders_path, method: :get, class: "btn btn-primary back__btn") if user_signed_in? %>
 
     <div class="order__status">
       <div>
         <h3><%= t('status') %>: <%= t(@order.status) %></h3>
       </div>
       <div class="order__status-btn">
-        <% if (!@order.delivered? && !@order.returned?) %>
+        <% if (@order.sent?) %>
           <%= button_to(t('mark_as_delivered'), delivered_order_path(order_id: @order.id), method: :post, class: "btn btn-primary") %>
         <% end %>
-        <% if !@order.returned? %>
-          <%= button_to(t('mark_as_returned'), returned_order_path(order_id: @order.id), method: :post, class: "btn btn-danger") %>
+        <% if (@order.sent? || @order.delivered?) %>
+          <%= button_to(t('mark_as_returned'), returned_order_path(order_id: @order.id), method: :post, class: "btn btn-danger") if user_signed_in? %>
         <% end %>
       </div>
     </div>
 
+    <% if @order.sent? %>
+      <div class="order__status-condition">
+        <p><strong><%= t('tracking_code') %>:</strong> <%= @order.tracking_code %></p>
+        <p><strong><%= t('send_date') %>:</strong> <%= @sent %> às <%= @time %></p>
+        <p><strong><%= t('delivery_forecast') %>:</strong> <%= @forecast %> às <%= @time %></p>
+        <p><strong><%= t('vehicle') %>:</strong> <%= @vehicle.brand %> <%= @vehicle.model %> placa <%= @vehicle.plate %></p>
+      </div>
+    <% end %>
+
     <% if @order.delivered? %>
       <div class="order__status-condition <%= @order.on_time? ? 'green' : 'red' %>">
+
+        <div>
+          <p><strong><%= t('tracking_code') %>:</strong> <%= @order.tracking_code %></p>
+          <p><strong><%= t('send_date') %>:</strong> <%= @sent %> às <%= @time %></p>
+          <p><strong><%= t('delivery_forecast') %>:</strong> <%= @forecast %> às <%= @time %></p>
+          <p><strong><%= t('delivered_in') %>:</strong> <%= @delivered %> às <%= @delivered_time %></p>
+          <p><strong><%= t('vehicle') %>:</strong> <%= @vehicle.brand %> <%= @vehicle.model %> placa <%= @vehicle.plate %></p>
+        </div>
+
         <strong><%= t('this_order_was_closed') %>
           <% if @order.on_time? %>
             <span class=''><%= t('on_time').downcase %></span>
@@ -144,24 +162,26 @@
       </table>
     </div>
 
-    <div class="order__block">
-      <h3><%= t('modes') %></h3>
-      <table class="container table table-success table-striped">
-        <thead>
-          <tr>
-            <th><%= t('name') %></th>
-            <th><%= t('price') %></th>
-            <th><%= t('deadline') %></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><%= @budget.mode %></td>
-            <td><%= t('$') %> <%= @budget.total %></td>
-            <td><%= @budget.deadline %> dias</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <% if @budget.present? %>
+      <div class="order__block">
+        <h3><%= t('modes') %></h3>
+        <table class="container table table-success table-striped">
+          <thead>
+            <tr>
+              <th><%= t('name') %></th>
+              <th><%= t('price') %></th>
+              <th><%= t('deadline') %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= @budget.mode %></td>
+              <td><%= t('$') %> <%= @budget.total %></td>
+              <td><%= @budget.deadline %> dias</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
   </div>
 </section>

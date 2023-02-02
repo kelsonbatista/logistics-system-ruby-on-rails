@@ -110,6 +110,8 @@ pt-BR:
   add_address: Adicionar Endereço
   city: Cidade
   closed: Fechamento
+  delivered_in: Entregue em
+  delivery_forecast: Previsão de entrega
   late: Com atraso
   mark_as_canceled: Marcar como Cancelado
   mark_as_delivered: Marcar como Entregue
@@ -121,11 +123,13 @@ pt-BR:
   recipient_address: Endereço de Entrega
   search_order: Buscar pedido
   search: Buscar
+  send_date: Data de envio
   sender_address: Endereço de Retirada
   this_order_does_not_have_product: Essa ordem de entrega ainda não possui produtos
   this_order_does_not_have_recipient_address: Essa ordem de entrega ainda não possui endereço destinatário
   this_order_does_not_have_sender_address: Essa ordem de entrega ainda não possui endereço remetente
   this_order_was_closed: Essa ordem de entrega foi encerrada
+  tracking_code: Código de rastreamento
   zip: CEP
 
   ############# PRODUCT #############
