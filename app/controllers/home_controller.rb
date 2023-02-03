@@ -21,7 +21,7 @@ class HomeController < ApplicationController
     @alert_effectiveness = @effectiveness >= 75 ? 'green' : @effectiveness <= 50 ? 'red' : 'yellow'
 
     @revenue = "%.1f" % Budget.all.where(created_at: Date.today.all_month).sum(:total)
-    @revenue = "%.1f" % (@revenue/1000).to_s << 'K' if @revenue.to_s.to_i >= 1000
+    @revenue = "%.1f" % (@revenue.to_i/1000).to_s << 'K' if @revenue.to_s.to_i >= 1000
 
     @orders_all = @sent_order + @delivered_order + @canceled_order + @returned_order
 

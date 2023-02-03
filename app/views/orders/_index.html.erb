@@ -50,21 +50,21 @@
             </thead>
             <tbody>
               <% @order_products_open.each do |order| %>
-                <tr>
-                  <td scope="row"><%= link_to order.code, order_path(order.id) %></td>
-                  <td scope="row"><%= order.created_at.strftime("%d/%m/%Y") %></td>
-                  <td scope="row"><%= order.total_products %></td>
-                  <td scope="row"><%= order.total_weight %></td>
-                  <td scope="row"><%= t(order.status) %></td>
+                <tr class="table__td-width-2">
+                  <td scope="row" class="table__td-width-2"><%= link_to order.code, order_path(order.id) %></td>
+                  <td scope="row" class="table__td-width-2"><%= order.created_at.strftime("%d/%m/%Y") %></td>
+                  <td scope="row" class="table__td-width-2"><%= order.total_products %></td>
+                  <td scope="row" class="table__td-width-2"><%= order.total_weight %></td>
+                  <td scope="row" class="table__td-width-2"><%= t(order.status) %></td>
                 </tr>
               <% end %>
               <% @order_products_open_no_product.each do |order| %>
-                <tr>
-                  <td scope="row"><%= link_to order.code, order_path(order.id) %></td>
-                  <td scope="row"><%= order.created_at.strftime("%d/%m/%Y") %></td>
-                  <td scope="row"><%= '0' %></td>
-                  <td scope="row"><%= '0' %></td>
-                  <td scope="row"><%= t(order.status) %></td>
+                <tr class="table__td-width-2">
+                  <td scope="row" class="table__td-width-2"><%= link_to order.code, order_path(order.id) %></td>
+                  <td scope="row" class="table__td-width-2"><%= order.created_at.strftime("%d/%m/%Y") %></td>
+                  <td scope="row" class="table__td-width-2"><%= '0' %></td>
+                  <td scope="row" class="table__td-width-2"><%= '0' %></td>
+                  <td scope="row" class="table__td-width-2"><%= t(order.status) %></td>
                 </tr>
               <% end %>
             </tbody>
@@ -88,12 +88,12 @@
             </thead>
             <tbody>
               <% @order_products_pending.each do |order| %>
-                <tr>
-                  <td scope="row"><%= link_to order.code, order_path(order.id) %></td>
-                  <td scope="row"><%= order.created_at.strftime("%d/%m/%Y") %></td>
-                  <td scope="row"><%= order.total_products %></td>
-                  <td scope="row"><%= order.total_weight %></td>
-                  <td scope="row"><%= t(order.status) %></td>
+                <tr class="table__td-width-2">
+                  <td scope="row" class="table__td-width-2"><%= link_to order.code, order_path(order.id) %></td>
+                  <td scope="row" class="table__td-width-2"><%= order.created_at.strftime("%d/%m/%Y") %></td>
+                  <td scope="row" class="table__td-width-2"><%= order.total_products %></td>
+                  <td scope="row" class="table__td-width-2"><%= order.total_weight %></td>
+                  <td scope="row" class="table__td-width-2"><%= t(order.status) %></td>
                 </tr>
               <% end %>
             </tbody>
@@ -118,7 +118,7 @@
             </thead>
             <tbody>
               <% @order_products_sent.each do |order| %>
-                <% @budget = @budgets.find_by(order_id: order.id) %>
+                <% @budget = @budgets.find_by(order_id: order.id) %>  
                 <tr>
                   <td scope="row"><%= link_to order.code, order_confirmed_path(order.id) %></td>
                   <td scope="row"><%= order.created_at.strftime("%d/%m/%Y") %></td>
@@ -150,12 +150,12 @@
             </thead>
             <tbody>
               <% @order_products_delivered.each do |order| %>
-                <tr>
-                  <td scope="row"><%= link_to order.code, order_confirmed_path(order.id) %></td>
-                  <td scope="row"><%= order.created_at.strftime("%d/%m/%Y") %></td>
-                  <td scope="row"><%= order.total_products %></td>
-                  <td scope="row"><%= order.total_weight %></td>
-                  <td scope="row"><%= t(order.status) %></td>
+                <tr class="table__td-width-2">
+                  <td scope="row" class="table__td-width-2"><%= link_to order.code, order_confirmed_path(order.id) %></td>
+                  <td scope="row" class="table__td-width-2"><%= order.created_at.strftime("%d/%m/%Y") %></td>
+                  <td scope="row" class="table__td-width-2"><%= order.total_products %></td>
+                  <td scope="row" class="table__td-width-2"><%= order.total_weight %></td>
+                  <td scope="row" class="table__td-width-2"><%= t(order.status) %></td>
                   <td>
                     <span class="
                       <%= if order.condition == 'on_time'
@@ -196,12 +196,12 @@
             </thead>
             <tbody>
               <% @order_products_canceled.each do |order| %>
-                <tr>
-                  <td scope="row"><%= link_to order.code, order_confirmed_path(order.id) %></td>
-                  <td scope="row"><%= order.created_at.strftime("%d/%m/%Y") %></td>
-                  <td scope="row"><%= order.total_products %></td>
-                  <td scope="row"><%= order.total_weight %></td>
-                  <td scope="row"><%= t(order.status) %></td>
+                <tr class="table__td-width-2">
+                  <td scope="row" class="table__td-width-2"><%= link_to order.code, order_confirmed_path(order.id) %></td>
+                  <td scope="row" class="table__td-width-2"><%= order.created_at.strftime("%d/%m/%Y") %></td>
+                  <td scope="row" class="table__td-width-2"><%= order.total_products %></td>
+                  <td scope="row" class="table__td-width-2"><%= order.total_weight %></td>
+                  <td scope="row" class="table__td-width-2"><%= t(order.status) %></td>
                 </tr>
               <% end %>
             </tbody>
@@ -225,12 +225,12 @@
             </thead>
             <tbody>
               <% @order_products_returned.each do |order| %>
-                <tr>
-                  <td scope="row"><%= link_to order.code, order_confirmed_path(order.id) %></td>
-                  <td scope="row"><%= order.created_at.strftime("%d/%m/%Y") %></td>
-                  <td scope="row"><%= order.total_products %></td>
-                  <td scope="row"><%= order.total_weight %></td>
-                  <td scope="row"><%= t(order.status) %></td>
+                <tr class="table__td-width-2">
+                  <td scope="row" class="table__td-width-2"><%= link_to order.code, order_confirmed_path(order.id) %></td>
+                  <td scope="row" class="table__td-width-2"><%= order.created_at.strftime("%d/%m/%Y") %></td>
+                  <td scope="row" class="table__td-width-2"><%= order.total_products %></td>
+                  <td scope="row" class="table__td-width-2"><%= order.total_weight %></td>
+                  <td scope="row" class="table__td-width-2"><%= t(order.status) %></td>
                 </tr>
               <% end %>
             </tbody>

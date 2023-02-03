@@ -27,7 +27,13 @@
         <tbody>
           <% @orders.each do |order| %>
             <tr>
-              <td scope="row"><%= link_to order.code, order_path(order.id) %></td>
+              <td scope="row">
+                <% if (order.open? || order.pending?) %>
+                  <%= link_to order.code, order_path(order.id) %>
+                <% else %>
+                  <%= link_to order.code, order_confirmed_path(order.id) %>
+                <% end %>
+              </td>
               <td scope="row"><%= order.created_at.strftime("%d/%m/%Y") %></td>
               <td scope="row"><%= order.updated_at.strftime("%d/%m/%Y") %></td>
               <td scope="row"><%= t(order.status) %></td>

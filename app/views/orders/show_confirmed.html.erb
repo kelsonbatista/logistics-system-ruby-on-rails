@@ -1,7 +1,9 @@
 <section class="<%= 'orders__logout' if !user_signed_in? %>">
   <div class="orders">
     <h1><%= t('order') %> <%= @order.code %></h1>
-    <%= button_to(t("back"), orders_path, method: :get, class: "btn btn-primary back__btn") if user_signed_in? %>
+    <div class="page__top">
+      <%= button_to(t("back"), orders_path, method: :get, class: "btn btn-primary back__btn") if user_signed_in? %>
+    </div>
 
     <div class="order__status">
       <div>
