@@ -133,8 +133,8 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:id, :code, :distance, :condition, :reason, :tracking_code, :mode, :total, :price_km, :fixed_fee, :deadline, :status, 
-      budgets_attributes: [:id, :mode, :total, :price_km, :fixed_fee, :deadline, :order_id, :_destroy],
+    params.require(:order).permit(:id, :code, :distance, :condition, :reason, :tracking_code, :status, 
+      budgets_attributes: [:id, :mode, :total, :price_km, :fixed_fee, :deadline, :order_id, :vehicle_id, :_destroy],
       addresses_attributes: [:id, :person, :address_one, :address_two, :city, :state, :zip, :_destroy],
       order_products_attributes: [:id, :order_id, :product_id, :_destroy,
       products_attributes: [:id, :code, :width, :height, :depth, :weight, :_destroy]])

@@ -13,42 +13,30 @@
 <div class="budget__form">
   <div class="orders__budget">
     <h3><%= t('select_desired_mode') %></h3>
-    <% if @modes_prices_deadlines.empty? %>
+    <% if !@modes_prices_deadlines.present? %>
       <h5><%= t('no_mode_can_attend_this_order') %></h5>
     <% else %>
-      <table class="container table table-success table-striped">
-        <thead>
-          <tr>
-            <th><%= t('name') %></th>
-            <th><%= t('price') %></th>
-            <th><%= t('deadline') %></th>
-            <th><%= t('action') %></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @modes_prices_deadlines.each do |mode| %>
-            <%= form_with(model: [@order, @budget], local: true) do |f| %>
-              <% @total_price = '%.2f' % ((mode.price_per_km * @order.distance) + mode.fixed_fee) %>
-              <tr>
-                <td class="table__td-width"><%= mode.name %></td>
-                <td class="table__td-width"><%= t('$') %> <%= @total_price %></td>
-                <td class="table__td-width"><%= mode.deadline %> dias</td>
-                <td>
-                  <div class="orders__btn-budget">
-                    <%= f.hidden_field :mode, value: mode.id %>
-                    <%= f.hidden_field :total, value: @total_price %>
-                    <%= f.hidden_field :price_km, value: mode.price_per_km %>
-                    <%= f.hidden_field :fixed_fee, value: mode.fixed_fee %>
-                    <%= f.hidden_field :deadline, value: mode.deadline %>
-                    <%= f.hidden_field :order_id, value: @order.id %>
-                    <%= f.submit t('select_mode'), class: "btn btn-success", disabled: (@modes_prices_deadlines.empty? ? true : false) %>
-                  </div>
-                </td>
-              </tr>
-            <% end %>
+      <div class="cards">
+        <% @modes_prices_deadlines.each do |mode| %>
+          <%= form_with(model: [@order, @budget], local: true) do |f| %>
+            <% @total_price = '%.2f' % ((mode.price_per_km * @order.distance) + mode.fixed_fee) %>
+            <%= f.hidden_field :mode, value: mode.id %>
+            <%= f.hidden_field :total, value: @total_price %>
+            <%= f.hidden_field :price_km, value: mode.price_per_km %>
+            <%= f.hidden_field :fixed_fee, value: mode.fixed_fee %>
+            <%= f.hidden_field :deadline, value: mode.deadline %>
+            <%= f.hidden_field :order_id, value: @order.id %>
+            <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title"><%= mode.name %></h5>
+                <p class="card-text"><%= t('$') %> <%= @total_price %></p>
+                <p class="card-text"><%= t('deadline') %>: <%= mode.deadline %> dias</p>
+                <%= f.submit t('select'), class: "btn btn-success", disabled: (@modes_prices_deadlines.empty? ? true : false) %>
+              </div>
+            </div>
           <% end %>
-        </tbody>
-      </table>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>

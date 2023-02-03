@@ -492,3 +492,30 @@ table tr td.table__td-width {
 table tr td.table__td-width-2 {
   width: 15% !important;
 }
+
+div.orders__budget div.cards {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 1.3em;
+  text-align: center;
+}
+
+div.orders__budget div.cards div.card {
+  display: block !important;
+  border: 2px solid #999 !important;
+  background-color: #ddd;
+}
+
+div.orders__budget div.cards div.card h5 {
+  margin: 0 !important;
+  padding: 10px !important;
+  padding-bottom: 20px !important;
+  font-size: 1.3em;
+  font-weight: 800;
+}
+
+div.orders__budget div.cards input.card-btn {
+  width: 210px !important;
+}

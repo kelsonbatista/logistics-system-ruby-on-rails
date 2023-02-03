@@ -20,16 +20,9 @@ class BudgetsController < ApplicationController
 
   def create
     @order = Order.find(params[:order_id])
-    @budget = Budget.new(budget_params)
-    @mode_id = params[:budget][:mode]
-    @mode = Mode.find(@mode_id)
-
+    @budget = Budget.new(budget_params) 
+    @mode = Mode.find(@budget.mode)
     @budget.mode = @mode.name
-    @budget.total = params[:budget][:total]
-    @budget.price_km = params[:budget][:price_km]
-    @budget.fixed_fee = params[:budget][:fixed_fee]
-    @budget.deadline = params[:budget][:deadline]
-    @budget.order_id = params[:budget][:order_id]
 
     @products_weight = Product.joins(:orders).where(orders: {id: @order.id}).sum(:weight)
     @modes = Mode.all
@@ -38,18 +31,18 @@ class BudgetsController < ApplicationController
 
     @modes_prices_deadlines = @modes.joins(:prices).joins(:deadlines).select("modes.id, modes.name, modes.min_distance, modes.max_distance, modes.min_weight, modes.max_weight, modes.fixed_fee, prices.min_weight, prices.max_weight, prices.price_per_km, deadlines.min_distance, deadlines.max_distance, deadlines.deadline").where('modes.min_weight <= ?', @products_weight).where('modes.max_weight >= ?', @products_weight).where('prices.min_weight <= ?', @products_weight).where('prices.max_weight >= ?', @products_weight).where('deadlines.min_distance <= ?', @order.distance).where('deadlines.max_distance >= ?', @order.distance).where(active: true)
 
-    @vehicle = Vehicle.all
-    @vehicle = @vehicle.where(mode_id: @mode_id).where(status: 'operational').first
-    @budget.vehicle_id = @vehicle.id
-
+    @vehicles = Vehicle.all
+    @vehicle = @vehicles.where(mode_id: @mode.id).where(status: 'operational').first
+    
     if !@vehicle
       flash.now[:alert] = "Não há veículos disponíveis para esta modalidade"
       return render :new, status: :unprocessable_entity
     end
+    @budget.vehicle_id = @vehicle.id
     
     if @budget.save && @vehicle
-      @vehicle.update(status: 'transit')
-      @order.update(status: 'sent')
+      @vehicle.transit!
+      @order.sent!
       @order.update(tracking_code: SecureRandom.uuid)
       return redirect_to order_confirmed_path(@order.id)
     end
@@ -77,7 +70,7 @@ class BudgetsController < ApplicationController
   private
 
   def budget_params
-    params.require(:budget).permit(:mode, :total, :price_km, :fixed_fee, :deadline, :order_id)
+    params.fetch(:budget, {}).permit(:id, :mode, :total, :price_km, :fixed_fee, :deadline, :order_id, :vehicle_id)
   end
 
   def budget_find
