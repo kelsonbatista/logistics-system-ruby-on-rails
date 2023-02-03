@@ -1,7 +1,9 @@
 <section>
   <div class="prices">
     <h1><%= t('prices') %></h1>
-    <p><%= link_to t('new_price'), new_price_path, class: "btn btn-primary" %></p>
+    <div class="page__top">
+      <%= link_to t('new_price'), new_price_path, class: "btn btn-primary" %>
+    </div>
   </div>
   <div class="prices__list">
     <% if @prices.empty? %>

@@ -1,7 +1,9 @@
 <section>
   <div class="deadlines">
     <h1><%= t('deadlines') %></h1>
-    <p><%= link_to t('new_deadline'), new_deadline_path, class: "btn btn-primary" %></p>
+    <div class="page__top">
+      <%= link_to t('new_deadline'), new_deadline_path, class: "btn btn-primary" %>
+    </div>
   </div>
   <div class="deadlines__list">
     <% if @deadlines.empty? %>

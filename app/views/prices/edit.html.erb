@@ -1,7 +1,9 @@
 <section>
   <div class="prices">
     <h1><%= t('edit') << " " << t('price') %></h1>
-    <%= button_to(t("back"), prices_path, method: :get, class: "btn btn-primary back__btn") %>
+    <div class="page__top">
+      <%= button_to(t("back"), prices_path, method: :get, class: "btn btn-primary back__btn") %>
+    </div>
     <%= render partial: "form", locals: { price: @price } %>
   </div>
 </section>

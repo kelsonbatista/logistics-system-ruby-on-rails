@@ -1,7 +1,9 @@
 <section>
   <div class="vehicles">
     <h1><%= t('new_vehicle') %></h1>
-    <%= button_to(t("back"), vehicles_path, method: :get, class: "btn btn-primary back__btn") %>
+    <div class="page__top">
+      <%= button_to(t("back"), vehicles_path, method: :get, class: "btn btn-primary back__btn") %>
+    </div>
     <%= render partial: "form", locals: { vehicle: @vehicle } %>
   </div>
 </section>
