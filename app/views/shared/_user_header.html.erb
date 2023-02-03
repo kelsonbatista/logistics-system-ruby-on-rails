@@ -9,7 +9,12 @@
   <ul class="nav nav-pills flex-column mb-auto">
     <li class="nav-item">
       <%= link_to root_path, class: "nav-link text-white #{ current_page?(root_path) ? 'active' : ''}" do %>
-        <i class="fa fa-house"></i>&nbsp;&nbsp;<%= t('home') %>
+        <i class="fa fa-house"></i>&nbsp;&nbsp;<%= t('dashboard') %>
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to orders_path, class: "nav-link text-white #{ current_page?(controller: 'orders') ? 'active' : ''}" do %>
+        <i class="fa-solid fa-cube"></i>&nbsp;&nbsp;<%= t('orders') %>
       <% end %>
     </li>
     <li class="nav-item">
@@ -25,11 +30,6 @@
     <li class="nav-item">
       <%= link_to prices_path, class: "nav-link text-white #{ current_page?(controller: 'prices') ? 'active' : ''}" do %>
         <i class="fa-solid fa-dollar"></i>&nbsp;&nbsp;<%= t('prices') %>
-      <% end %>
-    </li>
-    <li class="nav-item">
-      <%= link_to orders_path, class: "nav-link text-white #{ current_page?(controller: 'orders') ? 'active' : ''}" do %>
-        <i class="fa-solid fa-cube"></i>&nbsp;&nbsp;<%= t('orders') %>
       <% end %>
     </li>
     <li class="nav-item">

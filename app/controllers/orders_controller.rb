@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
     @orders = Order.all
     @vehicles = Vehicle.all
     @budgets = Budget.all
+    @search = request.path.match(/^\/search_orders\/[^\d]+$/).present?
 
     @order_products_open = Order.joins(:products).group(:order_id).select("orders.*, count(products.id) as total_products, sum(products.weight) as total_weight").where(status: 'open')
 
@@ -73,7 +74,6 @@ class OrdersController < ApplicationController
   end
 
   def search
-    # @orders = Order.where('tracking_code LIKE ?', "%#{params[:query]}%")
     @order = Order.where("tracking_code = ? OR code = ?", params[:query], params[:query]).first
     @budget = Budget.find_by(order_id: @order.id)
     if !@order.present?
@@ -85,6 +85,15 @@ class OrdersController < ApplicationController
     else
       redirect_to order_path(@order)
     end
+  end
+
+  def search_orders
+    @orders = Order.where('tracking_code LIKE ? OR code LIKE ? OR status LIKE ?', 
+      "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%")
+    if @orders.empty?
+      flash[:alert] = 'Nenhuma ordem de entrega encontrada'
+    end
+    render :index
   end
 
   def delivered

@@ -8,12 +8,17 @@ Rails.application.routes.draw do
   authenticate :user do
     resources :users, only: [:show, :edit, :update]
     resources :modes, only: [:index, :show, :new, :create, :edit, :update, :destroy]
-    resources :vehicles, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+    resources :vehicles, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+      get 'search_vehicles', on: :collection, as: 'search_vehicles'
+    end
     resources :prices, only: [:index, :show, :new, :create, :edit, :update, :destroy]
     resources :deadlines, only: [:index, :show, :new, :create, :edit, :update, :destroy]
-    resources :orders, only: [:destroy]
+    resources :orders, only: [:index, :destroy] do
+      get 'search_orders', on: :collection, as: 'search_all'
+    end
+    
   end
-  resources :orders, only: [:index, :show, :show_confirmed, :new, :create, :edit, :update] do
+  resources :orders, only: [:show, :show_confirmed, :new, :create, :edit, :update] do
     resources :products, only: [:index, :show, :new, :create, :edit, :update]
     resources :addresses, only: [:index, :show, :new, :create, :edit, :update]
     resources :order_products, only: [:index, :show, :new, :create, :edit, :update]

@@ -66,6 +66,7 @@ pt-BR:
   year: Ano
 
   ############# VEHICLE #################
+  load: Carga
   operational: Em operação
   transit: Em trânsito
   repair: Em manutenção
@@ -110,6 +111,7 @@ pt-BR:
   add_address: Adicionar Endereço
   city: Cidade
   closed: Fechamento
+  created_at: Criado em
   delivered_in: Entregue em
   delivery_forecast: Previsão de entrega
   late: Com atraso
@@ -130,6 +132,7 @@ pt-BR:
   this_order_does_not_have_sender_address: Essa ordem de entrega ainda não possui endereço remetente
   this_order_was_closed: Essa ordem de entrega foi encerrada
   tracking_code: Código de rastreamento
+  updated_at: Atualizado em
   zip: CEP
 
   ############# PRODUCT #############
