@@ -1,0 +1,42 @@
+<!-- Existe alguma mensagem de erro de sistema? -->
+<% if(budget.errors.any?) %>
+  <div class="messages alert alert-warning" role="alert">
+    <p><%= t('verify_the_following_errors') %>:</p>
+    <ul>
+      <% budget.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="budget__form">
+  <div class="orders__budget">
+    <h3><%= t('select_desired_mode') %></h3>
+    <% if !@modes_prices_deadlines.present? %>
+      <h5><%= t('no_mode_can_attend_this_order') %></h5>
+    <% else %>
+      <div class="cards">
+        <% @modes_prices_deadlines.each do |mode| %>
+          <%= form_with(model: [@order, @budget], local: true) do |f| %>
+            <% @total_price = '%.2f' % ((mode.price_per_km * @order.distance) + mode.fixed_fee) %>
+            <%= f.hidden_field :mode, value: mode.id %>
+            <%= f.hidden_field :total, value: @total_price %>
+            <%= f.hidden_field :price_km, value: mode.price_per_km %>
+            <%= f.hidden_field :fixed_fee, value: mode.fixed_fee %>
+            <%= f.hidden_field :deadline, value: mode.deadline %>
+            <%= f.hidden_field :order_id, value: @order.id %>
+            <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title"><%= mode.name %></h5>
+                <p class="card-text"><%= t('$') %> <%= @total_price %></p>
+                <p class="card-text"><%= t('deadline') %>: <%= mode.deadline %> dias</p>
+                <%= f.submit t('select'), class: "btn btn-success", disabled: (@modes_prices_deadlines.empty? ? true : false) %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

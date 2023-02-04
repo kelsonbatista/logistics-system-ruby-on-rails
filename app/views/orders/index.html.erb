@@ -1,5 +1,5 @@
-<% if user_signed_in? %>
-  <%= render partial: "user_index" %>
+<% if request.fullpath.include? 'search_orders' %>
+  <%= render partial: "search_index" %>
 <% else %>
-  <%= render partial: "visitor_index" %>
+  <%= render partial: "index" %>
 <% end %>

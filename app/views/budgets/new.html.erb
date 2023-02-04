@@ -1,0 +1,11 @@
+<section class="<%= 'orders__logout' if !user_signed_in? %>">
+  <div class="budgets">
+    <h1><%= t('modes') %> </h1>
+    <div class="page__top">
+      <%= button_to(t("back"), order_path(@order), method: :get, class: "btn btn-primary back__btn") %>
+    </div>
+  </div>
+  <div class="budgets__list">
+    <%= render partial: "form", locals: { budget: @budget } %>
+  </div>
+</section>

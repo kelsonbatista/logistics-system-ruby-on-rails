@@ -1,7 +1,9 @@
 <section>
   <div class="deadlines">
     <h1><%= t('deadlines') %></h1>
-    <p><%= link_to t('new_deadline'), new_deadline_path, class: "btn btn-primary" %></p>
+    <div class="page__top">
+      <%= link_to t('new_deadline'), new_deadline_path, class: "btn btn-primary" %>
+    </div>
   </div>
   <div class="deadlines__list">
     <% if @deadlines.empty? %>
@@ -19,10 +21,10 @@
         <tbody>
           <% @deadlines.each do |deadline| %>
             <tr>
-              <td><%= deadline.min_distance %> Km</td>
-              <td><%= deadline.max_distance %> Km</td>
-              <td><%= deadline.deadline %> hs</td>
-              <td><%= deadline.mode.name %></td>
+              <td class="table__td-width"><%= deadline.min_distance %> Km</td>
+              <td class="table__td-width"><%= deadline.max_distance %> Km</td>
+              <td class="table__td-width"><%= deadline.deadline %> hs</td>
+              <td class="table__td-width"><%= deadline.mode.name %></td>
               <td><%= button_to(t("edit"), edit_deadline_path(deadline.id), class: "btn btn-warning deadlines__btn", method: :get) %></td>
               <td><%= button_to(t("delete"),
                 deadline_path(deadline.id),

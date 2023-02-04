@@ -10,7 +10,7 @@ pt-BR:
   create_vehicle: Cadastrar Veículo
   deadline: Prazo
   deadlines: Prazos
-  deadlines_table: Tabela de Prazos
+  deadlines_table: Tabela de prazos
   delete: Apagar
   distance: Distância
   edit: Editar
@@ -21,6 +21,8 @@ pt-BR:
   in_maintenance_vehicles: Veículos em manutenção
   in_operation: Em operação
   in_operation_vehicles: Veículos em operação
+  in_transit: Em entrega
+  in_transit_vehicles: Veículos em entrega
   inactive: Inativo
   interval: Intervalo
   logistics: Transportadoras
@@ -35,16 +37,16 @@ pt-BR:
   name: Nome
   new_deadline: Novo Prazo
   new_mode: Nova Modalidade
-  new_order: Novo Pedido
+  new_order: Nova Ordem de Entrega
   new_price: Novo Preço
   new_vehicle: Novo Veículo
   no_deadlines_registered: Nenhum prazo cadastrado
   no_modes_registered: Nenhuma modalidade cadastrada
   no_prices_registered: Nenhum preço cadastrado
   no_vehicles_registered: Nenhum veículo cadastrado
-  order: Pedido
+  order: Ordem de Entrega
   order_date: Data
-  orders: Pedidos
+  orders: Ordens de Entrega
   plate: Placa
   price: Preço
   prices: Preços
@@ -62,6 +64,12 @@ pt-BR:
   verify_the_following_errors: Verifique os seguintes erros
   weight: Peso
   year: Ano
+
+  ############# VEHICLE #################
+  load: Carga
+  operational: Em operação
+  transit: Em trânsito
+  repair: Em manutenção
 
   ############# LOGIN SYSTEM #############
   change_password: Alterar a senha
@@ -85,7 +93,13 @@ pt-BR:
   canceled: Cancelado
   delivered: Entregue
   in_transit: Em trânsito
-  no_orders_registered: Nenhum pedido registrado
+  no_canceled_orders: Nenhuma ordem de entrega cancelada
+  no_delivered_orders: Nenhuma ordem de entrega entregue
+  no_open_orders: Nenhuma ordem de entrega aberta
+  no_pending_orders: Nenhuma ordem de entrega pendente
+  no_returned_orders: Nenhuma ordem de entrega retornada
+  no_sent_orders: Nenhuma ordem de entrega enviada
+  open: Aberto
   pending: Pendente
   returned: Retornado
   sent: Enviado
@@ -94,12 +108,45 @@ pt-BR:
   ############# ORDER #############
   address_one: Endereço
   address_two: Complemento
+  add_address: Adicionar Endereço
   city: Cidade
+  closed: Fechamento
+  created_at: Criado em
+  delivered_in: Entregue em
+  delivery_forecast: Previsão de entrega
+  late: Com atraso
+  mark_as_canceled: Marcar como Cancelado
+  mark_as_delivered: Marcar como Entregue
+  mark_as_returned: Marcar como Retornado
+  next: Próximo
+  on_time: No prazo
+  please_inform_the_reason: Por favor, informe o motivo
+  reason: Motivo
+  recipient_address: Endereço de Entrega
+  search_order: Buscar pedido
+  search: Buscar
+  send_date: Data de envio
+  sender_address: Endereço de Retirada
+  this_order_does_not_have_product: Essa ordem de entrega ainda não possui produtos
+  this_order_does_not_have_recipient_address: Essa ordem de entrega ainda não possui endereço destinatário
+  this_order_does_not_have_sender_address: Essa ordem de entrega ainda não possui endereço remetente
+  this_order_was_closed: Essa ordem de entrega foi encerrada
+  tracking_code: Código de rastreamento
+  updated_at: Atualizado em
   zip: CEP
 
   ############# PRODUCT #############
-  width: Comprimento(cm)
-  height: Altura(cm)
-  depth: Profundidade(cm)
-  weight: Peso(Kg)
   actions: Ações
+  add_product: Adicionar Produto
+  depth: Profundidade
+  height: Altura
+  product: Produto
+  weight: Peso
+  width: Largura
+
+  ############ BUDGET ################
+  confirm_order: Confirmar Ordem de Entrega
+  no_mode_can_attend_this_order: Nenhuma modalidade atende essa ordem de entrega
+  select_desired_mode: Selecione a modalidade desejada
+  select_mode: Selecione a modalidade
+  select: Selecionar

@@ -8,6 +8,7 @@ pt-BR:
       mode:
         active: Ativo
         fixed_fee: Taxa fixa
+        mode: Modalidade
         modes: Modalidades
         max_distance: Distância Máxima
         max_weight: Peso Máximo

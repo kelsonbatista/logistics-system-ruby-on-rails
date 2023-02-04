@@ -16,39 +16,19 @@ describe "Edit price" do
   context "user authenticated" do
     before(:each) do
       #Arrange
-      user = User.create!(
-        name: "Usuario 1",
-        email: "usuario1@email.com",
-        password: '123456',
-        role: "user"
-      )
+      user = User.create!(name: "Jose Silva", email: "jose@email.com", password: '123456', role: "user")
 
-      for i in 1..3 do
-        Mode.create!(
-          name: "Modalidade #{i}",
-          min_distance: 10 * i,
-          max_distance: 100 * i,
-          min_weight: 1 * i,
-          max_weight: 100 * i,
-          fixed_fee: 50 * i,
-          active: true
-        )
-      end
+      Mode.create!(name: "Light Pack", min_distance: 1, max_distance: 1000, 
+                  min_weight: 1, max_weight: 10, fixed_fee: 20,  active: true)
 
-      for i in 1..3 do
-        Price.create!(
-          min_weight: 5 * i,
-          max_weight: 10 * i,
-          price_per_km: 0.11 * i,
-          mode_id: 1
-        )
-        Price.create!(
-          min_weight: 7 * i,
-          max_weight: 12 * i,
-          price_per_km: 0.16 * i,
-          mode_id: 2
-        )
-      end
+      Mode.create!(name: "Super Pack", min_distance: 10, max_distance: 500, 
+                  min_weight: 5, max_weight: 20, fixed_fee: 40, active: false)
+
+      Mode.create!(name: "Mega Pack", min_distance: 10, max_distance: 300, 
+                  min_weight: 10, max_weight: 40, fixed_fee: 60, active: true)
+
+      Price.create!(min_weight: 1, max_weight: 3, price_per_km: 0.11, mode_id: 1)
+      Price.create!(min_weight: 5, max_weight: 10, price_per_km: 0.16, mode_id: 2)
 
       login_as(user)
     end
@@ -56,41 +36,66 @@ describe "Edit price" do
     it "view page and form" do
       #Act
       visit root_path
-      click_on "Preços"
-      page.all('button.btn-warning')[1].click
+      within('div ul.nav li:nth-child(5)') do
+        click_on 'Preços'
+      end
+      within('table tbody tr:nth-child(2)') do
+        click_on 'Editar'
+      end
       #Assert
       expect(current_path).to eq edit_price_path(2)
-      expect(page).to have_field 'Peso Mínimo (Kg)'
-      expect(page).to have_field 'Peso Máximo (Kg)'
-      expect(page).to have_field 'Preço por Km (R$)'
-      expect(page).to have_field 'Modalidade'
+      within('div table') do
+        expect(page).to have_field 'Peso Mínimo (Kg)'
+        expect(page).to have_field 'Peso Máximo (Kg)'
+        expect(page).to have_field 'Preço por Km (R$)'
+        expect(page).to have_field 'Modalidade'
+      end
     end
 
     it "successfully" do
       #Act
       visit root_path
-      click_on "Preços"
-      page.all('button.btn-warning')[1].click
-      fill_in "Peso Mínimo (Kg)",	with: "99"
-      fill_in "Peso Máximo (Kg)",	with: "199"
-      fill_in "Preço por Km (R$)",	with: "0.99"
-      select "Modalidade 3", from: "Modalidade"
-      click_on "Salvar"
+      within('div ul.nav li:nth-child(5)') do
+        click_on 'Preços'
+      end
+      within('table tbody tr:nth-child(1)') do
+        click_on 'Editar'
+      end
+      within('div table') do
+        fill_in "Peso Mínimo (Kg)",	with: "99"
+        fill_in "Peso Máximo (Kg)",	with: "199"
+        fill_in "Preço por Km (R$)",	with: "0.99"
+        select "Mega Pack", from: "Modalidade"
+      end
+      within('div.prices__btn') do
+        click_on 'Salvar'
+      end
       #Assert
-      expect(page).to have_content 'Peso'
-      expect(page).to have_content 'Preço por Km'
-      expect(page).to have_content 'Modalidade'
-      expect(page).to have_content 'Ações'
-      expect(page).to have_content 'Editar'
-      expect(page).to have_content 'Apagar'
-      expect(page).to have_content '5 Kg'
-      expect(page).to have_content '10 Kg'
-      expect(page).to have_content 'R$ 0.11'
-      expect(page).to have_content 'Modalidade 1'
-      expect(page).to have_content '99 Kg'
-      expect(page).to have_content '199 Kg'
-      expect(page).to have_content 'R$ 0.99'
-      expect(page).to have_content 'Modalidade 3'
+      within('div.notice') do
+        expect(page).to have_content 'Preço atualizado com sucesso'
+      end
+      within('table thead tr') do
+        expect(page).to have_content 'Peso'
+        expect(page).to have_content 'Preço por Km'
+        expect(page).to have_content 'Modalidade'
+        expect(page).to have_content 'Ações'
+      end
+      within('table tbody tr:nth-child(1)') do
+        expect(page).to have_content '99 Kg'
+        expect(page).to have_content '199 Kg'
+        expect(page).to have_content 'R$ 0.99'
+        expect(page).to have_content 'Mega Pack'
+        expect(page).to have_button 'Editar'
+        expect(page).to have_button 'Apagar'
+      end
+      within('table tbody tr:nth-child(2)') do
+        expect(page).to have_content '5 Kg'
+        expect(page).to have_content '10 Kg'
+        expect(page).to have_content 'R$ 0.16'
+        expect(page).to have_content 'Super Pack'
+        expect(page).to have_button 'Editar'
+        expect(page).to have_button 'Apagar'
+      end
     end
   end
 end

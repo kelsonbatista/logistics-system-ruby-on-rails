@@ -9,12 +9,17 @@
   <ul class="nav nav-pills flex-column mb-auto">
     <li class="nav-item">
       <%= link_to root_path, class: "nav-link text-white #{ current_page?(root_path) ? 'active' : ''}" do %>
-        <i class="fa fa-house"></i>&nbsp;&nbsp;<%= t('home') %>
+        <i class="fa fa-house"></i>&nbsp;&nbsp;<%= t('dashboard') %>
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to orders_path, class: "nav-link text-white #{ current_page?(controller: 'orders') ? 'active' : ''}" do %>
+        <i class="fa-solid fa-cube"></i>&nbsp;&nbsp;<%= t('orders') %>
       <% end %>
     </li>
     <li class="nav-item">
       <%= link_to modes_path, class: "nav-link text-white #{ current_page?(controller: 'modes') ? 'active' : ''}" do %>
-        <i class="fa fa-earth-americas"></i>&nbsp;&nbsp;<%= t('modes') %>
+        <i class="fa fa-globe"></i>&nbsp;&nbsp;<%= t('modes') %>
       <% end %>
     </li>
     <li class="nav-item">
@@ -24,22 +29,12 @@
     </li>
     <li class="nav-item">
       <%= link_to prices_path, class: "nav-link text-white #{ current_page?(controller: 'prices') ? 'active' : ''}" do %>
-        <i class="fa-solid fa-dollar-sign"></i>&nbsp;&nbsp;<%= t('prices') %>
-      <% end %>
-    </li>
-    <li class="nav-item">
-      <%= link_to orders_path, class: "nav-link text-white #{ current_page?(controller: 'orders') ? 'active' : ''}" do %>
-        <i class="fa-solid fa-cube"></i>&nbsp;&nbsp;<%= t('orders') %>
+        <i class="fa-solid fa-dollar"></i>&nbsp;&nbsp;<%= t('prices') %>
       <% end %>
     </li>
     <li class="nav-item">
       <%= link_to deadlines_path, class: "nav-link text-white #{ current_page?(controller: 'deadlines') ? 'active' : ''}" do %>
         <i class="fa-solid fa-hourglass-half"></i>&nbsp;&nbsp;<%= t('deadlines') %>
-      <% end %>
-    </li>
-    <li class="nav-item">
-      <%= link_to modes_path, class: 'nav-link text-white' do %>
-        <i class="fa fa-envelope"></i>&nbsp;&nbsp;<%= t('contact') %>
       <% end %>
     </li>
   </ul>

@@ -1,7 +1,9 @@
 <section>
   <div class="modes">
     <h1><%= t('mode') %></h1>
-    <%= button_to(t("back"), modes_path, method: :get, class: "btn btn-primary modes__btn") %>
+    <div class="page__top">
+      <%= button_to(t("back"), modes_path, method: :get, class: "btn btn-primary back__btn") %>
+    </div>
     
     <table class="modes__table table table-success table-striped">
       <tr>
@@ -84,9 +86,9 @@
         <tbody>
           <% @deadlines.each do |deadline| %>
             <tr>
-              <td><%= deadline.min_distance %> Kg</td>
-              <td><%= deadline.max_distance %> Kg</td>
-              <td>R$ <%= deadline.deadline %></td>
+              <td><%= deadline.min_distance %> Km</td>
+              <td><%= deadline.max_distance %> Km</td>
+              <td><%= deadline.deadline %> dias</td>
             </tr>
           <% end %>
         </tbody>
@@ -105,6 +107,7 @@
             <th scope="col"><%= t('plate') %></th>
             <th scope="col"><%= t('model') %></th>
             <th scope="col"><%= t('category') %></th>
+            <th scope="col"><%= t('status') %></th>
           </tr>
         </thead>
         <tbody>
@@ -113,6 +116,20 @@
               <td><%= vehicle.plate %></td>
               <td><%= vehicle.model %></td>
               <td><%= vehicle.category %></td>
+              <td>
+                <span class="
+                  <%= if vehicle.status == 'in_operation'
+                      'ativo'
+                    elsif vehicle.status == 'in_transit'
+                      'transito'
+                    elsif vehicle.status == 'in_maintenance'
+                      'inativo'
+                    end
+                  %>
+                ">
+                  <%= t(vehicle.status) %>
+                </span>
+              </td>
             </tr>
           <% end %>
         </tbody>
@@ -131,6 +148,7 @@
             <th scope="col"><%= t('plate') %></th>
             <th scope="col"><%= t('model') %></th>
             <th scope="col"><%= t('category') %></th>
+            <th scope="col"><%= t('status') %></th>
           </tr>
         </thead>
         <tbody>
@@ -139,6 +157,20 @@
               <td><%= vehicle.plate %></td>
               <td><%= vehicle.model %></td>
               <td><%= vehicle.category %></td>
+              <td>
+                <span class="
+                  <%= if vehicle.status == 'in_operation'
+                      'ativo'
+                    elsif vehicle.status == 'in_transit'
+                      'transito'
+                    elsif vehicle.status == 'in_maintenance'
+                      'inativo'
+                    end
+                  %>
+                ">
+                  <%= t(vehicle.status) %>
+                </span>
+              </td>
             </tr>
           <% end %>
         </tbody>

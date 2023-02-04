@@ -8,4 +8,5 @@ pt-BR:
       deadline:
         max_distance: Distância Máxima
         min_distance: Distância Mínima
+        mode: Modalidade
         deadline: Prazo

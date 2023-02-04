@@ -1,0 +1,70 @@
+<section>
+  <div class="dashboard">
+    <div class="dashboard__cards">
+
+      <div class="card text-center">
+        <div class="card-header">
+          Ordens de Entrega
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Receita (<%= @month %>)</h5>
+          <div class="card-text">
+            <span class="text-small">R$</span>
+            <span class="text-big"><%= @revenue %></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card text-center">
+        <div class="card-header">
+          Ordens de Entrega
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Total (30d)</h5>
+          <div class="card-text">
+            <span class="text-big"><%= @orders_all %></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card text-center <%= @alert_efficiency %>">
+        <div class="card-header <%= @alert_efficiency %>">
+          Ordens de Entrega
+        </div>
+        <div class="card-body <%= @alert_efficiency %>">
+          <h5 class="card-title">Eficiência (30d)</h5>
+          <div class="card-text">
+            <span class="text-big"><%= @efficiency %></span>
+            <span class="text-small">%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card text-center <%= @alert_effectiveness %>">
+        <div class="card-header <%= @alert_effectiveness %>">
+          Entregas
+        </div>
+        <div class="card-body <%= @alert_effectiveness %>">
+          <h5 class="card-title">Efetividade (30d)</h5>
+          <div class="card-text">
+            <span class="text-big"><%= @effectiveness %></span>
+            <span class="text-small">%</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="dashboard__graphs">
+      <div class="dashboard__graphs-block">
+        <h4><%= t('orders') %></h4>
+        <%= column_chart Order.group(:status).count %>
+      </div>
+      <div class="dashboard__graphs-block">
+        <h4><%= t('vehicles') %></h4>
+        <%= pie_chart Vehicle.group(:status).count %>
+      </div>
+    </div>
+
+  </div>
+</section>

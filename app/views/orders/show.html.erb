@@ -1,0 +1,142 @@
+<!-- Existe alguma mensagem de erro de sistema? -->
+<% if(@order.errors.any?) %>
+  <div class="messages alert alert-warning" role="alert">
+    <p><%= t('verify_the_following_errors') %>:</p>
+    <ul>
+      <% @order.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<section class="<%= 'orders__logout' if !user_signed_in? %>">
+  <div class="order">
+    <h1><%= t('order') %> <%= @order.code %></h1>
+    <div class="page__top">
+      <%= button_to(t("back"), orders_path, method: :get, class: "btn btn-primary back__btn") if user_signed_in? %>
+    </div>
+    <div class="order__status">
+      <div>
+        <h3><%= t('status') %>: <%= t(@order.status) %></h3>
+      </div>
+      <div class="order__status-btn">
+        <% if (@order.open? || @order.pending?) %>
+          <%= button_to(t('mark_as_canceled'), canceled_order_path(order_id: @order.id), method: :post, class: "btn btn-danger") %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="order__block">
+      <h3><%= t('product') %></h3>
+      <% if @products.empty? %>
+        <h5><%= t('this_order_does_not_have_product') %></h5>
+      <% else %>
+        <table class="container table table-success table-striped">
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th><%= t('width') %> (cm)</th>
+              <th><%= t('height') %> (cm)</th>
+              <th><%= t('depth') %> (cm)</th>
+              <th><%= t('weight') %> (Kg)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @products.each do |product| %>
+              <tr>
+                <td><%= product.code %></td>
+                <td><%= product.width %> cm</td>
+                <td><%= product.height %> cm</td>
+                <td><%= product.depth %> cm</td>
+                <td><%= product.weight %> Kg</td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+      <div class="order__block-btn">
+        <%= button_to(t('add_product'), new_order_product_path(order_id: @order.id), method: :get, class: "btn btn-secondary") %>
+      </div>
+    </div>
+
+    <div>
+      <div class="order__block-flex">
+        <div>
+          <h3><%= t('sender_address') %></h3>
+          <% if @sender_addresses.empty? %>
+            <h5><%= t('this_order_does_not_have_sender_address') %></h5>
+          <% else %>
+            <% @sender_addresses.each do |sa| %>
+              <table class="container table table-success table-striped">
+                <tr>
+                  <th><%= t('address_one') %></th>
+                  <td><%= sa.address_one %></td>
+                </tr>
+                <tr>
+                  <th><%= t('address_two') %></th>
+                  <td><%= sa.address_two %></td>
+                </tr>
+                <tr>
+                  <th><%= t('city') %></th>
+                  <td><%= sa.city %>-<%= sa.state %></td>
+                </tr>
+                <tr>
+                  <th><%= t('zip') %></th>
+                  <td><%= sa.zip %></td>
+                </tr>
+              </table>
+            <% end %>
+          <% end %>
+        </div>
+
+        <div>
+          <h3><%= t('recipient_address') %></h3>
+          <% if @recipient_addresses.empty? %>
+            <h5><%= t('this_order_does_not_have_recipient_address') %></h5>
+          <% else %>
+            <% @recipient_addresses.each do |ra| %>
+              <table class="container table table-success table-striped">
+                <tr>
+                  <th><%= t('address_one') %></th>
+                  <td><%= ra.address_one %></td>
+                </tr>
+                <tr>
+                  <th><%= t('address_two') %></th>
+                  <td><%= ra.address_two %></td>
+                </tr>
+                <tr>
+                  <th><%= t('city') %></th>
+                  <td><%= ra.city %>-<%= ra.state %></td>
+                </tr>
+                <tr>
+                  <th><%= t('zip') %></th>
+                  <td><%= ra.zip %></td>
+                </tr>
+              </table>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <div class="order__block-btn">
+        <%= button_to(t('add_address'), new_order_address_path(order_id: @order.id), method: :get, disabled:  (@sender_addresses.count > 0 && @recipient_addresses.count > 0 ? true : false), class: "btn btn-secondary") %>
+      </div>
+    </div>
+
+    <div> 
+      <table class="orders__table table table-success table-striped">
+        <tr>
+          <th><%= t('distance') %></th>
+          <td><%= @order.distance %> Km</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="order__block-btn-flex">
+      <%= button_to(t('select_mode'), new_order_budget_path(order_id: @order.id), method: :get, disabled:  (@products.count > 0 && @sender_addresses.count > 0 && @recipient_addresses.count > 0 ? false : true), class: "btn btn-secondary orders__btn-budget") %>
+      <%= button_to(t("edit"), edit_order_path(@order.id), method: :get, class: "btn btn-warning") %>
+      <%= button_to(t("delete"), order_path(@order.id), method: :delete, class: "btn btn-danger") %>
+    </div>
+
+  </div>
+</section>

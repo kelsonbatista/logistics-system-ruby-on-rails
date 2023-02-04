@@ -1,0 +1,46 @@
+<section>
+  <div class="orders">
+    <h1><%= t('orders') %></h1>
+    <div class="page__top">
+      <div><%= link_to t('new_order'), new_order_path, class: "btn btn-primary" %></div>
+      <div class="page__top-search">
+        <%= form_with(url: search_all_orders_path, method: :get) do |f| %>
+          <%= f.text_field :query, class: "form-control", placeholder: "Buscar..." %>
+          <%= f.submit t('search'), class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="orders__tabs">
+    <% if @orders.empty? %>
+      <h3><%= t('no_open_orders') %></h3>
+    <% else %>
+      <table class="form__main container table table-success table-striped">
+        <thead>
+          <tr>
+            <th scope="col"><%= t('code') %></th>
+            <th scope="col"><%= t('created_at') %></th>
+            <th scope="col"><%= t('updated_at') %></th>
+            <th scope="col"><%= t('status') %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+            <tr>
+              <td scope="row">
+                <% if (order.open? || order.pending?) %>
+                  <%= link_to order.code, order_path(order.id) %>
+                <% else %>
+                  <%= link_to order.code, order_confirmed_path(order.id) %>
+                <% end %>
+              </td>
+              <td scope="row"><%= order.created_at.strftime("%d/%m/%Y") %></td>
+              <td scope="row"><%= order.updated_at.strftime("%d/%m/%Y") %></td>
+              <td scope="row"><%= t(order.status) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</section>

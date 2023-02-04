@@ -47,6 +47,14 @@ class VehiclesController < ApplicationController
     render :edit, status: :unprocessable_entity
   end
 
+  def search_vehicles
+    @vehicles = Vehicle.where('plate LIKE ? OR brand LIKE ? OR model LIKE ? OR category LIKE ? OR status LIKE ?', "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%")
+    if @vehicles.empty?
+      flash[:alert] = 'Nenhum veículo encontrado'
+    end
+    render :index
+  end
+
   private
 
   def vehicle_params

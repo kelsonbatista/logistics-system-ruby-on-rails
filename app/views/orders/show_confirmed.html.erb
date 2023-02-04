@@ -1,0 +1,189 @@
+<section class="<%= 'orders__logout' if !user_signed_in? %>">
+  <div class="orders">
+    <h1><%= t('order') %> <%= @order.code %></h1>
+    <div class="page__top">
+      <%= button_to(t("back"), orders_path, method: :get, class: "btn btn-primary back__btn") if user_signed_in? %>
+    </div>
+
+    <div class="order__status">
+      <div>
+        <h3><%= t('status') %>: <%= t(@order.status) %></h3>
+      </div>
+      <div class="order__status-btn">
+        <% if (@order.sent?) %>
+          <%= button_to(t('mark_as_delivered'), delivered_order_path(order_id: @order.id), method: :post, class: "btn btn-primary") %>
+        <% end %>
+        <% if (@order.sent? || @order.delivered?) %>
+          <%= button_to(t('mark_as_returned'), returned_order_path(order_id: @order.id), method: :post, class: "btn btn-danger") if user_signed_in? %>
+        <% end %>
+      </div>
+    </div>
+
+    <% if @order.sent? %>
+      <div class="order__status-condition">
+        <p><strong><%= t('tracking_code') %>:</strong> <%= @order.tracking_code %></p>
+        <p><strong><%= t('send_date') %>:</strong> <%= @sent %> às <%= @time %></p>
+        <p><strong><%= t('delivery_forecast') %>:</strong> <%= @forecast %> às <%= @time %></p>
+        <p><strong><%= t('vehicle') %>:</strong> <%= @vehicle.brand %> <%= @vehicle.model %> placa <%= @vehicle.plate %></p>
+      </div>
+    <% end %>
+
+    <% if @order.delivered? %>
+      <div class="order__status-condition <%= @order.on_time? ? 'green' : 'red' %>">
+
+        <div>
+          <p><strong><%= t('tracking_code') %>:</strong> <%= @order.tracking_code %></p>
+          <p><strong><%= t('send_date') %>:</strong> <%= @sent %> às <%= @time %></p>
+          <p><strong><%= t('delivery_forecast') %>:</strong> <%= @forecast %> às <%= @time %></p>
+          <p><strong><%= t('delivered_in') %>:</strong> <%= @delivered %> às <%= @delivered_time %></p>
+          <p><strong><%= t('vehicle') %>:</strong> <%= @vehicle.brand %> <%= @vehicle.model %> placa <%= @vehicle.plate %></p>
+        </div>
+
+        <strong><%= t('this_order_was_closed') %>
+          <% if @order.on_time? %>
+            <span class=''><%= t('on_time').downcase %></span>
+          <% end %>
+          <% if @order.late? %>
+            <span class=''><%= t('late').downcase %></span>
+          <% end %>
+        </strong>
+
+        <% if @order.late? %>
+          <div class="order__status-late">
+            <% if !@order.reason? %>
+              <p><%= t('please_inform_the_reason') %>:</p>
+              <%= form_with(model: @order, method: :patch) do |f| %>
+                <%= f.text_area :reason, cols: 30, rows: 5, class: "form-control" %>
+                <div>
+                  <%= f.submit t('save'), class: "btn btn-success" %>
+                </div>
+              <% end %>
+            <% else %>
+              <p><%= t('reason') %>:</p>
+              <%= @order.reason %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="order__block">
+      <h3><%= t('product') %></h3>
+      <% if @products.empty? %>
+        <h5><%= t('this_order_does_not_have_product') %></h5>
+      <% else %>
+        <table class="container table table-success table-striped">
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th><%= t('width') %> (cm)</th>
+              <th><%= t('height') %> (cm)</th>
+              <th><%= t('depth') %> (cm)</th>
+              <th><%= t('weight') %> (Kg)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @products.each do |product| %>
+              <tr>
+                <td><%= product.code %></td>
+                <td><%= product.width %> cm</td>
+                <td><%= product.height %> cm</td>
+                <td><%= product.depth %> cm</td>
+                <td><%= product.weight %> Kg</td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+
+    <div class="order__block-flex">
+      <div>
+        <h3><%= t('sender_address') %></h3>
+        <% if @sender_addresses.empty? %>
+          <h5><%= t('this_order_does_not_have_sender_address') %></h5>
+        <% else %>
+          <% @sender_addresses.each do |sa| %>
+            <table class="container table table-success table-striped">
+              <tr>
+                <th><%= t('address_one') %></th>
+                <td><%= sa.address_one %></td>
+              </tr>
+              <tr>
+                <th><%= t('address_two') %></th>
+                <td><%= sa.address_two %></td>
+              </tr>
+              <tr>
+                <th><%= t('city') %></th>
+                <td><%= sa.city %>-<%= sa.state %></td>
+              </tr>
+              <tr>
+                <th><%= t('zip') %></th>
+                <td><%= sa.zip %></td>
+              </tr>
+            </table>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div>
+        <h3><%= t('recipient_address') %></h3>
+        <% if @recipient_addresses.empty? %>
+          <h5><%= t('this_order_does_not_have_recipient_address') %></h5>
+        <% else %>
+          <% @recipient_addresses.each do |ra| %>
+            <table class="container table table-success table-striped">
+              <tr>
+                <th><%= t('address_one') %></th>
+                <td><%= ra.address_one %></td>
+              </tr>
+              <tr>
+                <th><%= t('address_two') %></th>
+                <td><%= ra.address_two %></td>
+              </tr>
+              <tr>
+                <th><%= t('city') %></th>
+                <td><%= ra.city %>-<%= ra.state %></td>
+              </tr>
+              <tr>
+                <th><%= t('zip') %></th>
+                <td><%= ra.zip %></td>
+              </tr>
+            </table>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <div> 
+      <table class="orders__table table table-success table-striped">
+        <tr>
+          <th><%= t('distance') %></th>
+          <td><%= @order.distance %> Km</td>
+        </tr>
+      </table>
+    </div>
+
+    <% if @budget.present? %>
+      <div class="order__block">
+        <h3><%= t('modes') %></h3>
+        <table class="container table table-success table-striped">
+          <thead>
+            <tr>
+              <th><%= t('name') %></th>
+              <th><%= t('price') %></th>
+              <th><%= t('deadline') %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= @budget.mode %></td>
+              <td><%= t('$') %> <%= @budget.total %></td>
+              <td><%= @budget.deadline %> dias</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+  </div>
+</section>

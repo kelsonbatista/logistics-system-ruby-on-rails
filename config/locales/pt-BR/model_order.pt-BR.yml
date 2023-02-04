@@ -2,8 +2,8 @@ pt-BR:
   activerecord:
     models:
       order:
-        one: Pedido
-        other: Pedidos
+        one: Ordem de Entrega
+        other: Ordens de Entrega
     attributes:
       order:
         code: Código
@@ -13,9 +13,10 @@ pt-BR:
         product: Produto
         product_code: Código do Produto
         products: Produtos
+        reason: Motivo
         recipient: Destinatário
-        recipient_address: Endereço do Destinatário
+        recipient_address: Endereço de Entrega
         sender: Remetente
-        sender_address: Endereço do Remetente
+        sender_address: Endereço de Retirada
         updated_at: Atualizado em
         weight: Peso

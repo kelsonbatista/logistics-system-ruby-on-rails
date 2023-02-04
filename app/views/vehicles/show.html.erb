@@ -1,7 +1,9 @@
 <section>
   <div class="vehicles">
     <h1><%= t('vehicle') %></h1>
-    <%= button_to(t("back"), vehicles_path, method: :get, class: "btn btn-primary vehicles__btn") %>
+    <div class="page__top">
+      <%= button_to(t("back"), vehicles_path, method: :get, class: "btn btn-primary back__btn") %>
+    </div>
     
     <table class="vehicles__table table table-success table-striped">
       <tr>
@@ -31,8 +33,24 @@
       <tr>
         <th><%= t('status') %></th>
         <td>
-          <span class="<%= @vehicle.status ? 'ativo' : 'inativo' %>">
-            <%= @vehicle.status ? t('in_operation') : t('in_maintenance') %>
+          <span class="
+            <%= if @vehicle.status == 'operational'
+                'ativo'
+              elsif @vehicle.status == 'transit'
+                'transito'
+              elsif @vehicle.status == 'repair'
+                'inativo'
+              end
+            %>
+          ">
+            <%= if @vehicle.status == 'operational'
+                t('operational')
+              elsif @vehicle.status == 'transit'
+                t('transit')
+              elsif @vehicle.status == 'repair'
+                t('repair')
+              end
+            %>
           </span>
         </td>
       </tr>

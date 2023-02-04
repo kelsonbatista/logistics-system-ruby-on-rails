@@ -56,6 +56,12 @@ gem 'devise'
 
 gem 'cocoon'
 gem 'jquery-rails'
+# gem "font-awesome-rails"
+gem "font-awesome-sass", "~> 6.2.1"
+
+# gráficos e charts
+gem 'chartkick'
+gem 'groupdate'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

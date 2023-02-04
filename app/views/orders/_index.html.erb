@@ -1,0 +1,241 @@
+<section>
+  <div class="orders">
+    <h1><%= t('orders') %></h1>
+    <div class="page__top">
+      <div><%= link_to t('new_order'), new_order_path, class: "btn btn-primary" %></div>
+      <div class="page__top-search">
+        <%= form_with(url: search_all_orders_path, method: :get) do |f| %>
+          <%= f.text_field :query, class: "form-control", placeholder: "Buscar..." %>
+          <%= f.submit t('search'), class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="orders__tabs">
+    <ul class="nav nav-tabs nav-justified mb-6" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="open-tab" data-bs-toggle="tab" data-bs-target="#open" type="button" role="tab" aria-controls="open" aria-selected="true"><%= t('open') %></button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pending-tab" data-bs-toggle="tab" data-bs-target="#pending" type="button" role="tab" aria-controls="pending" aria-selected="true"><%= t('pending') %></button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="sent-tab" data-bs-toggle="tab" data-bs-target="#sent" type="button" role="tab" aria-controls="sent" aria-selected="false"><%= t('sent') %></button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="delivered-tab" data-bs-toggle="tab" data-bs-target="#delivered" type="button" role="tab" aria-controls="delivered" aria-selected="false"><%= t('delivered') %></button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="canceled-tab" data-bs-toggle="tab" data-bs-target="#canceled" type="button" role="tab" aria-controls="canceled" aria-selected="false"><%= t('canceled') %></button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="returned-tab" data-bs-toggle="tab" data-bs-target="#returned" type="button" role="tab" aria-controls="returned" aria-selected="false"><%= t('returned') %></button>
+      </li>
+    </ul>
+    <div class="tab-content orders__tabs-body" id="myTabContent">
+
+      <div class="tab-pane show active" id="open" role="tabpanel" aria-labelledby="open-tab">
+        <% if @order_products_open.empty? && @order_products_open_no_product.empty? %>
+          <h3><%= t('no_open_orders') %></h3>
+        <% else %>
+          <table class="form__main open container table table-success table-striped">
+            <thead>
+              <tr>
+                <th scope="col"><%= t('code') %></th>
+                <th scope="col"><%= t('order_date') %></th>
+                <th scope="col"><%= t('volumes') %> (un)</th>
+                <th scope="col"><%= t('weight') %> (Kg)</th>
+                <th scope="col"><%= t('status') %></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @order_products_open.each do |order| %>
+                <tr class="table__td-width-2">
+                  <td scope="row" class="table__td-width-2"><%= link_to order.code, order_path(order.id) %></td>
+                  <td scope="row" class="table__td-width-2"><%= order.created_at.strftime("%d/%m/%Y") %></td>
+                  <td scope="row" class="table__td-width-2"><%= order.total_products %></td>
+                  <td scope="row" class="table__td-width-2"><%= order.total_weight %></td>
+                  <td scope="row" class="table__td-width-2"><%= t(order.status) %></td>
+                </tr>
+              <% end %>
+              <% @order_products_open_no_product.each do |order| %>
+                <tr class="table__td-width-2">
+                  <td scope="row" class="table__td-width-2"><%= link_to order.code, order_path(order.id) %></td>
+                  <td scope="row" class="table__td-width-2"><%= order.created_at.strftime("%d/%m/%Y") %></td>
+                  <td scope="row" class="table__td-width-2"><%= '0' %></td>
+                  <td scope="row" class="table__td-width-2"><%= '0' %></td>
+                  <td scope="row" class="table__td-width-2"><%= t(order.status) %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% end %>
+      </div>
+
+      <div class="tab-pane" id="pending" role="tabpanel" aria-labelledby="pending-tab">
+        <% if @order_products_pending.empty? %>
+          <h3><%= t('no_pending_orders') %></h3>
+        <% else %>
+          <table class="form__main pending container table table-success table-striped">
+            <thead>
+              <tr>
+                <th scope="col"><%= t('code') %></th>
+                <th scope="col"><%= t('order_date') %></th>
+                <th scope="col"><%= t('volumes') %> (un)</th>
+                <th scope="col"><%= t('weight') %> (Kg)</th>
+                <th scope="col"><%= t('status') %></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @order_products_pending.each do |order| %>
+                <tr class="table__td-width-2">
+                  <td scope="row" class="table__td-width-2"><%= link_to order.code, order_path(order.id) %></td>
+                  <td scope="row" class="table__td-width-2"><%= order.created_at.strftime("%d/%m/%Y") %></td>
+                  <td scope="row" class="table__td-width-2"><%= order.total_products %></td>
+                  <td scope="row" class="table__td-width-2"><%= order.total_weight %></td>
+                  <td scope="row" class="table__td-width-2"><%= t(order.status) %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% end %>
+      </div>
+      
+      <div class="tab-pane" id="sent" role="tabpanel" aria-labelledby="sent-tab">
+        <% if @order_products_sent.empty? %>
+          <h3><%= t('no_sent_orders') %></h3>
+        <% else %>
+          <table class="form__main sent container table table-success table-striped">
+            <thead>
+              <tr>
+                <th scope="col"><%= t('code') %></th>
+                <th scope="col"><%= t('order_date') %></th>
+                <th scope="col"><%= t('volumes') %> (un)</th>
+                <th scope="col"><%= t('weight') %> (Kg)</th>
+                <th scope="col"><%= t('status') %></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @order_products_sent.each do |order| %>
+                <% @budget = @budgets.find_by(order_id: order.id) %>  
+                <tr>
+                  <td scope="row"><%= link_to order.code, order_confirmed_path(order.id) %></td>
+                  <td scope="row"><%= order.created_at.strftime("%d/%m/%Y") %></td>
+                  <td scope="row"><%= order.total_products %></td>
+                  <td scope="row"><%= order.total_weight %></td>
+                  <td scope="row"><%= t(order.status) %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% end %>
+      </div>
+
+      <div class="tab-pane" id="delivered" role="tabpanel" aria-labelledby="delivered-tab">
+        <% if @order_products_delivered.empty? %>
+          <h3><%= t('no_delivered_orders') %></h3>
+        <% else %>
+          <table class="form__main delivered container table table-success table-striped">
+            <thead>
+              <tr>
+                <th scope="col"><%= t('code') %></th>
+                <th scope="col"><%= t('order_date') %></th>
+                <th scope="col"><%= t('volumes') %> (un)</th>
+                <th scope="col"><%= t('weight') %> (Kg)</th>
+                <th scope="col"><%= t('status') %></th>
+                <th scope="col"><%= t('closed') %></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @order_products_delivered.each do |order| %>
+                <tr class="table__td-width-2">
+                  <td scope="row" class="table__td-width-2"><%= link_to order.code, order_confirmed_path(order.id) %></td>
+                  <td scope="row" class="table__td-width-2"><%= order.created_at.strftime("%d/%m/%Y") %></td>
+                  <td scope="row" class="table__td-width-2"><%= order.total_products %></td>
+                  <td scope="row" class="table__td-width-2"><%= order.total_weight %></td>
+                  <td scope="row" class="table__td-width-2"><%= t(order.status) %></td>
+                  <td>
+                    <span class="
+                      <%= if order.condition == 'on_time'
+                        'ativo'
+                        elsif order.condition == 'late'
+                        'inativo'
+                        end
+                      %>
+                    ">
+                      <%= if order.condition == 'on_time'
+                        t('on_time')
+                        elsif order.condition == 'late'
+                        t('late')
+                        end
+                      %>
+                    </span>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% end %>
+      </div>
+
+      <div class="tab-pane" id="canceled" role="tabpanel" aria-labelledby="canceled-tab">
+        <% if @order_products_canceled.empty? %>
+          <h3><%= t('no_canceled_orders') %></h3>
+        <% else %>
+          <table class="form__main canceled container table table-success table-striped">
+            <thead>
+              <tr>
+                <th scope="col"><%= t('code') %></th>
+                <th scope="col"><%= t('order_date') %></th>
+                <th scope="col"><%= t('volumes') %> (un)</th>
+                <th scope="col"><%= t('weight') %> (Kg)</th>
+                <th scope="col"><%= t('status') %></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @order_products_canceled.each do |order| %>
+                <tr class="table__td-width-2">
+                  <td scope="row" class="table__td-width-2"><%= link_to order.code, order_confirmed_path(order.id) %></td>
+                  <td scope="row" class="table__td-width-2"><%= order.created_at.strftime("%d/%m/%Y") %></td>
+                  <td scope="row" class="table__td-width-2"><%= order.total_products %></td>
+                  <td scope="row" class="table__td-width-2"><%= order.total_weight %></td>
+                  <td scope="row" class="table__td-width-2"><%= t(order.status) %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% end %>
+      </div>
+
+      <div class="tab-pane" id="returned" role="tabpanel" aria-labelledby="returned-tab">
+        <% if @order_products_returned.empty? %>
+          <h3><%= t('no_returned_orders') %></h3>
+        <% else %>
+          <table class="form__main returned container table table-success table-striped">
+            <thead>
+              <tr>
+                <th scope="col"><%= t('code') %></th>
+                <th scope="col"><%= t('order_date') %></th>
+                <th scope="col"><%= t('volumes') %> (un)</th>
+                <th scope="col"><%= t('weight') %> (Kg)</th>
+                <th scope="col"><%= t('status') %></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @order_products_returned.each do |order| %>
+                <tr class="table__td-width-2">
+                  <td scope="row" class="table__td-width-2"><%= link_to order.code, order_confirmed_path(order.id) %></td>
+                  <td scope="row" class="table__td-width-2"><%= order.created_at.strftime("%d/%m/%Y") %></td>
+                  <td scope="row" class="table__td-width-2"><%= order.total_products %></td>
+                  <td scope="row" class="table__td-width-2"><%= order.total_weight %></td>
+                  <td scope="row" class="table__td-width-2"><%= t(order.status) %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</section>

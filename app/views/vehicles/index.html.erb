@@ -1,7 +1,15 @@
 <section>
   <div class="vehicles">
     <h1><%= t('vehicles') %></h1>
-    <p><%= link_to t('new_vehicle'), new_vehicle_path, class: "btn btn-primary" %></p>
+    <div class="page__top">
+      <div><%= link_to t('new_vehicle'), new_vehicle_path, class: "btn btn-primary" %></div>
+      <div class="page__top-search">
+        <%= form_with(url: search_vehicles_vehicles_path, method: :get) do |f| %>
+          <%= f.text_field :query, class: "form-control", placeholder: "Buscar..." %>
+          <%= f.submit t('search'), class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
   </div>
   <div class="modes__list">
     <% if @vehicles.empty? %>
@@ -13,18 +21,38 @@
             <th scope="col"><%= t('plate') %></th>
             <th scope="col"><%= t('model') %></th>
             <th scope="col"><%= t('category') %></th>
+            <th scope="col"><%= t('load') %></th>
+            <th scope="col"><%= t('mode') %></th>
             <th scope="col"><%= t('status') %></th>
           </tr>
         </thead>
         <tbody>
           <% @vehicles.each do |vehicle| %>
             <tr>
-              <td scope="row"><%= link_to vehicle.plate, vehicle_path(vehicle.id) %></td>
-              <td><%= vehicle.model %></td>
-              <td><%= vehicle.category %></td>
+              <td scope="row" class="table__td-width"><%= link_to vehicle.plate, vehicle_path(vehicle.id) %></td>
+              <td class="table__td-width"><%= vehicle.model %></td>
+              <td class="table__td-width"><%= vehicle.category %></td>
+              <td class="table__td-width"><%= vehicle.capacity %></td>
+              <td class="table__td-width"><%= vehicle.mode.name %></td>
               <td>
-                <span class="<%= vehicle.status ? 'ativo' : 'inativo' %>">
-                  <%= vehicle.status ? t('in_operation') : t('in_maintenance') %>
+                <span class="
+                  <%= if vehicle.status == 'operational'
+                     'ativo'
+                    elsif vehicle.status == 'transit'
+                     'transito'
+                    elsif vehicle.status == 'repair'
+                     'inativo'
+                    end
+                  %>
+                ">
+                  <%= if vehicle.status == 'operational'
+                     t('operational')
+                    elsif vehicle.status == 'transit'
+                      t('transit')
+                    elsif vehicle.status == 'repair'
+                     t('repair')
+                    end
+                  %>
                 </span>
               </td>
             </tr>

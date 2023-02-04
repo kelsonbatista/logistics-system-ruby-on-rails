@@ -1,7 +1,9 @@
 <section>
   <div class="prices">
     <h1><%= t('prices') %></h1>
-    <p><%= link_to t('new_price'), new_price_path, class: "btn btn-primary" %></p>
+    <div class="page__top">
+      <%= link_to t('new_price'), new_price_path, class: "btn btn-primary" %>
+    </div>
   </div>
   <div class="prices__list">
     <% if @prices.empty? %>
@@ -19,10 +21,10 @@
         <tbody>
           <% @prices.each do |price| %>
             <tr>
-              <td><%= price.min_weight %> Kg</td>
-              <td><%= price.max_weight %> Kg</td>
-              <td>R$ <%= price.price_per_km %></td>
-              <td><%= price.mode.name %></td>
+              <td class="table__td-width"><%= price.min_weight %> Kg</td>
+              <td class="table__td-width"><%= price.max_weight %> Kg</td>
+              <td class="table__td-width">R$ <%= price.price_per_km %></td>
+              <td class="table__td-width"><%= price.mode.name %></td>
               <td><%= button_to(t("edit"), edit_price_path(price.id), class: "btn btn-warning prices__btn", method: :get) %></td>
               <td><%= button_to(t("delete"),
                 price_path(price.id),

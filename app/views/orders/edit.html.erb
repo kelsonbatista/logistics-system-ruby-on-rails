@@ -1,0 +1,16 @@
+<h1>Edit Order</h1>
+
+<%= form_with(model: [@order]) do |f| %>
+  <div class="orders__budget">
+    <h3><%= t('modes') %></h3>
+      <%= f.text_field :mode, value: @mode.id %>
+      <%= f.text_field :name, value: @mode.name %>
+      <%= f.text_field :total, value: @total_price %>
+      <%= f.text_field :price_km, value: @mode.price_per_km %>
+      <%= f.text_field :fixed_fee, value: @mode.fixed_fee %>
+      <%= f.text_field :deadline, value: @mode.deadline %>
+    <div class="">
+      <%= f.submit t('confirm_order'), class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

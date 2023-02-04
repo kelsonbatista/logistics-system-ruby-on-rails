@@ -1,0 +1,54 @@
+<!-- Existe alguma mensagem de erro de sistema? -->
+<% if(address.errors.any?) %>
+  <div class="messages alert alert-warning" role="alert">
+    <p><%= t('verify_the_following_errors') %>:</p>
+    <ul>
+      <% address.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="order__form">
+  <%= form_with(model: [@order, @address], local: true) do |form| %>
+    <div>
+      <h3><%= @address_count == 0 ? t('recipient_address') : t('sender_address') %></h3>
+      <table class="addresss__form table table-success table-striped">
+
+        <% if @address_count == 0 %>
+          <%= form.hidden_field :person, value: 'recipient', class: "form-control" %>
+        <% else %>
+          <%= form.hidden_field :person, value: 'sender', class: "form-control" %>
+        <% end %>
+
+        <tr>
+          <th><%= form.label :address_one, t('address_one'), class: "form-label" %></th>
+          <td><%= form.text_field :address_one, class: "form-control" %></td>
+        </tr>
+        <tr>
+          <th><%= form.label :address_two, t('address_two'), class: "form-label" %></th>
+          <td><%= form.text_field :address_two, class: "form-control" %></td>
+        </tr>
+        <tr>
+          <th><%= form.label :city, t('city'), class: "form-label" %></th>
+          <div>
+            <td>
+              <%= form.text_field :city, class: "form-control" %>
+              <%= form.select :state, Order.states.keys.map { |value| value }, { include_blank: true },
+              { class: "form-select" } %>
+            </td>
+          </div>
+        </tr>
+        <tr>
+          <th><%= form.label :zip, t('zip'), class: "form-label" %></th>
+          <td><%= form.text_field :zip, class: "form-control" %></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="orders__btn">
+      <%= form.submit t('next'), class: "btn btn-secondary" %>
+    </div>
+  <% end %>
+</div>
