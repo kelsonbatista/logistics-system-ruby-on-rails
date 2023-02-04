@@ -38,7 +38,7 @@
         <% if @order_products_open.empty? && @order_products_open_no_product.empty? %>
           <h3><%= t('no_open_orders') %></h3>
         <% else %>
-          <table class="form__main container table table-success table-striped">
+          <table class="form__main open container table table-success table-striped">
             <thead>
               <tr>
                 <th scope="col"><%= t('code') %></th>
@@ -76,7 +76,7 @@
         <% if @order_products_pending.empty? %>
           <h3><%= t('no_pending_orders') %></h3>
         <% else %>
-          <table class="form__main container table table-success table-striped">
+          <table class="form__main pending container table table-success table-striped">
             <thead>
               <tr>
                 <th scope="col"><%= t('code') %></th>
@@ -105,7 +105,7 @@
         <% if @order_products_sent.empty? %>
           <h3><%= t('no_sent_orders') %></h3>
         <% else %>
-          <table class="form__main container table table-success table-striped">
+          <table class="form__main sent container table table-success table-striped">
             <thead>
               <tr>
                 <th scope="col"><%= t('code') %></th>
@@ -113,7 +113,6 @@
                 <th scope="col"><%= t('volumes') %> (un)</th>
                 <th scope="col"><%= t('weight') %> (Kg)</th>
                 <th scope="col"><%= t('status') %></th>
-                <th scope="col"><%= t('vehicle') %></th>
               </tr>
             </thead>
             <tbody>
@@ -125,7 +124,6 @@
                   <td scope="row"><%= order.total_products %></td>
                   <td scope="row"><%= order.total_weight %></td>
                   <td scope="row"><%= t(order.status) %></td>
-                  <td scope="row"><%= @vehicles.find(@budget.vehicle_id).plate %></td>
                 </tr>
               <% end %>
             </tbody>
@@ -137,7 +135,7 @@
         <% if @order_products_delivered.empty? %>
           <h3><%= t('no_delivered_orders') %></h3>
         <% else %>
-          <table class="form__main container table table-success table-striped">
+          <table class="form__main delivered container table table-success table-striped">
             <thead>
               <tr>
                 <th scope="col"><%= t('code') %></th>
@@ -184,7 +182,7 @@
         <% if @order_products_canceled.empty? %>
           <h3><%= t('no_canceled_orders') %></h3>
         <% else %>
-          <table class="form__main container table table-success table-striped">
+          <table class="form__main canceled container table table-success table-striped">
             <thead>
               <tr>
                 <th scope="col"><%= t('code') %></th>
@@ -213,7 +211,7 @@
         <% if @order_products_returned.empty? %>
           <h3><%= t('no_returned_orders') %></h3>
         <% else %>
-          <table class="form__main container table table-success table-striped">
+          <table class="form__main returned container table table-success table-striped">
             <thead>
               <tr>
                 <th scope="col"><%= t('code') %></th>

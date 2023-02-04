@@ -14,68 +14,82 @@ describe "View modes" do
   context "user authenticated" do
     before(:each) do
       #Arrange
-      user = User.create!(
-        name: "Usuario 1",
-        email: "usuario1@email.com",
-        password: '123456',
-        role: "user"
-      )
-
+      user = User.create!(name: "Jose Silva", email: "jose@email.com", password: '123456', role: "user")
       login_as(user)
     end
 
     it "view page" do
       #Act
       visit root_path
-      click_on 'Modalidades'
+      within('div ul.nav li:nth-child(3)') do
+        click_on 'Modalidades'
+      end
       #Assert
       expect(current_path).to eq modes_path
     end
 
     it "successfully" do
       #Arrange
-      for i in 1..3
-        Mode.create!(
-          name: "Modalidade #{i}",
-          min_distance: 1 * i,
-          max_distance: 20 * i,
-          min_weight: 1 * i,
-          max_weight: 20 * i,
-          fixed_fee: 5 * i,
-          active: true
-        )
-      end
+      Mode.create!(name: "Light Pack", min_distance: 1, max_distance: 1000, 
+                   min_weight: 1, max_weight: 10, fixed_fee: 20,  active: true)
+      
+      Mode.create!(name: "Super Pack", min_distance: 10, max_distance: 500, 
+                   min_weight: 5, max_weight: 20, fixed_fee: 40, active: false)
+      
+      Mode.create!(name: "Mega Pack", min_distance: 10, max_distance: 300, 
+                   min_weight: 10, max_weight: 40, fixed_fee: 60, active: true)
       #Act
       visit root_path
-      click_on 'Modalidades'
+      within('div ul.nav li:nth-child(3)') do
+        click_on 'Modalidades'
+      end
       #Assert
       expect(current_path).to eq modes_path
-      within('table thead') do
+      within('table thead tr') do
         expect(page).to have_content 'Nome'
         expect(page).to have_content 'Distância Mínima (Km)'
         expect(page).to have_content 'Distância Máxima (Km)'
+        expect(page).to have_content 'Peso Mínimo (Kg)'
+        expect(page).to have_content 'Peso Máximo (Kg)'
         expect(page).to have_content 'Status'
       end
-      within('table tbody') do
-        expect(page).to have_content 'Modalidade 1'
-        expect(page).to have_content 'Modalidade 2'
-        expect(page).to have_content 'Modalidade 3'
-        expect(page).to have_content '1'
-        expect(page).to have_content '2'
-        expect(page).to have_content '3'
-        expect(page).to have_content '20'
-        expect(page).to have_content '40'
-        expect(page).to have_content '60'
+      within('table tbody tr:nth-child(1)') do
+        expect(page).to have_content 'Light Pack'
+        expect(page).to have_content 1
+        expect(page).to have_content 1000
+        expect(page).to have_content 1
+        expect(page).to have_content 10
+        expect(page).to have_content 'Ativo'
+      end
+      within('table tbody tr:nth-child(2)') do
+        expect(page).to have_content 'Super Pack'
+        expect(page).to have_content 10
+        expect(page).to have_content 500
+        expect(page).to have_content 5
+        expect(page).to have_content 20
+        expect(page).to have_content 'Inativo'
+      end
+      within('table tbody tr:nth-child(3)') do
+        expect(page).to have_content 'Mega Pack'
+        expect(page).to have_content 10
+        expect(page).to have_content 300
+        expect(page).to have_content 10
+        expect(page).to have_content 40
+        expect(page).to have_content 'Ativo'
       end
     end
 
     it "no registered modes" do
       #Act
       visit root_path
-      click_on 'Modalidades'
+      within('div ul.nav li:nth-child(3)') do
+        click_on 'Modalidades'
+      end
       #Assert
       expect(current_path).to eq modes_path
-      expect(page).to have_content 'Nenhuma modalidade cadastrada'
+      within('section div h3') do
+        expect(page).to have_content 'Nenhuma modalidade cadastrada'
+      end
     end
   end
 end

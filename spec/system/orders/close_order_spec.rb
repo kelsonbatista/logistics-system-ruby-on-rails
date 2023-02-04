@@ -12,15 +12,15 @@ describe "Starting order" do
       user = User.create!(name: "Jose Silva", email: "jose@email.com", password: '123456', role: "user" )
 
       Mode.create!(name: "Light Pack", min_distance: 1, max_distance: 1000, 
-        min_weight: 1, max_weight: 10, fixed_fee: 20,  active: true)
+                  min_weight: 1, max_weight: 10, fixed_fee: 20,  active: true)
       Mode.create!(name: "Super Pack", min_distance: 10, max_distance: 500, 
-              min_weight: 5, max_weight: 20, fixed_fee: 40, active: true)
+                  min_weight: 5, max_weight: 20, fixed_fee: 40, active: true)
       Mode.create!(name: "Mega Pack", min_distance: 10, max_distance: 300, 
-              min_weight: 10, max_weight: 30, fixed_fee: 60, active: true)
+                  min_weight: 10, max_weight: 30, fixed_fee: 60, active: true)
       Mode.create!(name: "Ultra Pack", min_distance: 40, max_distance: 200, 
-              min_weight: 20, max_weight: 40, fixed_fee: 80, active: true)
+                  min_weight: 20, max_weight: 40, fixed_fee: 80, active: true)
       Mode.create!(name: "Star Pack", min_distance: 10, max_distance: 100, 
-              min_weight: 30, max_weight: 50, fixed_fee: 100, active: true)
+                  min_weight: 30, max_weight: 50, fixed_fee: 100, active: true)
 
       Vehicle.create!(plate: "ABC-1231", brand: "Volkswagem", model: "Gol 1.6", category: "Passeio", 
                   year: "2011", capacity: 100, status: "operational", mode_id: 1)
@@ -75,8 +75,10 @@ describe "Starting order" do
 
       #Act
       visit root_path
-      click_on 'Ordens de Entrega'
-      within('ul.nav-tabs') do
+      within('div ul.nav li:nth-child(2)') do
+        click_on 'Ordens de Entrega'
+      end
+      within('div.orders__tabs ul.nav li:nth-child(3)') do
         click_on 'Enviado'
       end
       within('table tbody tr:nth-child(1)') do
@@ -164,8 +166,10 @@ describe "Starting order" do
 
       #Act
       visit root_path
-      click_on 'Ordens de Entrega'
-      within('ul.nav-tabs') do
+      within('div ul.nav li:nth-child(2)') do
+        click_on 'Ordens de Entrega'
+      end
+      within('div.orders__tabs ul.nav li:nth-child(3)') do
         click_on 'Enviado'
       end
       within('table tbody tr:nth-child(1)') do
@@ -183,13 +187,15 @@ describe "Starting order" do
       within('section h1') do
         expect(page).to have_content "Ordem de Entrega #{ @order.code }"
       end
-      expect(page).to have_button 'Voltar'
+      within('section div div.page__top') do
+        expect(page).to have_button 'Voltar'
+      end
       within('div.order__status') do
         expect(page).to have_content 'Status: Entregue'
         expect(page).not_to have_button 'Marcar como Entregue'
         expect(page).to have_button 'Marcar como Retornado'
       end
-      within('div.order__status-condition.green strong') do  
+      within('div.order__status-condition.green') do  
         expect(page).to have_content "Essa ordem de entrega foi encerrada no prazo"
       end
     end
@@ -262,8 +268,10 @@ describe "Starting order" do
 
       #Act
       visit root_path
-      click_on 'Ordens de Entrega'
-      within('ul.nav-tabs') do
+      within('div ul.nav li:nth-child(2)') do
+        click_on 'Ordens de Entrega'
+      end
+      within('div.orders__tabs ul.nav li:nth-child(3)') do
         click_on 'Enviado'
       end
       within('table tbody tr:nth-child(1)') do
@@ -272,7 +280,9 @@ describe "Starting order" do
       within('div.order__status') do
         click_on 'Marcar como Entregue'
       end
-      click_on 'Voltar'
+      within('section div div.page__top') do
+        click_on 'Voltar'
+      end
       within('ul.nav-tabs') do
         click_on 'Entregue'
       end
@@ -367,8 +377,10 @@ describe "Starting order" do
 
       #Act
       visit root_path
-      click_on 'Ordens de Entrega'
-      within('ul.nav-tabs') do
+      within('div ul.nav li:nth-child(2)') do
+        click_on 'Ordens de Entrega'
+      end
+      within('div.orders__tabs ul.nav li:nth-child(3)') do
         click_on 'Enviado'
       end
       within('table tbody tr:nth-child(1)') do
@@ -386,13 +398,15 @@ describe "Starting order" do
       within('section h1') do
         expect(page).to have_content "Ordem de Entrega #{ @order.code }"
       end
-      expect(page).to have_button 'Voltar'
+      within('section div div.page__top') do
+        expect(page).to have_button 'Voltar'
+      end
       within('div.order__status') do
         expect(page).to have_content 'Status: Entregue'
         expect(page).not_to have_button 'Marcar como Entregue'
         expect(page).to have_button 'Marcar como Retornado'
       end
-      within('div.order__status-condition.red strong') do  
+      within('div.order__status-condition.red') do  
         expect(page).to have_content "Essa ordem de entrega foi encerrada com atraso"
       end
       within('div.order__status-condition.red div.order__status-late') do  
@@ -471,8 +485,10 @@ describe "Starting order" do
 
       #Act
       visit root_path
-      click_on 'Ordens de Entrega'
-      within('ul.nav-tabs') do
+      within('div ul.nav li:nth-child(2)') do
+        click_on 'Ordens de Entrega'
+      end
+      within('div.orders__tabs ul.nav li:nth-child(3)') do
         click_on 'Enviado'
       end
       within('table tbody tr:nth-child(1)') do
@@ -482,7 +498,9 @@ describe "Starting order" do
         click_on 'Marcar como Entregue'
       end
       fill_in 'order[reason]',	with: "Esse é o motivo do atraso"
-      click_on 'Salvar'
+      within('div.order__status-condition div.order__status-late') do
+        click_on 'Salvar'
+      end
 
       #Assert
       expect(current_path).to eq order_confirmed_path(@order)
@@ -498,7 +516,7 @@ describe "Starting order" do
         expect(page).not_to have_button 'Marcar como Entregue'
         expect(page).to have_button 'Marcar como Retornado'
       end
-      within('div.order__status-condition.red strong') do  
+      within('div.order__status-condition.red') do  
         expect(page).to have_content "Essa ordem de entrega foi encerrada com atraso"
       end
       within('div.order__status-condition.red div.order__status-late') do  
@@ -576,8 +594,10 @@ describe "Starting order" do
 
       #Act
       visit root_path
-      click_on 'Ordens de Entrega'
-      within('ul.nav-tabs') do
+      within('div ul.nav li:nth-child(2)') do
+        click_on 'Ordens de Entrega'
+      end
+      within('div.orders__tabs ul.nav li:nth-child(3)') do
         click_on 'Enviado'
       end
       within('table tbody tr:nth-child(1)') do
@@ -586,7 +606,9 @@ describe "Starting order" do
       within('div.order__status') do
         click_on 'Marcar como Entregue'
       end
-      click_on 'Voltar'
+      within('section div div.page__top') do
+        click_on 'Voltar'
+      end
       within('ul.nav-tabs') do
         click_on 'Entregue'
       end

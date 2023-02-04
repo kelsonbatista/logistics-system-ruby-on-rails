@@ -16,39 +16,20 @@ describe "Delete deadline" do
   context "user authenticated" do
     before(:each) do
       #Arrange
-      user = User.create!(
-        name: "Usuario 1",
-        email: "usuario1@email.com",
-        password: '123456',
-        role: "user"
-      )
+      user = User.create!(name: "Jose Silva", email: "jose@email.com", password: '123456', role: "user")
 
-      for i in 1..3 do
-        Mode.create!(
-          name: "Modalidade #{i}",
-          min_distance: 10 * i,
-          max_distance: 100 * i,
-          min_weight: 1 * i,
-          max_weight: 100 * i,
-          fixed_fee: 50 * i,
-          active: true
-        )
-      end
+      Mode.create!(name: "Light Pack", min_distance: 1, max_distance: 1000, 
+                  min_weight: 1, max_weight: 10, fixed_fee: 20,  active: true)
 
-      for i in 1..2 do
-        Deadline.create!(
-          min_distance: 5 * i,
-          max_distance: 10 * i,
-          deadline: 15 * i,
-          mode_id: 1
-        )
-        Deadline.create!(
-          min_distance: 7 * i,
-          max_distance: 13 * i,
-          deadline: 17 * i,
-          mode_id: 2
-        )
-      end
+      Mode.create!(name: "Super Pack", min_distance: 10, max_distance: 500, 
+                  min_weight: 5, max_weight: 20, fixed_fee: 40, active: false)
+
+      Mode.create!(name: "Mega Pack", min_distance: 10, max_distance: 300, 
+                  min_weight: 10, max_weight: 40, fixed_fee: 60, active: true)
+
+      Deadline.create!(min_distance: 1, max_distance: 100, deadline: 10, mode_id: 1)
+      Deadline.create!(min_distance: 15, max_distance: 200, deadline: 5, mode_id: 2)
+      Deadline.create!(min_distance: 22, max_distance: 300, deadline: 7, mode_id: 3)
 
       login_as(user)
     end
@@ -56,27 +37,40 @@ describe "Delete deadline" do
     it "sucessfully" do
       #Act
       visit root_path
-      click_on "Prazos"
-      page.all('button.btn-danger')[1].click
+      within('div ul.nav li:nth-child(6)') do
+        click_on 'Prazos'
+      end
+      within('table tbody tr:nth-child(2)') do
+        click_on 'Apagar'
+      end
       #Assert
       expect(current_path).to eq deadlines_path
-      expect(page).to have_content 'Distância'
-      expect(page).to have_content 'Prazo'
-      expect(page).to have_content 'Modalidade'
-      expect(page).to have_content 'Ações'
-      expect(page).to have_content 'Editar'
-      expect(page).to have_content 'Apagar'
-      expect(page).to have_content '5 Km'
-      expect(page).to have_content '10 Km'
-      expect(page).to have_content '15 hs'
-      expect(page).to have_content 'Modalidade 1'
-      expect(page).to have_content '14 Km'
-      expect(page).to have_content '26 Km'
-      expect(page).to have_content '34 hs'
-      expect(page).to have_content 'Modalidade 2'
-      expect(page).not_to have_content '7 Km'
-      expect(page).not_to have_content '13 Km'
-      expect(page).not_to have_content '17 hs'
+      within('table thead tr') do
+        expect(page).to have_content 'Distância'
+        expect(page).to have_content 'Prazo'
+        expect(page).to have_content 'Modalidade'
+        expect(page).to have_content 'Ações'
+      end
+      within('table tbody tr:nth-child(1)') do
+        expect(page).to have_content '1 Km'
+        expect(page).to have_content '100 Km'
+        expect(page).to have_content '10 hs'
+        expect(page).to have_content 'Light Pack'
+        expect(page).to have_button 'Editar'
+        expect(page).to have_button 'Apagar'
+      end
+      within('table tbody tr:nth-child(2)') do
+        expect(page).to have_content '22 Km'
+        expect(page).to have_content '300 Km'
+        expect(page).to have_content '7 hs'
+        expect(page).to have_content 'Mega Pack'
+        expect(page).to have_button 'Editar'
+        expect(page).to have_button 'Apagar'
+      end
+      expect(page).not_to have_content '15 Km'
+      expect(page).not_to have_content '200 Km'
+      expect(page).not_to have_content '5 hs'
+      expect(page).not_to have_content 'Super Pack'
     end
   end
 end

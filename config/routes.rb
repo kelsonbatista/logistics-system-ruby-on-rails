@@ -13,17 +13,22 @@ Rails.application.routes.draw do
     end
     resources :prices, only: [:index, :show, :new, :create, :edit, :update, :destroy]
     resources :deadlines, only: [:index, :show, :new, :create, :edit, :update, :destroy]
-    resources :orders, only: [:index, :destroy] do
+    resources :orders, only: [:index, :new, :create, :edit, :update, :destroy] do
       get 'search_orders', on: :collection, as: 'search_all'
+      resources :products, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+      resources :addresses, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+      resources :order_products, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+      resources :order_addresses, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+      resources :budgets, only: [:index, :show, :new, :create, :edit, :update, :destroy]
     end
-    
   end
-  resources :orders, only: [:show, :show_confirmed, :new, :create, :edit, :update] do
-    resources :products, only: [:index, :show, :new, :create, :edit, :update]
-    resources :addresses, only: [:index, :show, :new, :create, :edit, :update]
-    resources :order_products, only: [:index, :show, :new, :create, :edit, :update]
-    resources :order_addresses, only: [:index, :show, :new, :create, :edit, :update]
-    resources :budgets, only: [:index, :show, :new, :create, :edit, :update]
+
+  resources :orders, only: [:show, :show_confirmed] do
+    resources :products, only: [:index, :show]
+    resources :addresses, only: [:index, :show]
+    resources :order_products, only: [:index, :show]
+    resources :order_addresses, only: [:index, :show]
+    resources :budgets, only: [:index, :show]
     get 'search', on: :collection
     post 'delivered', on: :member
     post 'canceled', on: :member

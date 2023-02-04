@@ -2,7 +2,7 @@
   <div class="modes">
     <h1><%= t('modes') %></h1>
     <div class="page__top">
-      <%= link_to t('new_mode'), new_mode_path, class: "btn btn-primary" %>
+      <%= button_to(t("new_mode"), new_mode_path, method: :get, class: "btn btn-primary") %>
     </div>
   </div>
   <div class="modes__list">

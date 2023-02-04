@@ -26,7 +26,7 @@
       </tr>
       <tr>
         <th><%= f.label :mode_id, t('mode'), class: "form-label" %></th>
-        <td><%= f.collection_select :mode_id, @modes, :id, :name, {}, { class: "form-select" } %></td>
+        <td><%= f.collection_select :mode_id, @modes, :id, :name, { include_blank: true }, { class: "form-select" } %></td>
       </tr>
     </table>
     <div class="deadlines__btn">
