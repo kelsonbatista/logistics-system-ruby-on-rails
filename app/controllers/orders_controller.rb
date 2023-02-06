@@ -75,11 +75,11 @@ class OrdersController < ApplicationController
 
   def search
     @order = Order.where("tracking_code = ? OR code = ?", params[:query], params[:query]).first
-    @budget = Budget.find_by(order_id: @order.id)
     if !@order.present?
       flash[:alert] = 'Nenhum objeto encontrado com esse código de rastreio'
       return redirect_to root_path
     end
+    @budget = Budget.find_by(order_id: @order.id)
     if @budget.present?
       redirect_to order_confirmed_path(@order)
     else
