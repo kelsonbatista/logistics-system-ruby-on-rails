@@ -13,35 +13,51 @@ Mode.create!(name: "Ultra Pack", min_distance: 40, max_distance: 200,
 Mode.create!(name: "Star Pack", min_distance: 10, max_distance: 100, 
   min_weight: 30, max_weight: 60, fixed_fee: 100, active: true)
 
+# **********************************************************************************************
+
 Vehicle.create!(plate: "ABC-1001", brand: "Volkswagem", model: "Gol 1.6", category: "Passeio", 
-      year: "2011", capacity: 100, status: 0, mode_id: 1)
+      year: "2011", capacity: 100, status: 5, mode_id: 1)
 
 Vehicle.create!(plate: "ABC-1002", brand: "Fiat", model: "Fiorino 1.6", category: "Carga Leve", 
-      year: "2012", capacity: 400, status: 0, mode_id: 1)
+      year: "2012", capacity: 400, status: 5, mode_id: 1)
 
 Vehicle.create!(plate: "ABC-1003", brand: "Ford", model: "Furgão 4.0", category: "Carga Média", 
-      year: "2013", capacity: 1000, status: 0, mode_id: 1)
+      year: "2013", capacity: 1000, status: 5, mode_id: 1)
 
 Vehicle.create!(plate: "ABC-1004", brand: "Volkswagem", model: "Gol 1.6", category: "Passeio", 
       year: "2011", capacity: 100, status: 0, mode_id: 1)
 
 Vehicle.create!(plate: "ABC-1005", brand: "Fiat", model: "Toro 2.0", category: "Carga Leve", 
-      year: "2012", capacity: 400, status: 0, mode_id: 1)
+      year: "2012", capacity: 400, status: 5, mode_id: 1)
 
 Vehicle.create!(plate: "ABC-1006", brand: "Ford", model: "DC-300", category: "Carga Pesada", 
       year: "2013", capacity: 1000, status: 0, mode_id: 1)
 
+Vehicle.create!(plate: "ABC-1007", brand: "Volkswagem", model: "Gol 1.6", category: "Passeio", 
+      year: "2011", capacity: 100, status: 0, mode_id: 1)
+
+Vehicle.create!(plate: "ABC-1008", brand: "Fiat", model: "Fiorino 1.6", category: "Carga Leve", 
+      year: "2012", capacity: 400, status: 5, mode_id: 1)
+
+Vehicle.create!(plate: "ABC-1009", brand: "Ford", model: "Furgão 4.0", category: "Carga Média", 
+      year: "2013", capacity: 1000, status: 0, mode_id: 1)
+
+Vehicle.create!(plate: "ABC-1010", brand: "Volkswagem", model: "Gol 1.6", category: "Passeio", 
+      year: "2011", capacity: 100, status: 0, mode_id: 1)
+
+# **********************************************************************************************
+
 Vehicle.create!(plate: "ABC-2001", brand: "Volkswagem", model: "Gol 1.6", category: "Passeio", 
-      year: "2011", capacity: 100, status: 0, mode_id: 2)
+      year: "2011", capacity: 100, status: 5, mode_id: 2)
 
 Vehicle.create!(plate: "ABC-2002", brand: "Fiat", model: "Fiorino 1.6", category: "Carga Leve", 
-      year: "2012", capacity: 400, status: 0, mode_id: 2)
+      year: "2012", capacity: 400, status: 5, mode_id: 2)
 
 Vehicle.create!(plate: "ABC-2003", brand: "Ford", model: "Furgão 4.0", category: "Carga Média", 
-      year: "2013", capacity: 1000, status: 0, mode_id: 2)
+      year: "2013", capacity: 1000, status: 5, mode_id: 2)
 
 Vehicle.create!(plate: "ABC-2004", brand: "Volkswagem", model: "Gol 1.6", category: "Passeio", 
-      year: "2011", capacity: 100, status: 0, mode_id: 2)
+      year: "2011", capacity: 100, status: 5, mode_id: 2)
 
 Vehicle.create!(plate: "ABC-2005", brand: "Fiat", model: "Toro 2.0", category: "Carga Leve", 
       year: "2012", capacity: 400, status: 0, mode_id: 2)
@@ -49,11 +65,25 @@ Vehicle.create!(plate: "ABC-2005", brand: "Fiat", model: "Toro 2.0", category: "
 Vehicle.create!(plate: "ABC-2006", brand: "Ford", model: "DC-300", category: "Carga Pesada", 
       year: "2013", capacity: 1000, status: 0, mode_id: 2)
 
+Vehicle.create!(plate: "ABC-2007", brand: "Volkswagem", model: "Gol 1.6", category: "Passeio", 
+      year: "2011", capacity: 100, status: 5, mode_id: 2)
+
+Vehicle.create!(plate: "ABC-2008", brand: "Fiat", model: "Fiorino 1.6", category: "Carga Leve", 
+      year: "2012", capacity: 400, status: 0, mode_id: 2)
+
+Vehicle.create!(plate: "ABC-2009", brand: "Ford", model: "Furgão 4.0", category: "Carga Média", 
+      year: "2013", capacity: 1000, status: 0, mode_id: 2)
+
+Vehicle.create!(plate: "ABC-2010", brand: "Volkswagem", model: "Gol 1.6", category: "Passeio", 
+      year: "2011", capacity: 100, status: 0, mode_id: 2)
+
+# **********************************************************************************************
+
 Vehicle.create!(plate: "ABC-3001", brand: "Volkswagem", model: "Gol 1.6", category: "Passeio", 
-      year: "2011", capacity: 100, status: 0, mode_id: 3)
+      year: "2011", capacity: 100, status: 5, mode_id: 3)
 
 Vehicle.create!(plate: "ABC-3002", brand: "Fiat", model: "Fiorino 1.6", category: "Carga Leve", 
-      year: "2012", capacity: 400, status: 0, mode_id: 3)
+      year: "2012", capacity: 400, status: 5, mode_id: 3)
 
 Vehicle.create!(plate: "ABC-3003", brand: "Ford", model: "Furgão 4.0", category: "Carga Média", 
       year: "2013", capacity: 1000, status: 0, mode_id: 3)
@@ -67,14 +97,28 @@ Vehicle.create!(plate: "ABC-3005", brand: "Fiat", model: "Toro 2.0", category: "
 Vehicle.create!(plate: "ABC-3006", brand: "Ford", model: "DC-300", category: "Carga Pesada", 
       year: "2013", capacity: 1000, status: 0, mode_id: 3)
 
+Vehicle.create!(plate: "ABC-3007", brand: "Volkswagem", model: "Gol 1.6", category: "Passeio", 
+      year: "2011", capacity: 100, status: 10, mode_id: 3)
+
+Vehicle.create!(plate: "ABC-3008", brand: "Fiat", model: "Fiorino 1.6", category: "Carga Leve", 
+      year: "2012", capacity: 400, status: 10, mode_id: 3)
+
+Vehicle.create!(plate: "ABC-3009", brand: "Ford", model: "Furgão 4.0", category: "Carga Média", 
+      year: "2013", capacity: 1000, status: 0, mode_id: 3)
+
+Vehicle.create!(plate: "ABC-3010", brand: "Volkswagem", model: "Gol 1.6", category: "Passeio", 
+      year: "2011", capacity: 100, status: 0, mode_id: 3)
+
+# **********************************************************************************************
+
 Vehicle.create!(plate: "ABC-4001", brand: "Volkswagem", model: "Gol 1.6", category: "Passeio", 
-      year: "2011", capacity: 100, status: 0, mode_id: 4)
+      year: "2011", capacity: 100, status: 5, mode_id: 4)
 
 Vehicle.create!(plate: "ABC-4002", brand: "Fiat", model: "Fiorino 1.6", category: "Carga Leve", 
-      year: "2012", capacity: 400, status: 0, mode_id: 4)
+      year: "2012", capacity: 400, status: 5, mode_id: 4)
 
 Vehicle.create!(plate: "ABC-4003", brand: "Ford", model: "Furgão 4.0", category: "Carga Média", 
-      year: "2013", capacity: 1000, status: 0, mode_id: 4)
+      year: "2013", capacity: 1000, status: 5, mode_id: 4)
 
 Vehicle.create!(plate: "ABC-4004", brand: "Volkswagem", model: "Gol 1.6", category: "Passeio", 
       year: "2011", capacity: 100, status: 0, mode_id: 4)
@@ -85,11 +129,25 @@ Vehicle.create!(plate: "ABC-4005", brand: "Fiat", model: "Toro 2.0", category: "
 Vehicle.create!(plate: "ABC-4006", brand: "Ford", model: "DC-300", category: "Carga Pesada", 
       year: "2013", capacity: 1000, status: 0, mode_id: 4)
 
+Vehicle.create!(plate: "ABC-4007", brand: "Volkswagem", model: "Gol 1.6", category: "Passeio", 
+      year: "2011", capacity: 100, status: 10, mode_id: 4)
+
+Vehicle.create!(plate: "ABC-4008", brand: "Fiat", model: "Fiorino 1.6", category: "Carga Leve", 
+      year: "2012", capacity: 400, status: 0, mode_id: 4)
+
+Vehicle.create!(plate: "ABC-4009", brand: "Ford", model: "Furgão 4.0", category: "Carga Média", 
+      year: "2013", capacity: 1000, status: 0, mode_id: 4)
+
+Vehicle.create!(plate: "ABC-4010", brand: "Volkswagem", model: "Gol 1.6", category: "Passeio", 
+      year: "2011", capacity: 100, status: 0, mode_id: 4)
+
+# **********************************************************************************************
+
 Vehicle.create!(plate: "ABC-5001", brand: "Volkswagem", model: "Gol 1.6", category: "Passeio", 
-      year: "2011", capacity: 100, status: 0, mode_id: 5)
+      year: "2011", capacity: 100, status: 5, mode_id: 5)
 
 Vehicle.create!(plate: "ABC-5002", brand: "Fiat", model: "Fiorino 1.6", category: "Carga Leve", 
-      year: "2012", capacity: 400, status: 0, mode_id: 5)
+      year: "2012", capacity: 400, status: 5, mode_id: 5)
 
 Vehicle.create!(plate: "ABC-5003", brand: "Ford", model: "Furgão 4.0", category: "Carga Média", 
       year: "2013", capacity: 1000, status: 0, mode_id: 5)
@@ -102,6 +160,20 @@ Vehicle.create!(plate: "ABC-5005", brand: "Fiat", model: "Toro 2.0", category: "
 
 Vehicle.create!(plate: "ABC-5006", brand: "Ford", model: "DC-300", category: "Carga Pesada", 
       year: "2013", capacity: 1000, status: 0, mode_id: 5)
+
+Vehicle.create!(plate: "ABC-5007", brand: "Volkswagem", model: "Gol 1.6", category: "Passeio", 
+      year: "2011", capacity: 100, status: 10, mode_id: 5)
+
+Vehicle.create!(plate: "ABC-5008", brand: "Fiat", model: "Fiorino 1.6", category: "Carga Leve", 
+      year: "2012", capacity: 400, status: 0, mode_id: 5)
+
+Vehicle.create!(plate: "ABC-5009", brand: "Ford", model: "Furgão 4.0", category: "Carga Média", 
+      year: "2013", capacity: 1000, status: 0, mode_id: 5)
+
+Vehicle.create!(plate: "ABC-5010", brand: "Volkswagem", model: "Gol 1.6", category: "Passeio", 
+      year: "2011", capacity: 100, status: 0, mode_id: 5)
+
+# **********************************************************************************************
 
 Price.create!(min_weight: 1, max_weight: 3, price_per_km: 0.11, mode_id: 1)
 Price.create!(min_weight: 4, max_weight: 7, price_per_km: 0.22, mode_id: 1)
@@ -196,37 +268,37 @@ Order.create!(distance: 29, status: 'sent')
 Order.create!(distance: 100, status: 'sent')
 Order.create!(distance: 80, status: 'sent')
 Order.create!(distance: 500, status: 'sent')
-Order.create!(distance: 180, status: 'delivered')
-Order.create!(distance: 440, status: 'delivered')
-Order.create!(distance: 320, status: 'delivered')
-Order.create!(distance: 29, status: 'delivered')
-Order.create!(distance: 100, status: 'delivered')
-Order.create!(distance: 80, status: 'delivered')
-Order.create!(distance: 500, status: 'delivered')
-Order.create!(distance: 50, status: 'delivered')
-Order.create!(distance: 44, status: 'delivered')
-Order.create!(distance: 77, status: 'delivered')
-Order.create!(distance: 55, status: 'delivered')
-Order.create!(distance: 220, status: 'delivered')
-Order.create!(distance: 130, status: 'delivered')
-Order.create!(distance: 290, status: 'delivered')
-Order.create!(distance: 10, status: 'delivered')
-Order.create!(distance: 180, status: 'delivered')
-Order.create!(distance: 440, status: 'delivered')
-Order.create!(distance: 320, status: 'delivered')
-Order.create!(distance: 29, status: 'delivered')
-Order.create!(distance: 100, status: 'delivered')
-Order.create!(distance: 80, status: 'delivered')
-Order.create!(distance: 500, status: 'delivered')
-Order.create!(distance: 50, status: 'delivered')
-Order.create!(distance: 44, status: 'delivered')
-Order.create!(distance: 77, status: 'delivered')
-Order.create!(distance: 55, status: 'delivered')
-Order.create!(distance: 220, status: 'delivered')
-Order.create!(distance: 130, status: 'delivered')
-Order.create!(distance: 290, status: 'delivered')
-Order.create!(distance: 10, status: 'delivered')
-Order.create!(distance: 15, status: 'delivered')
+Order.create!(distance: 180, status: 'delivered', condition: 'on_time')
+Order.create!(distance: 440, status: 'delivered', condition: 'on_time')
+Order.create!(distance: 320, status: 'delivered', condition: 'on_time')
+Order.create!(distance: 29, status: 'delivered', condition: 'late', reason: 'Defeito no veículo')
+Order.create!(distance: 100, status: 'delivered', condition: 'on_time')
+Order.create!(distance: 80, status: 'delivered', condition: 'on_time')
+Order.create!(distance: 500, status: 'delivered', condition: 'late', reason: 'Excesso de encomendas')
+Order.create!(distance: 50, status: 'delivered', condition: 'late')
+Order.create!(distance: 44, status: 'delivered', condition: 'on_time')
+Order.create!(distance: 77, status: 'delivered', condition: 'on_time')
+Order.create!(distance: 55, status: 'delivered', condition: 'on_time')
+Order.create!(distance: 220, status: 'delivered', condition: 'on_time')
+Order.create!(distance: 130, status: 'delivered', condition: 'on_time')
+Order.create!(distance: 290, status: 'delivered', condition: 'late', reason: 'Chuvas na região')
+Order.create!(distance: 10, status: 'delivered', condition: 'on_time')
+Order.create!(distance: 180, status: 'delivered', condition: 'on_time')
+Order.create!(distance: 440, status: 'delivered', condition: 'on_time')
+Order.create!(distance: 320, status: 'delivered', condition: 'on_time')
+Order.create!(distance: 29, status: 'delivered', condition: 'on_time')
+Order.create!(distance: 100, status: 'delivered', condition: 'on_time')
+Order.create!(distance: 80, status: 'delivered', condition: 'on_time')
+Order.create!(distance: 500, status: 'delivered', condition: 'on_time')
+Order.create!(distance: 50, status: 'delivered', condition: 'on_time')
+Order.create!(distance: 44, status: 'delivered', condition: 'on_time')
+Order.create!(distance: 77, status: 'delivered', condition: 'on_time')
+Order.create!(distance: 55, status: 'delivered', condition: 'late', reason: 'Defeito no veículo')
+Order.create!(distance: 220, status: 'delivered', condition: 'late', reason: 'O destinatário não estava no local')
+Order.create!(distance: 130, status: 'delivered', condition: 'on_time')
+Order.create!(distance: 290, status: 'delivered', condition: 'on_time')
+Order.create!(distance: 10, status: 'delivered', condition: 'on_time')
+Order.create!(distance: 15, status: 'delivered', condition: 'late', reason: 'Troca de veículo')
 Order.create!(distance: 29, status: 'canceled')
 Order.create!(distance: 100, status: 'canceled')
 Order.create!(distance: 80, status: 'canceled')
