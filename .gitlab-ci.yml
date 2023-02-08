@@ -31,5 +31,6 @@ rspec:
 audit:
   stage: security
 
-  script: 
+  script:
+    - bundle install
     - bundle exec bundle-audit
