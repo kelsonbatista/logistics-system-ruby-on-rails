@@ -30,6 +30,10 @@ This is a delivery fleet management application for a carrier company, where the
   - SQLite 1.4
   - Puma 5.0
   - Rails-i18n
+  - Devise
+  - Chartkick
+  - Bootstrap (link)
+  - Font Awesome 6.2.1
   - RSpect-rails
   - Capybara
 
@@ -49,32 +53,9 @@ See it in action/ **Veja em ação**: [https://xxxxxxxxxxxxxx.app/](https://xxxx
 
 Commands:
 
-- git clone git@github.com:kelsonbatista/xxxxxxxxx.git
-- Run xxxxxxxxxxxx
+- git clone git@git-qsd.campuscode.com.br:kelson/logistics-system-in-ruby-on-rails.git
+- Run rails db:create
+- Run rails db:migrate
+- Run rails db:seed
+- Run rails server
 - Access http://localhost:3000, register a new user, ready to go.
-
-
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
