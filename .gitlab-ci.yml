@@ -32,5 +32,4 @@ audit:
   stage: security
 
   script:
-    - gem install bundler-audit
     - bundler-audit
