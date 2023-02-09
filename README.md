@@ -40,11 +40,11 @@ This is a delivery fleet management application for a carrier company, where the
 ---
 # Running tests / *Executando testes*
 
-All tests - command:        rspec --format=documentation
-Transport modes - command:  rspec --format=documentation ./spec/system/modes
-Vehicles - command:         rspec --format=documentation ./spec/system/vehicles
-Prices - command:           rspec --format=documentation ./spec/system/prices
-Deadlines - command:        rspec --format=documentation ./spec/system/deadlines
+- All tests - command:        rspec --format=documentation
+- Transport modes - command:  rspec --format=documentation ./spec/system/modes
+- Vehicles - command:         rspec --format=documentation ./spec/system/vehicles
+- Prices - command:           rspec --format=documentation ./spec/system/prices
+- Deadlines - command:        rspec --format=documentation ./spec/system/deadlines
 
 ---
 # Deployment / *Implantação*
