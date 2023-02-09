@@ -33,4 +33,4 @@ audit:
 
   script:
     - gem install bundler-audit
-    - bundle exec bundler-audit
+    - bundler-audit
