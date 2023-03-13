@@ -40,22 +40,37 @@ This is a delivery fleet management application for a carrier company, where the
 ---
 # Running tests / *Executando testes*
 
-- All tests - command:        rspec --format=documentation
-- Transport modes - command:  rspec --format=documentation ./spec/system/modes
-- Vehicles - command:         rspec --format=documentation ./spec/system/vehicles
-- Prices - command:           rspec --format=documentation ./spec/system/prices
-- Deadlines - command:        rspec --format=documentation ./spec/system/deadlines
+- All tests - command:        rspec -f d
+- Transport modes - command:  rspec -f d ./spec/system/modes
+- Vehicles - command:         rspec -f d ./spec/system/vehicles
+- Prices - command:           rspec -f d ./spec/system/prices
+- Deadlines - command:        rspec -f d ./spec/system/deadlines
 
 ---
-# Deployment / *Implantação*
+# Installation / *Instalação*
 
-See it in action/ **Veja em ação**: [https://xxxxxxxxxxxxxx.app/](https://xxxxxxxxxxxxx.app/)
-
-Commands:
-
-- git clone git@git-qsd.campuscode.com.br:kelson/logistics-system-in-ruby-on-rails.git
-- Run rails db:create
-- Run rails db:migrate
-- Run rails db:seed
-- Run rails server
-- Access http://localhost:3000, register a new user, ready to go.
+  1. Clone the respository / *Clone o repositório*
+  ```bash
+  git clone git@github.com:kelsonbatista/logistics-system-ruby-on-rails.git
+  ```
+  2. Install dependencies / *Instale as dependências*
+  ```bash
+  bundle install
+  ```
+  3. Run migrations / *Execute as migrações*
+  ```bash
+  rails db:migrate
+  ```
+  4. Run seeds / *Execute os seeds*
+  ```bash
+  rails db:seed
+  ```
+  5. Initialize server / *Inicie o servidor*
+  ```bash
+  rails s
+  ```
+  6. Access the system / *Acesse o sistema*
+  ```bash
+  http://localhost:3000
+  ```
+  ---
