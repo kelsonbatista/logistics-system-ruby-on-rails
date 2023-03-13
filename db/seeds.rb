@@ -1,3 +1,5 @@
+User.create!(email: "usuario@email.com.br", password: "12345678")
+
 Mode.create!(name: "Light Pack", min_distance: 1, max_distance: 1000, 
   min_weight: 1, max_weight: 10, fixed_fee: 20,  active: true)
 
